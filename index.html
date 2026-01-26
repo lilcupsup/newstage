@@ -1,0 +1,789 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="NewStage — помощник школьнику 9/11 класса для выбора колледжа или вуза Москвы. AI-анализ и умное сравнение (демо)." />
+  <title>NewStage — выбор колледжа/вуза Москвы</title>
+
+  <!-- Google Font (allowed) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <!-- Sticky Header / Nav -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="NewStage — на главную">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">NewStage</span>
+      </a>
+
+      <nav class="nav" aria-label="Основная навигация">
+        <a class="nav-link" href="#match">Подбор</a>
+        <a class="nav-link" href="#compare">Сравнение</a>
+        <a class="nav-link" href="#criteria">Критерии</a>
+        <a class="nav-link" href="#faq">FAQ</a>
+        <a class="nav-link" href="#contacts">Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-primary" href="#match">Начать подбор</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">AI-подбор и объективное сравнение</p>
+          <h1>Выбери колледж или вуз Москвы — объективно и быстро</h1>
+          <p class="lead">
+            NewStage помогает школьникам 9/11 класса подобрать учебное заведение по ключевым критериям:
+            бюджет, локация, качество обучения, трудоустройство и общежитие. Сейчас это демо-интерфейс.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#match">Подобрать по критериям</a>
+            <a class="btn btn-secondary" href="#compare">Сравнить 2–3 заведения</a>
+          </div>
+
+          <ul class="hero-stats" aria-label="Ключевые возможности">
+            <li class="stat">
+              <span class="stat-value">AI Score</span>
+              <span class="stat-label">индикатор соответствия</span>
+            </li>
+            <li class="stat">
+              <span class="stat-value">5 критериев</span>
+              <span class="stat-label">вес важности</span>
+            </li>
+            <li class="stat">
+              <span class="stat-value">Сравнение</span>
+              <span class="stat-label">в 1 клике (в будущем)</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Decorative AI panel (no images) -->
+        <aside class="ai-panel" aria-label="Декоративная панель анализа (демо)">
+          <div class="ai-card">
+            <div class="ai-card-head">
+              <span class="dot dot-a" aria-hidden="true"></span>
+              <span class="dot dot-b" aria-hidden="true"></span>
+              <span class="dot dot-c" aria-hidden="true"></span>
+              <span class="ai-title">AI-анализ (демо)</span>
+            </div>
+
+            <div class="ai-metrics">
+              <article class="metric">
+                <p class="metric-k">Качество преподавания</p>
+                <div class="bar" role="img" aria-label="Качество преподавания: высокий уровень">
+                  <span class="bar-fill w-78"></span>
+                </div>
+              </article>
+              <article class="metric">
+                <p class="metric-k">Трудоустройство</p>
+                <div class="bar" role="img" aria-label="Трудоустройство: выше среднего">
+                  <span class="bar-fill w-71"></span>
+                </div>
+              </article>
+              <article class="metric">
+                <p class="metric-k">Локация</p>
+                <div class="bar" role="img" aria-label="Локация: отличный доступ">
+                  <span class="bar-fill w-84"></span>
+                </div>
+              </article>
+            </div>
+
+            <div class="ai-summary">
+              <p class="ai-summary-title">Вывод</p>
+              <p class="ai-summary-text">
+                По выбранным критериям лучше всего подходят варианты с сильной практикой и хорошей транспортной доступностью.
+              </p>
+            </div>
+          </div>
+
+          <div class="ai-glow" aria-hidden="true"></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" id="criteria">
+      <div class="container">
+        <div class="section-head">
+          <h2>Как это работает</h2>
+          <p class="muted">Три шага — и у тебя готовый список подходящих вариантов и AI-сравнение (в демо — визуальная модель).</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card step">
+            <div class="step-num" aria-hidden="true">1</div>
+            <h3>Выбираешь профиль и цели</h3>
+            <p>Направление, формат обучения, бюджет, район — всё, что важно именно тебе.</p>
+          </article>
+
+          <article class="card step">
+            <div class="step-num" aria-hidden="true">2</div>
+            <h3>Указываешь критерии</h3>
+            <p>Задаёшь “вес” критериям: цена, качество преподавания, трудоустройство, локация, общежитие.</p>
+          </article>
+
+          <article class="card step">
+            <div class="step-num" aria-hidden="true">3</div>
+            <h3>Получаешь AI-сравнение</h3>
+            <p>Понятный вывод и честное сравнение 2–3 заведений по твоим приоритетам.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Match / Form -->
+    <section class="section" id="match">
+      <div class="container">
+        <div class="section-head">
+          <h2>Подбор по критериям</h2>
+          <p class="muted">Пока это UI-форма: логика подключится позже (JS/AI). Сейчас можно использовать как прототип.</p>
+        </div>
+
+        <div class="layout-split">
+          <form class="card form" action="#" method="get" aria-label="Форма подбора учебного заведения">
+            <!-- Class -->
+            <fieldset class="fieldset">
+              <legend>Класс</legend>
+              <div class="row">
+                <label class="choice">
+                  <input type="radio" name="grade" value="9" checked />
+                  <span>9 класс</span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="grade" value="11" />
+                  <span>11 класс</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Level toggle -->
+            <fieldset class="fieldset">
+              <legend>Уровень</legend>
+              <div class="toggle" role="group" aria-label="Выбор уровня обучения">
+                <label class="toggle-item">
+                  <input type="radio" name="level" value="college" checked />
+                  <span>Колледж</span>
+                </label>
+                <label class="toggle-item">
+                  <input type="radio" name="level" value="university" />
+                  <span>Вуз</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Profile -->
+            <div class="field">
+              <label for="profile">Профиль</label>
+              <select id="profile" name="profile">
+                <option value="it">IT</option>
+                <option value="medicine">Медицина</option>
+                <option value="design">Дизайн</option>
+                <option value="economics">Экономика</option>
+                <option value="engineering">Инженерия</option>
+                <option value="humanities">Гуманитарий</option>
+              </select>
+            </div>
+
+            <!-- Budget / Paid -->
+            <div class="field">
+              <label class="choice choice-inline">
+                <input type="checkbox" name="budget" value="yes" checked />
+                <span>Рассматривать бюджет</span>
+              </label>
+              <label class="choice choice-inline">
+                <input type="checkbox" name="paid" value="yes" />
+                <span>Рассматривать платное</span>
+              </label>
+            </div>
+
+            <!-- Area / Metro -->
+            <div class="field">
+              <label for="area">Метро / район</label>
+              <input id="area" name="area" type="text" placeholder="Например: Курская, САО, ЮЗАО" />
+            </div>
+
+            <!-- Score -->
+            <div class="field">
+              <label for="score">Проходной балл / ЕГЭ (пример)</label>
+              <input id="score" name="score" type="number" inputmode="numeric" min="0" max="400" placeholder="Например: 240" />
+            </div>
+
+            <!-- Criteria weights -->
+            <fieldset class="fieldset">
+              <legend>Критерии важности</legend>
+
+              <div class="range">
+                <label for="w-price">Цена</label>
+                <input id="w-price" name="w_price" type="range" min="0" max="10" value="7" />
+              </div>
+
+              <div class="range">
+                <label for="w-quality">Качество преподавания</label>
+                <input id="w-quality" name="w_quality" type="range" min="0" max="10" value="8" />
+              </div>
+
+              <div class="range">
+                <label for="w-job">Трудоустройство</label>
+                <input id="w-job" name="w_job" type="range" min="0" max="10" value="9" />
+              </div>
+
+              <div class="range">
+                <label for="w-location">Локация</label>
+                <input id="w-location" name="w_location" type="range" min="0" max="10" value="6" />
+              </div>
+
+              <div class="range">
+                <label for="w-dorm">Общежитие</label>
+                <input id="w-dorm" name="w_dorm" type="range" min="0" max="10" value="5" />
+              </div>
+            </fieldset>
+
+            <button class="btn btn-primary btn-block" type="button" aria-label="Показать варианты (демо кнопка)">
+              Показать варианты
+            </button>
+          </form>
+
+          <!-- Catalog preview -->
+          <div class="card preview" aria-label="Блок подсказок и критериев (демо)">
+            <h3>Что учитывает NewStage</h3>
+            <ul class="bullets">
+              <li>Стоимость и варианты бюджета</li>
+              <li>Качество преподавания и программа</li>
+              <li>Стажировки и трудоустройство</li>
+              <li>Транспортная доступность</li>
+              <li>Общежитие и инфраструктура</li>
+            </ul>
+
+            <div class="callout">
+              <p class="callout-title">Важно</p>
+              <p class="muted">
+                Это демонстрационный интерфейс. Реальные данные и AI-оценки подключаются на следующем этапе разработки.
+              </p>
+            </div>
+
+            <div class="mini-grid">
+              <div class="mini">
+                <p class="mini-k">Скорость</p>
+                <p class="mini-v">~2 мин</p>
+              </div>
+              <div class="mini">
+                <p class="mini-k">Объективность</p>
+                <p class="mini-v">по весам</p>
+              </div>
+              <div class="mini">
+                <p class="mini-k">Сравнение</p>
+                <p class="mini-v">2–3</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results grid -->
+        <div class="section-subhead">
+          <h3>Результаты (demo)</h3>
+          <p class="muted">Пример карточек. Данные вымышленные.</p>
+        </div>
+
+        <div class="cards-grid">
+          <!-- Card 1 -->
+          <article class="card school">
+            <div class="school-top">
+              <div class="school-title">
+                <h4>Московский колледж цифровых технологий</h4>
+                <p class="school-meta">Колледж · м. Бауманская</p>
+              </div>
+
+              <div class="score" aria-label="AI Score 86 из 100">
+                <div class="score-ring" style="--p: 86" aria-hidden="true"></div>
+                <div class="score-txt">
+                  <span class="score-num">86</span>
+                  <span class="score-sub">AI</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chips" aria-label="Теги">
+              <span class="chip">IT</span>
+              <span class="chip">Стажировки</span>
+              <span class="chip">Бюджет</span>
+            </div>
+
+            <dl class="school-details">
+              <div>
+                <dt>Стоимость</dt>
+                <dd>от 0 ₽ / год</dd>
+              </div>
+              <div>
+                <dt>Формат</dt>
+                <dd>Очное</dd>
+              </div>
+              <div>
+                <dt>Проходной</dt>
+                <dd>4.4 (аттестат)</dd>
+              </div>
+            </dl>
+
+            <div class="school-actions">
+              <button class="btn btn-secondary" type="button">Подробнее</button>
+              <button class="btn btn-ghost" type="button">Добавить к сравнению</button>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card school">
+            <div class="school-top">
+              <div class="school-title">
+                <h4>НИУ “Городской техуниверситет”</h4>
+                <p class="school-meta">Вуз · м. Академическая</p>
+              </div>
+
+              <div class="score" aria-label="AI Score 91 из 100">
+                <div class="score-ring" style="--p: 91" aria-hidden="true"></div>
+                <div class="score-txt">
+                  <span class="score-num">91</span>
+                  <span class="score-sub">AI</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chips" aria-label="Теги">
+              <span class="chip">Инженерия</span>
+              <span class="chip">Лаборатории</span>
+              <span class="chip">Общежитие</span>
+            </div>
+
+            <dl class="school-details">
+              <div>
+                <dt>Стоимость</dt>
+                <dd>от 210 000 ₽ / год</dd>
+              </div>
+              <div>
+                <dt>Бюджет</dt>
+                <dd>есть места</dd>
+              </div>
+              <div>
+                <dt>ЕГЭ</dt>
+                <dd>от 265</dd>
+              </div>
+            </dl>
+
+            <div class="school-actions">
+              <button class="btn btn-secondary" type="button">Подробнее</button>
+              <button class="btn btn-ghost" type="button">Добавить к сравнению</button>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card school">
+            <div class="school-top">
+              <div class="school-title">
+                <h4>Колледж медицины и биотехнологий</h4>
+                <p class="school-meta">Колледж · м. Проспект Мира</p>
+              </div>
+
+              <div class="score" aria-label="AI Score 83 из 100">
+                <div class="score-ring" style="--p: 83" aria-hidden="true"></div>
+                <div class="score-txt">
+                  <span class="score-num">83</span>
+                  <span class="score-sub">AI</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chips" aria-label="Теги">
+              <span class="chip">Медицина</span>
+              <span class="chip">Практика</span>
+              <span class="chip">Гранты</span>
+            </div>
+
+            <dl class="school-details">
+              <div>
+                <dt>Стоимость</dt>
+                <dd>от 0 ₽ / год</dd>
+              </div>
+              <div>
+                <dt>Формат</dt>
+                <dd>Очное</dd>
+              </div>
+              <div>
+                <dt>Проходной</dt>
+                <dd>4.6 (аттестат)</dd>
+              </div>
+            </dl>
+
+            <div class="school-actions">
+              <button class="btn btn-secondary" type="button">Подробнее</button>
+              <button class="btn btn-ghost" type="button">Добавить к сравнению</button>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card school">
+            <div class="school-top">
+              <div class="school-title">
+                <h4>Институт дизайна и коммуникаций</h4>
+                <p class="school-meta">Вуз · м. Белорусская</p>
+              </div>
+
+              <div class="score" aria-label="AI Score 79 из 100">
+                <div class="score-ring" style="--p: 79" aria-hidden="true"></div>
+                <div class="score-txt">
+                  <span class="score-num">79</span>
+                  <span class="score-sub">AI</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chips" aria-label="Теги">
+              <span class="chip">Дизайн</span>
+              <span class="chip">Портфолио</span>
+              <span class="chip">Стажировки</span>
+            </div>
+
+            <dl class="school-details">
+              <div>
+                <dt>Стоимость</dt>
+                <dd>от 190 000 ₽ / год</dd>
+              </div>
+              <div>
+                <dt>Бюджет</dt>
+                <dd>конкурс</dd>
+              </div>
+              <div>
+                <dt>ЕГЭ</dt>
+                <dd>от 245</dd>
+              </div>
+            </dl>
+
+            <div class="school-actions">
+              <button class="btn btn-secondary" type="button">Подробнее</button>
+              <button class="btn btn-ghost" type="button">Добавить к сравнению</button>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card school">
+            <div class="school-top">
+              <div class="school-title">
+                <h4>Экономический университет “Столица”</h4>
+                <p class="school-meta">Вуз · м. Таганская</p>
+              </div>
+
+              <div class="score" aria-label="AI Score 88 из 100">
+                <div class="score-ring" style="--p: 88" aria-hidden="true"></div>
+                <div class="score-txt">
+                  <span class="score-num">88</span>
+                  <span class="score-sub">AI</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chips" aria-label="Теги">
+              <span class="chip">Экономика</span>
+              <span class="chip">Карьера</span>
+              <span class="chip">Обмен</span>
+            </div>
+
+            <dl class="school-details">
+              <div>
+                <dt>Стоимость</dt>
+                <dd>от 175 000 ₽ / год</dd>
+              </div>
+              <div>
+                <dt>Бюджет</dt>
+                <dd>есть места</dd>
+              </div>
+              <div>
+                <dt>ЕГЭ</dt>
+                <dd>от 255</dd>
+              </div>
+            </dl>
+
+            <div class="school-actions">
+              <button class="btn btn-secondary" type="button">Подробнее</button>
+              <button class="btn btn-ghost" type="button">Добавить к сравнению</button>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card school">
+            <div class="school-top">
+              <div class="school-title">
+                <h4>Колледж инженерных профессий “ПрофТех”</h4>
+                <p class="school-meta">Колледж · м. Текстильщики</p>
+              </div>
+
+              <div class="score" aria-label="AI Score 81 из 100">
+                <div class="score-ring" style="--p: 81" aria-hidden="true"></div>
+                <div class="score-txt">
+                  <span class="score-num">81</span>
+                  <span class="score-sub">AI</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chips" aria-label="Теги">
+              <span class="chip">Инженерия</span>
+              <span class="chip">Практика</span>
+              <span class="chip">Бюджет</span>
+            </div>
+
+            <dl class="school-details">
+              <div>
+                <dt>Стоимость</dt>
+                <dd>от 0 ₽ / год</dd>
+              </div>
+              <div>
+                <dt>Формат</dt>
+                <dd>Очное</dd>
+              </div>
+              <div>
+                <dt>Проходной</dt>
+                <dd>4.3 (аттестат)</dd>
+              </div>
+            </dl>
+
+            <div class="school-actions">
+              <button class="btn btn-secondary" type="button">Подробнее</button>
+              <button class="btn btn-ghost" type="button">Добавить к сравнению</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="section" id="compare">
+      <div class="container">
+        <div class="section-head">
+          <h2>Сравнение (demo)</h2>
+          <p class="muted">Таблица-заглушка: в будущем сюда подключится логика выбора 2–3 заведений и вывод AI-рекомендации.</p>
+        </div>
+
+        <div class="card table-card">
+          <div class="table-wrap" role="region" aria-label="Таблица сравнения учебных заведений" tabindex="0">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th scope="col">Критерий</th>
+                  <th scope="col">Колледж цифровых технологий</th>
+                  <th scope="col">Городской техуниверситет</th>
+                  <th scope="col">Экономический “Столица”</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">AI Score</th>
+                  <td><span class="pill good">86</span></td>
+                  <td><span class="pill best">91</span></td>
+                  <td><span class="pill good">88</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Стоимость</th>
+                  <td>0 ₽ / год</td>
+                  <td>210 000 ₽ / год</td>
+                  <td>175 000 ₽ / год</td>
+                </tr>
+                <tr>
+                  <th scope="row">Качество преподавания</th>
+                  <td>8.1/10</td>
+                  <td>8.8/10</td>
+                  <td>8.4/10</td>
+                </tr>
+                <tr>
+                  <th scope="row">Трудоустройство</th>
+                  <td>8.6/10</td>
+                  <td>8.7/10</td>
+                  <td>8.9/10</td>
+                </tr>
+                <tr>
+                  <th scope="row">Локация</th>
+                  <td>Отлично</td>
+                  <td>Хорошо</td>
+                  <td>Отлично</td>
+                </tr>
+                <tr>
+                  <th scope="row">Общежитие</th>
+                  <td>Нет</td>
+                  <td>Есть</td>
+                  <td>Есть</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="ai-conclusion" aria-label="AI вывод (демо)">
+            <div class="ai-conclusion-badge">
+              <span class="spark" aria-hidden="true"></span>
+              <span>AI вывод</span>
+            </div>
+            <p>
+              По твоим критериям (высокий вес “трудоустройство” и “качество преподавания”) лучше подходит
+              <strong>Городской техуниверситет</strong>, а как более бюджетная альтернатива — <strong>Колледж цифровых технологий</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Отзывы школьников</h2>
+          <p class="muted">Короткие впечатления (демо).</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card review">
+            <p class="review-text">“Понравилось, что можно выставить важность критериев. Сразу понятнее, почему вариант в топе.”</p>
+            <div class="review-meta">
+              <span class="avatar" aria-hidden="true">А</span>
+              <div>
+                <p class="review-name">Алина, 9 класс</p>
+                <p class="muted">Ищет колледж в IT</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card review">
+            <p class="review-text">“Сравнение 3 вузов — топ. Хочу, чтобы подтягивались реальные баллы и общага.”</p>
+            <div class="review-meta">
+              <span class="avatar" aria-hidden="true">Д</span>
+              <div>
+                <p class="review-name">Дима, 11 класс</p>
+                <p class="muted">Готовится к ЕГЭ</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card review">
+            <p class="review-text">“Дизайн как у нормального сервиса. Было бы круто сохранять избранное и возвращаться.”</p>
+            <div class="review-meta">
+              <span class="avatar" aria-hidden="true">Н</span>
+              <div>
+                <p class="review-name">Ника, 11 класс</p>
+                <p class="muted">Смотрит дизайн-направления</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p class="muted">Ответы на частые вопросы. Работает без JS.</p>
+        </div>
+
+        <div class="faq">
+          <details class="faq-item">
+            <summary>Откуда берутся AI-оценки?</summary>
+            <div class="faq-body">
+              <p class="muted">
+                В демо — это заглушки. В реальной версии планируется подключать источники данных (сайты вузов, открытые данные, отзывы)
+                и формировать объяснимый скоринг по критериям.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Можно ли сравнить 2–3 заведения?</summary>
+            <div class="faq-body">
+              <p class="muted">
+                Да. Сейчас блок сравнения статический, но структура готова: кнопки “Добавить к сравнению” и таблица уже есть.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Это бесплатно?</summary>
+            <div class="faq-body">
+              <p class="muted">
+                В демо — да. Модель монетизации можно добавить позже: расширенные сравнения, персональные подборки, консультации.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Как вы учитываете разные приоритеты?</summary>
+            <div class="faq-body">
+              <p class="muted">
+                Через “вес” критериев (слайдеры). В будущем эти веса будут влиять на итоговый скоринг и объяснение результата.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacts -->
+    <section class="section" id="contacts">
+      <div class="container">
+        <div class="card contacts">
+          <div>
+            <h2>Контакты</h2>
+            <p class="muted">Хочешь помочь с идеями или данными? Напиши — будем развивать NewStage.</p>
+          </div>
+
+          <div class="contacts-grid">
+            <div class="contact-item">
+              <p class="contact-k">Email</p>
+              <p class="contact-v"><a href="#" class="link" aria-label="Почта (демо)">hello@newstage.demo</a></p>
+            </div>
+            <div class="contact-item">
+              <p class="contact-k">Telegram</p>
+              <p class="contact-v"><a href="#" class="link" aria-label="Телеграм (демо)">@newstage_demo</a></p>
+            </div>
+            <div class="contact-item">
+              <p class="contact-k">Город</p>
+              <p class="contact-v">Москва</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <a class="brand brand--footer" href="#top" aria-label="NewStage — наверх">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">NewStage</span>
+        </a>
+        <p class="muted small">
+          Сайт демонстрационный. AI-оценки и данные — пример.
+        </p>
+      </div>
+
+      <div class="footer-links" aria-label="Ссылки в подвале">
+        <a class="link" href="#match">Подбор</a>
+        <a class="link" href="#compare">Сравнение</a>
+        <a class="link" href="#faq">FAQ</a>
+        <a class="link" href="#contacts">Контакты</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
