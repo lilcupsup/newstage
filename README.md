@@ -7,10 +7,8 @@
 
 ---
 
-## 🚀 Live demo
-Открой GitHub Pages репозитория (Settings → Pages).  
-Если Pages уже включён, ссылка будет вида:  
-`https://<username>.github.io/<repo>/`
+## 🚀 Live demo  
+`lilcupsup.github.io/newstage-frontend/`
 
 ---
 
