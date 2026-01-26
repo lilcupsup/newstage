@@ -6,5 +6,4 @@
 ## Stack
 - HTML5 (семантика)
 - CSS3 (dark theme, responsive, a11y)
-- ## 🚀 Live demo
-👉 https://lilcupsup.github.io/newstage-frontend/
+
