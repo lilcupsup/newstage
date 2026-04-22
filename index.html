@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewStage — Помощник по выбору вуза</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="#" class="logo" data-section="home">New<span>Stage</span></a>
+            <nav class="nav">
+                <a href="#" class="nav-link active" data-section="home">Главная</a>
+                <a href="#" class="nav-link" data-section="search">Поиск</a>
+                <a href="#" class="nav-link" data-section="compare">Сравнение</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Главная -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="particles" id="particles"></div>
+            <div class="container hero-inner">
+                <h1>Найди свой идеальный вуз</h1>
+                <p class="hero-subtitle">Помогаем школьникам 9 и 11 классов выбрать вуз или колледж в Москве. Сравнивай, фильтруй и получай рекомендации.</p>
+                <button class="btn btn-primary" data-section="search">Начать поиск</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Как это работает</h2>
+            <div class="steps">
+                <div class="step animate-on-scroll delay-1">
+                    <div class="step-number">1</div>
+                    <h3>Укажи параметры</h3>
+                    <p>Выбери направление, бюджет и свои баллы ЕГЭ</p>
+                </div>
+                <div class="step animate-on-scroll delay-2">
+                    <div class="step-number">2</div>
+                    <h3>Получи подборку</h3>
+                    <p>Система подберёт подходящие вузы по твоим критериям</p>
+                </div>
+                <div class="step animate-on-scroll delay-3">
+                    <div class="step-number">3</div>
+                    <h3>Сравни и выбери</h3>
+                    <p>Сравни вузы между собой и сделай осознанный выбор</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Популярные вузы</h2>
+            <div class="cards" id="popular-cards"></div>
+        </div>
+
+        <!-- ИИ-рекомендация -->
+        <div class="container">
+            <div class="ai-block animate-on-scroll">
+                <h2 class="section-title">ИИ-рекомендации</h2>
+                <p class="ai-description">Заполни короткую анкету, и ИИ-помощник соберёт персональную подборку вузов</p>
+                <form id="ai-form" class="ai-form" novalidate>
+                    <div class="ai-form-grid">
+                        <div class="form-group ai-field-metro">
+                            <label for="ai-metro">Метро</label>
+                            <select id="ai-metro">
+                                <option value="">Выбери ближайшее метро</option>
+                                <option value="Университет">Университет</option>
+                                <option value="Бауманская">Бауманская</option>
+                                <option value="Китай-город">Китай-город</option>
+                                <option value="Каширская">Каширская</option>
+                                <option value="Юго-Западная">Юго-Западная</option>
+                                <option value="Проспект Вернадского">Проспект Вернадского</option>
+                                <option value="Аэропорт">Аэропорт</option>
+                                <option value="Новослободская">Новослободская</option>
+                                <option value="Серпуховская">Серпуховская</option>
+                                <option value="Политехническая">Политехническая</option>
+                                <option value="Горьковская">Горьковская</option>
+                                <option value="Василеостровская">Василеостровская</option>
+                                <option value="Площадь Тукая">Площадь Тукая</option>
+                            </select>
+                        </div>
+                        <div class="form-group ai-field-direction">
+                            <label for="ai-direction">Направление</label>
+                            <select id="ai-direction">
+                                <option value="">Выбери направление</option>
+                                <option value="Инженерия">Инженерия</option>
+                                <option value="IT">IT и программирование</option>
+                                <option value="Экономика">Экономика и финансы</option>
+                                <option value="Гуманитарные науки">Гуманитарные науки</option>
+                                <option value="Естественные науки">Естественные науки</option>
+                                <option value="Международные отношения">Международные отношения</option>
+                            </select>
+                        </div>
+                        <div class="form-group ai-field-interests">
+                            <label for="ai-interests">Интересы</label>
+                            <textarea id="ai-interests" rows="3" placeholder="Например: программирование, стартапы, аналитика, языки"></textarea>
+                        </div>
+                        <div class="form-group ai-field-budget">
+                            <label for="ai-budget">Бюджет за год (₽)</label>
+                            <input type="number" id="ai-budget" min="0" step="10000" placeholder="Например, 300000">
+                        </div>
+                        <div class="form-group ai-field-score">
+                            <label for="ai-score">Баллы ЕГЭ (сумма)</label>
+                            <input type="number" id="ai-score" min="0" max="310" placeholder="Например, 250">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Получить персональную рекомендацию</button>
+                </form>
+                <div id="ai-result" class="ai-result hidden" aria-live="polite"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Поиск -->
+    <section id="search" class="section">
+        <div class="container">
+            <h2 class="section-title">Поиск вузов</h2>
+            <div class="search-layout">
+                <aside class="filters">
+                    <h3>Фильтры</h3>
+                    <div class="form-group">
+                        <label for="filter-direction">Направление</label>
+                        <select id="filter-direction">
+                            <option value="">Все направления</option>
+                            <option value="Инженерия">Инженерия</option>
+                            <option value="IT">IT и программирование</option>
+                            <option value="Экономика">Экономика и финансы</option>
+                            <option value="Гуманитарные науки">Гуманитарные науки</option>
+                            <option value="Естественные науки">Естественные науки</option>
+                            <option value="Международные отношения">Международные отношения</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filter-budget">Макс. стоимость (₽/год)</label>
+                        <input type="number" id="filter-budget" placeholder="Например, 400000">
+                    </div>
+                    <div class="form-group">
+                        <label for="filter-score">Мои баллы ЕГЭ (сумма)</label>
+                        <input type="number" id="filter-score" placeholder="Например, 250">
+                    </div>
+                    <button class="btn btn-primary btn-block" id="apply-filters">Применить</button>
+                    <button class="btn btn-outline btn-block" id="reset-filters">Сбросить</button>
+                </aside>
+                <div class="cards" id="search-cards"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сравнение -->
+    <section id="compare" class="section">
+        <div class="container">
+            <h2 class="section-title">Сравнение вузов</h2>
+            <p class="compare-hint" id="compare-hint">Добавьте вузы к сравнению, нажав кнопку «Сравнить» на карточке вуза в разделе Поиск.</p>
+            <div id="compare-content" class="hidden">
+                <div class="compare-table-wrapper">
+                    <table class="compare-table" id="compare-table"></table>
+                </div>
+                <button class="btn btn-outline" id="clear-compare">Очистить сравнение</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 NewStage. Помощник по выбору вуза для школьников Москвы.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
