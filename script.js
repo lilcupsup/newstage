@@ -316,31 +316,57 @@ document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
 });
 
 // ===== Карточки =====
+function getUniMark(name) {
+    return name
+        .split(/\s+/)
+        .filter(Boolean)
+        .map(part => part[0])
+        .join('')
+        .replace(/[^A-Za-zА-Яа-яЁё]/g, '')
+        .slice(0, 3)
+        .toUpperCase();
+}
+
 function createCard(uni, showCompareBtn = false) {
     const isInCompare = compareList.some(u => u.id === uni.id);
-    const card = document.createElement('div');
+    const card = document.createElement('article');
     card.className = 'card';
+    const tags = (uni.tags || []).slice(0, 3);
     card.innerHTML = `
         <div class="card-header">
-            <div class="card-title">${uni.name}</div>
-            <div class="card-rating">${uni.rating}/10</div>
+            <div class="card-identity">
+                <span class="uni-mark">${getUniMark(uni.name)}</span>
+                <div>
+                    <div class="card-title">${uni.name}</div>
+                    <div class="card-metro">метро ${uni.metro} · ${uni.metroLine}</div>
+                </div>
+            </div>
+            <div class="card-rating">${uni.rating}<span>/10</span></div>
         </div>
-        <div class="card-direction">${uni.direction}</div>
-        <div class="card-metro">метро ${uni.metro}</div>
+        <div class="card-tags">
+            <span class="card-direction">${uni.direction}</span>
+            ${tags.map(tag => `<span>${tag}</span>`).join('')}
+        </div>
         <div class="card-description">${uni.description}</div>
+        <div class="card-details">
+            <div>
+                <span>Стоимость</span>
+                <strong>${uni.price.toLocaleString('ru-RU')} ₽/год</strong>
+            </div>
+            <div>
+                <span>Проходной балл</span>
+                <strong>от ${uni.minScore}</strong>
+            </div>
+        </div>
         <div class="card-pros-cons">
             <div class="card-pros">
-                <h4>Плюсы</h4>
-                <ul>${uni.pros.map(p => `<li>${p}</li>`).join('')}</ul>
+                <h4>Сильные стороны</h4>
+                <ul>${uni.pros.slice(0, 2).map(p => `<li>${p}</li>`).join('')}</ul>
             </div>
             <div class="card-cons">
-                <h4>Минусы</h4>
-                <ul>${uni.cons.map(c => `<li>${c}</li>`).join('')}</ul>
+                <h4>Что учесть</h4>
+                <ul>${uni.cons.slice(0, 2).map(c => `<li>${c}</li>`).join('')}</ul>
             </div>
-        </div>
-        <div class="card-details">
-            <span class="card-price">${uni.price.toLocaleString('ru-RU')} ₽/год</span>
-            <span class="card-score">от ${uni.minScore} баллов ЕГЭ</span>
         </div>
         ${showCompareBtn ? `
             <div class="card-actions">
