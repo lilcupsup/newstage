@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NewStage — Помощник по выбору вуза</title>
-    <link rel="stylesheet" href="styles.css?v=20260507-recommendations">
+    <link rel="stylesheet" href="styles.css?v=20260507-prep">
 </head>
 <body>
     <!-- Header -->
@@ -13,9 +13,10 @@
             <a href="#" class="logo" data-section="home">New<span>Stage</span></a>
             <nav class="nav">
                 <a href="#" class="nav-link active" data-section="home">Главная</a>
+                <a href="#" class="nav-link" data-section="home" data-scroll-target="ai-recommendations">Рекомендации</a>
                 <a href="#" class="nav-link" data-section="search">Поиск</a>
                 <a href="#" class="nav-link" data-section="compare">Сравнение</a>
-                <a href="#" class="nav-link" data-section="home" data-scroll-target="ai-recommendations">Рекомендации</a>
+                <a href="#" class="nav-link" data-section="prep">Подготовка</a>
                 <a href="#" class="nav-link" data-section="blog">Блог</a>
             </nav>
             <button class="mobile-menu-btn" aria-label="Меню">
@@ -189,6 +190,150 @@
                     <table class="compare-table" id="compare-table"></table>
                 </div>
                 <button class="btn btn-outline" id="clear-compare">Очистить сравнение</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подготовка -->
+    <section id="prep" class="section">
+        <div class="container">
+            <div class="prep-hero">
+                <div>
+                    <p class="prep-eyebrow">Подготовка к экзаменам</p>
+                    <h2>Курсы ЕГЭ и ОГЭ под цель поступления</h2>
+                    <p class="prep-hero-text">Выбирай предметы, уровень и формат занятий, чтобы подтянуть баллы без хаотичных материалов и случайных пробников.</p>
+                    <div class="prep-actions">
+                        <button class="btn btn-primary" type="button" data-section="home" data-scroll-target="ai-recommendations">Подобрать вуз по баллам</button>
+                        <button class="btn btn-ghost" type="button" data-section="search">Смотреть вузы</button>
+                    </div>
+                </div>
+                <div class="prep-score-panel" aria-label="Цели подготовки">
+                    <div>
+                        <span>ЕГЭ</span>
+                        <strong>80+</strong>
+                        <small>цель по профильным предметам</small>
+                    </div>
+                    <div>
+                        <span>ОГЭ</span>
+                        <strong>4-5</strong>
+                        <small>уверенная база для 10 класса или колледжа</small>
+                    </div>
+                    <div>
+                        <span>План</span>
+                        <strong>12</strong>
+                        <small>недель до первого заметного прогресса</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prep-grid" aria-label="Курсы подготовки">
+                <article class="prep-course-card">
+                    <div class="prep-course-top">
+                        <span class="prep-badge">ЕГЭ</span>
+                        <span class="prep-meta">11 класс</span>
+                    </div>
+                    <h3>Математика профиль</h3>
+                    <p>Разбор заданий второй части, стратегия времени и еженедельные пробники с проверкой решений.</p>
+                    <ul>
+                        <li>2 занятия в неделю</li>
+                        <li>Домашка с разбором ошибок</li>
+                        <li>План на 3 месяца</li>
+                    </ul>
+                    <button class="btn btn-outline btn-sm" type="button">Подробнее</button>
+                </article>
+
+                <article class="prep-course-card">
+                    <div class="prep-course-top">
+                        <span class="prep-badge">ЕГЭ</span>
+                        <span class="prep-meta">10-11 класс</span>
+                    </div>
+                    <h3>Русский язык</h3>
+                    <p>Сочинение, тестовая часть, аргументация и шаблоны проверки, которые помогают стабильно держать высокий балл.</p>
+                    <ul>
+                        <li>Практика сочинений</li>
+                        <li>Словарь типовых ошибок</li>
+                        <li>Пробник каждые 2 недели</li>
+                    </ul>
+                    <button class="btn btn-outline btn-sm" type="button">Подробнее</button>
+                </article>
+
+                <article class="prep-course-card">
+                    <div class="prep-course-top">
+                        <span class="prep-badge">ЕГЭ</span>
+                        <span class="prep-meta">IT и экономика</span>
+                    </div>
+                    <h3>Информатика</h3>
+                    <p>Алгоритмы, Python, таблицы, базы данных и задания с кодом для поступления на IT-направления.</p>
+                    <ul>
+                        <li>Тренажер задач</li>
+                        <li>Разбор кода с наставником</li>
+                        <li>Контроль скорости решения</li>
+                    </ul>
+                    <button class="btn btn-outline btn-sm" type="button">Подробнее</button>
+                </article>
+
+                <article class="prep-course-card">
+                    <div class="prep-course-top">
+                        <span class="prep-badge prep-badge-alt">ОГЭ</span>
+                        <span class="prep-meta">9 класс</span>
+                    </div>
+                    <h3>Математика ОГЭ</h3>
+                    <p>База, геометрия, практические задачи и понятный маршрут для тех, кто выбирает 10 класс или колледж.</p>
+                    <ul>
+                        <li>Диагностика уровня</li>
+                        <li>Короткие модули по темам</li>
+                        <li>Пробники в формате ОГЭ</li>
+                    </ul>
+                    <button class="btn btn-outline btn-sm" type="button">Подробнее</button>
+                </article>
+
+                <article class="prep-course-card">
+                    <div class="prep-course-top">
+                        <span class="prep-badge prep-badge-alt">ОГЭ</span>
+                        <span class="prep-meta">9 класс</span>
+                    </div>
+                    <h3>Обществознание</h3>
+                    <p>Термины, аргументы, задания с развернутым ответом и регулярная практика по разделам кодификатора.</p>
+                    <ul>
+                        <li>Карточки понятий</li>
+                        <li>Тематические тесты</li>
+                        <li>Проверка письменных ответов</li>
+                    </ul>
+                    <button class="btn btn-outline btn-sm" type="button">Подробнее</button>
+                </article>
+
+                <article class="prep-course-card prep-course-card-accent">
+                    <div class="prep-course-top">
+                        <span class="prep-badge">Маршрут</span>
+                        <span class="prep-meta">Подбор</span>
+                    </div>
+                    <h3>Индивидуальный план</h3>
+                    <p>Связываем предметы, текущие баллы, дедлайны и список вузов, чтобы подготовка работала на конкретную цель.</p>
+                    <ul>
+                        <li>Диагностика по предметам</li>
+                        <li>Целевые баллы под вузы</li>
+                        <li>Контроль прогресса</li>
+                    </ul>
+                    <button class="btn btn-primary btn-sm" type="button" data-section="home" data-scroll-target="ai-recommendations">Начать с подбора</button>
+                </article>
+            </div>
+
+            <div class="prep-roadmap">
+                <div>
+                    <span>01</span>
+                    <strong>Диагностика</strong>
+                    <p>Определяем текущий уровень и предметы, которые реально влияют на поступление.</p>
+                </div>
+                <div>
+                    <span>02</span>
+                    <strong>План занятий</strong>
+                    <p>Собираем недельный ритм: теория, практика, домашка и регулярные пробники.</p>
+                </div>
+                <div>
+                    <span>03</span>
+                    <strong>Коррекция цели</strong>
+                    <p>Сравниваем прогресс с требованиями вузов и вовремя меняем стратегию.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -391,7 +536,7 @@
                 </div>
                 <div class="footer-link-card">
                     <h3>Обучение</h3>
-                    <a href="#">Подготовка к ЕГЭ/ОГЭ</a>
+                    <a href="#" data-section="prep">Подготовка к ЕГЭ/ОГЭ</a>
                     <a href="#">Профориентация</a>
                     <a href="#">Наставники</a>
                     <a href="#">Траектории поступления</a>
@@ -423,6 +568,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=20260507-recommendations"></script>
+    <script src="script.js?v=20260507-prep"></script>
 </body>
 </html>
