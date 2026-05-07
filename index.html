@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NewStage — Помощник по выбору вуза</title>
-    <link rel="stylesheet" href="styles.css?v=20260506-purple">
+    <link rel="stylesheet" href="styles.css?v=20260507-recommendations">
 </head>
 <body>
     <!-- Header -->
@@ -15,6 +15,7 @@
                 <a href="#" class="nav-link active" data-section="home">Главная</a>
                 <a href="#" class="nav-link" data-section="search">Поиск</a>
                 <a href="#" class="nav-link" data-section="compare">Сравнение</a>
+                <a href="#" class="nav-link" data-section="home" data-scroll-target="ai-recommendations">Рекомендации</a>
                 <a href="#" class="nav-link" data-section="blog">Блог</a>
             </nav>
             <button class="mobile-menu-btn" aria-label="Меню">
@@ -34,7 +35,8 @@
                 <h1 id="home-title">Найди вуз, который реально подходит тебе</h1>
                 <p class="hero-subtitle">NewStage помогает школьникам 9 и 11 классов выбрать вуз или колледж: сравнить варианты, отфильтровать по бюджету и баллам, а затем получить персональную рекомендацию.</p>
                 <div class="hero-actions">
-                    <button class="btn btn-primary" data-section="search">Начать поиск</button>
+                    <button class="btn btn-primary" data-section="home" data-scroll-target="ai-recommendations">Получить рекомендацию</button>
+                    <button class="btn btn-ghost" data-section="search">Начать поиск</button>
                     <button class="btn btn-ghost" data-section="compare">Открыть сравнение</button>
                 </div>
                 <div class="hero-metrics" aria-label="Ключевые возможности">
@@ -84,7 +86,7 @@
 
         <!-- ИИ-рекомендация -->
         <div class="container">
-            <div class="ai-block animate-on-scroll">
+            <div class="ai-block animate-on-scroll" id="ai-recommendations">
                 <h2 class="section-title">ИИ-рекомендации</h2>
                 <p class="ai-description">Заполни короткую анкету, и ИИ-помощник соберёт персональную подборку вузов</p>
                 <form id="ai-form" class="ai-form" novalidate>
@@ -384,7 +386,7 @@
                     <h3>Платформа</h3>
                     <a href="#" data-section="search">Поиск вузов</a>
                     <a href="#" data-section="compare">Сравнение</a>
-                    <a href="#" data-section="home">ИИ-рекомендации</a>
+                    <a href="#" data-section="home" data-scroll-target="ai-recommendations">ИИ-рекомендации</a>
                     <a href="#">Личный кабинет</a>
                 </div>
                 <div class="footer-link-card">
@@ -421,6 +423,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=20260506-purple"></script>
+    <script src="script.js?v=20260507-recommendations"></script>
 </body>
 </html>

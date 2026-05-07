@@ -918,6 +918,7 @@ textarea:focus-visible {
 /* ===== AI Block ===== */
 .ai-block {
     position: relative;
+    scroll-margin-top: 96px;
     margin: 12px 0 62px;
     padding: 34px;
     overflow: hidden;

@@ -276,7 +276,18 @@ function showToast(message) {
 }
 
 // ===== Навигация =====
-function navigateTo(sectionId) {
+function scrollToPageTarget(targetId) {
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    const header = document.querySelector('.header');
+    const headerOffset = header ? header.offsetHeight + 18 : 0;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+    window.scrollTo({ top: Math.max(targetTop, 0), behavior: 'smooth' });
+}
+
+function navigateTo(sectionId, scrollTargetId = '') {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
 
@@ -289,13 +300,20 @@ function navigateTo(sectionId) {
         target.style.animation = '';
     }
 
-    document.querySelectorAll(`.nav-link[data-section="${sectionId}"]`).forEach(l => l.classList.add('active'));
+    const activeNavSelector = scrollTargetId
+        ? `.nav-link[data-section="${sectionId}"][data-scroll-target="${scrollTargetId}"]`
+        : `.nav-link[data-section="${sectionId}"]:not([data-scroll-target])`;
+    document.querySelectorAll(activeNavSelector).forEach(l => l.classList.add('active'));
 
     // Close mobile menu
     document.querySelector('.nav').classList.remove('open');
     document.querySelector('.mobile-menu-btn').classList.remove('active');
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (scrollTargetId) {
+        setTimeout(() => scrollToPageTarget(scrollTargetId), 80);
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
     // Re-observe scroll animations in the new section
     setTimeout(initScrollAnimations, 100);
@@ -305,7 +323,7 @@ function navigateTo(sectionId) {
 document.querySelectorAll('[data-section]').forEach(el => {
     el.addEventListener('click', (e) => {
         e.preventDefault();
-        navigateTo(el.dataset.section);
+        navigateTo(el.dataset.section, el.dataset.scrollTarget);
     });
 });
 
