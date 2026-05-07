@@ -309,6 +309,22 @@ document.querySelectorAll('[data-section]').forEach(el => {
     });
 });
 
+// Blog category filters
+document.querySelectorAll('.blog-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        const filter = tab.dataset.blogFilter;
+
+        document.querySelectorAll('.blog-tab').forEach(item => item.classList.remove('active'));
+        tab.classList.add('active');
+
+        document.querySelectorAll('.blog-card').forEach(card => {
+            const categories = (card.dataset.blogCategories || '').split(/\s+/);
+            const isVisible = filter === 'all' || categories.includes(filter);
+            card.classList.toggle('hidden', !isVisible);
+        });
+    });
+});
+
 // Mobile menu toggle
 document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
     document.querySelector('.nav').classList.toggle('open');
@@ -502,7 +518,7 @@ function renderCompareTable() {
             values: compareList.map(u => ({ text: `${u.price.toLocaleString('ru-RU')} ₽`, isBest: u.price === bestPrice }))
         },
         {
-            label: 'Мин. баллы ЕГЭ',
+            label: 'Мин. баллы ЕГЭ/ОГЭ',
             values: compareList.map(u => ({ text: `${u.minScore}`, isBest: u.minScore === bestScore }))
         },
         {
@@ -648,7 +664,7 @@ function validateAiProfile(profile) {
     if (!profile.direction) return 'Выберите направление обучения.';
     if (!profile.interests) return 'Опишите интересы: технологии, языки, бизнес, медиа, наука или любые другие темы.';
     if (!Number.isFinite(profile.budget) || profile.budget <= 0) return 'Укажите годовой бюджет на обучение.';
-    if (!Number.isFinite(profile.score) || profile.score <= 0) return 'Укажите сумму баллов ЕГЭ.';
+    if (!Number.isFinite(profile.score) || profile.score <= 0) return 'Укажите сумму баллов ЕГЭ/ОГЭ.';
     return '';
 }
 

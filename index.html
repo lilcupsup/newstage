@@ -15,6 +15,7 @@
                 <a href="#" class="nav-link active" data-section="home">Главная</a>
                 <a href="#" class="nav-link" data-section="search">Поиск</a>
                 <a href="#" class="nav-link" data-section="compare">Сравнение</a>
+                <a href="#" class="nav-link" data-section="blog">Блог</a>
             </nav>
             <button class="mobile-menu-btn" aria-label="Меню">
                 <span></span>
@@ -60,7 +61,7 @@
                 <div class="step animate-on-scroll delay-1">
                     <div class="step-number">1</div>
                     <h3>Укажи параметры</h3>
-                    <p>Выбери направление, бюджет и свои баллы ЕГЭ</p>
+                    <p>Выбери направление, бюджет и свои баллы ЕГЭ/ОГЭ</p>
                 </div>
                 <div class="step animate-on-scroll delay-2">
                     <div class="step-number">2</div>
@@ -128,7 +129,7 @@
                             <input type="number" id="ai-budget" min="0" step="10000" placeholder="Например, 300000">
                         </div>
                         <div class="form-group ai-field-score">
-                            <label for="ai-score">Баллы ЕГЭ (сумма)</label>
+                            <label for="ai-score">Баллы ЕГЭ/ОГЭ (сумма)</label>
                             <input type="number" id="ai-score" min="0" max="310" placeholder="Например, 250">
                         </div>
                     </div>
@@ -164,7 +165,7 @@
                         <input type="number" id="filter-budget" placeholder="Например, 400000">
                     </div>
                     <div class="form-group">
-                        <label for="filter-score">Мои баллы ЕГЭ (сумма)</label>
+                        <label for="filter-score">Мои баллы ЕГЭ/ОГЭ (сумма)</label>
                         <input type="number" id="filter-score" placeholder="Например, 250">
                     </div>
                     <button class="btn btn-primary btn-block" id="apply-filters">Применить</button>
@@ -190,10 +191,233 @@
         </div>
     </section>
 
+    <!-- Блог -->
+    <section id="blog" class="section">
+        <div class="container">
+            <div class="blog-hero">
+                <div>
+                    <p class="blog-eyebrow">Полезные материалы</p>
+                    <h2>Блог для родителей, школьников и студентов</h2>
+                    <p class="blog-hero-text">Советы, статьи и чек-листы, которые помогают спокойно выбрать вуз, подготовиться к поступлению и принять осознанное решение</p>
+                </div>
+                <div class="blog-audience-grid" aria-label="Аудитории блога">
+                    <div class="blog-audience-card">
+                        <span>01</span>
+                        <strong>Для родителей</strong>
+                    </div>
+                    <div class="blog-audience-card">
+                        <span>02</span>
+                        <strong>Для школьников</strong>
+                    </div>
+                    <div class="blog-audience-card">
+                        <span>03</span>
+                        <strong>Для студентов</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-tabs" aria-label="Категории статей">
+                <button class="blog-tab active" type="button" data-blog-filter="all">Все статьи</button>
+                <button class="blog-tab" type="button" data-blog-filter="parents">Родителям</button>
+                <button class="blog-tab" type="button" data-blog-filter="school">Школьникам</button>
+                <button class="blog-tab" type="button" data-blog-filter="students">Студентам</button>
+                <button class="blog-tab" type="button" data-blog-filter="admission">Поступление</button>
+                <button class="blog-tab" type="button" data-blog-filter="ege">ЕГЭ/ОГЭ</button>
+                <button class="blog-tab" type="button" data-blog-filter="career">Выбор профессии</button>
+            </div>
+
+            <div class="blog-grid">
+                <article class="blog-card" data-blog-categories="parents admission">
+                    <div class="blog-card-top">
+                        <span class="blog-category">Родителям</span>
+                        <span class="blog-meta">7 мин · 12 мая</span>
+                    </div>
+                    <h3>Как родителям помочь ребёнку выбрать вуз без давления</h3>
+                    <p>Как поддержать подростка, задавать правильные вопросы и не превращать поступление в семейный конфликт.</p>
+                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
+                </article>
+
+                <article class="blog-card" data-blog-categories="school career">
+                    <div class="blog-card-top">
+                        <span class="blog-category">Школьникам</span>
+                        <span class="blog-meta">6 мин · 10 мая</span>
+                    </div>
+                    <h3>Что делать, если школьник не знает, кем хочет стать</h3>
+                    <p>Практичный маршрут от интересов и предметов к профессиям, направлениям и первым коротким спискам вузов.</p>
+                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
+                </article>
+
+                <article class="blog-card" data-blog-categories="admission school parents">
+                    <div class="blog-card-top">
+                        <span class="blog-category">Поступление</span>
+                        <span class="blog-meta">8 мин · 8 мая</span>
+                    </div>
+                    <h3>Как сравнивать вузы: 7 важных критериев</h3>
+                    <p>Разбираем, какие параметры смотреть кроме рейтинга: программа, практика, стоимость, дорога, среда и карьерные треки.</p>
+                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
+                </article>
+
+                <article class="blog-card" data-blog-categories="ege admission">
+                    <div class="blog-card-top">
+                        <span class="blog-category">ЕГЭ/ОГЭ</span>
+                        <span class="blog-meta">5 мин · 6 мая</span>
+                    </div>
+                    <h3>ЕГЭ/ОГЭ, бюджет и реальность: как оценить шансы поступления</h3>
+                    <p>Как сопоставить баллы, проходные прошлых лет и запасные варианты без ложной уверенности и паники.</p>
+                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
+                </article>
+
+                <article class="blog-card" data-blog-categories="school admission career">
+                    <div class="blog-card-top">
+                        <span class="blog-category">Школьникам</span>
+                        <span class="blog-meta">6 мин · 3 мая</span>
+                    </div>
+                    <h3>Колледж или вуз после 9 класса: что выбрать</h3>
+                    <p>Плюсы, риски и сценарии для тех, кто выбирает между ранней профессией и продолжением школьного маршрута.</p>
+                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
+                </article>
+
+                <article class="blog-card" data-blog-categories="career school students">
+                    <div class="blog-card-top">
+                        <span class="blog-category">Выбор профессии</span>
+                        <span class="blog-meta">7 мин · 30 апреля</span>
+                    </div>
+                    <h3>Как не ошибиться с направлением обучения</h3>
+                    <p>Какие сигналы говорят, что направление подходит, и как проверить выбор до подачи документов.</p>
+                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
+                </article>
+
+                <article class="blog-card" data-blog-categories="admission parents school">
+                    <div class="blog-card-top">
+                        <span class="blog-category">Поступление</span>
+                        <span class="blog-meta">5 мин · 26 апреля</span>
+                    </div>
+                    <h3>Поступление в Москве: на что обратить внимание</h3>
+                    <p>Стоимость жизни, дорога, кампус, практика и другие детали, которые влияют на учебу сильнее, чем кажется.</p>
+                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
+                </article>
+
+                <article class="blog-card" data-blog-categories="students career">
+                    <div class="blog-card-top">
+                        <span class="blog-category">Студентам</span>
+                        <span class="blog-meta">4 мин · 22 апреля</span>
+                    </div>
+                    <h3>Как студенту понять, что вуз ему подходит</h3>
+                    <p>Чекпоинты первого курса: учебная нагрузка, окружение, преподаватели, возможности и ощущение движения вперед.</p>
+                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
+                </article>
+
+                <article class="blog-card" data-blog-categories="admission ege parents school">
+                    <div class="blog-card-top">
+                        <span class="blog-category">Чек-лист</span>
+                        <span class="blog-meta">3 мин · 18 апреля</span>
+                    </div>
+                    <h3>Чек-лист перед подачей документов</h3>
+                    <p>Что перепроверить перед отправкой заявления: сроки, приоритеты, документы, согласия и резервные варианты.</p>
+                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
+                </article>
+            </div>
+
+            <div class="blog-cta">
+                <div>
+                    <h3>Не знаешь, с чего начать?</h3>
+                    <p>Заполни параметры в NewStage и получи персональную подборку вузов</p>
+                </div>
+                <button class="btn btn-primary" type="button" data-section="search">Перейти к поиску</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-inner">
-            <p>&copy; 2026 NewStage. Помощник по выбору вуза для школьников Москвы.</p>
+    <footer class="footer" aria-label="Подвал сайта">
+        <div class="container footer-shell">
+            <div class="footer-top">
+                <div class="footer-contacts" aria-label="Контакты NewStage">
+                    <a href="tel:+74951234567" class="footer-contact">
+                        <span class="footer-contact-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" role="img">
+                                <path d="M6.6 10.8c1.6 3.2 3.4 5 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.5 22 2 13.5 2 3.4 2 2.7 2.5 2 3.2 2h3.6C7.5 2 8 2.5 8 3.2c0 1.4.2 2.7.6 4 .1.4 0 .9-.3 1.2l-1.7 2.4Z"/>
+                            </svg>
+                        </span>
+                        <span>
+                            <small>Телефон</small>
+                            +7 495 123-45-67
+                        </span>
+                    </a>
+                    <a href="mailto:hello@newstage.ru" class="footer-contact">
+                        <span class="footer-contact-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" role="img">
+                                <path d="M3.8 5h16.4c1 0 1.8.8 1.8 1.8v10.4c0 1-.8 1.8-1.8 1.8H3.8c-1 0-1.8-.8-1.8-1.8V6.8C2 5.8 2.8 5 3.8 5Zm8.2 7.7 7-5.1H5l7 5.1Zm0 2.3L4 9.2v8h16v-8l-8 5.8Z"/>
+                            </svg>
+                        </span>
+                        <span>
+                            <small>Email</small>
+                            hello@newstage.ru
+                        </span>
+                    </a>
+                </div>
+
+                <div class="footer-socials" aria-label="Социальные сети">
+                    <a href="#" class="social-pill" aria-label="NewStage в Telegram">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21.7 4.2 18.5 19c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L5.9 12.5 1 11c-1.1-.3-1.1-1.1.2-1.6L20.3 2c.9-.3 1.7.2 1.4 2.2Z"/>
+                        </svg>
+                        Telegram
+                    </a>
+                    <a href="#" class="social-pill" aria-label="NewStage во ВКонтакте">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M13.1 18.8c-7.4 0-11.6-5.1-11.8-13.6h3.7c.1 6.2 2.8 8.8 5 9.3V5.2h3.5v5.3c2.2-.2 4.4-2.7 5.2-5.3h3.5c-.6 3.2-3 5.7-4.7 6.8 1.7.9 4.5 3.1 5.5 6.8h-3.9c-.8-2.5-2.9-4.4-5.6-4.7v4.7h-.4Z"/>
+                        </svg>
+                        VK
+                    </a>
+                    <a href="#" class="social-pill" aria-label="NewStage на YouTube">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M22 8.1s-.2-1.6-.9-2.3c-.8-.9-1.8-.9-2.2-1C15.8 4.6 12 4.6 12 4.6s-3.8 0-6.9.2c-.4 0-1.4.1-2.2 1C2.2 6.5 2 8.1 2 8.1S1.8 10 1.8 12v1.8c0 2 .2 3.9.2 3.9s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.8.2 6.7.2 6.7.2s3.8 0 6.9-.3c.4 0 1.4-.1 2.2-1 .7-.7.9-2.3.9-2.3s.2-2 .2-3.9V12c0-2-.2-3.9-.2-3.9Zm-12.1 7V8.4l6.3 3.4-6.3 3.3Z"/>
+                        </svg>
+                        YouTube
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links-grid">
+                <div class="footer-link-card">
+                    <h3>Платформа</h3>
+                    <a href="#" data-section="search">Поиск вузов</a>
+                    <a href="#" data-section="compare">Сравнение</a>
+                    <a href="#" data-section="home">ИИ-рекомендации</a>
+                    <a href="#">Личный кабинет</a>
+                </div>
+                <div class="footer-link-card">
+                    <h3>Обучение</h3>
+                    <a href="#">Подготовка к ЕГЭ/ОГЭ</a>
+                    <a href="#">Профориентация</a>
+                    <a href="#">Наставники</a>
+                    <a href="#">Траектории поступления</a>
+                </div>
+                <div class="footer-link-card">
+                    <h3>Бесплатно</h3>
+                    <a href="#">Тест выбора вуза</a>
+                    <a href="#">Калькулятор баллов</a>
+                    <a href="#">Гайд абитуриента</a>
+                    <a href="#">Демо-подборка</a>
+                </div>
+                <div class="footer-link-card">
+                    <h3>Мероприятия</h3>
+                    <a href="#">Вебинары</a>
+                    <a href="#">Дни открытых дверей</a>
+                    <a href="#">Разборы направлений</a>
+                    <a href="#">Календарь поступления</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 NewStage. Сервис помощи школьникам с выбором вуза.</p>
+                <div class="footer-legal">
+                    <a href="#">Лицензия</a>
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Пользовательское соглашение</a>
+                </div>
+            </div>
         </div>
     </footer>
 
