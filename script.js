@@ -1,583 +1,255 @@
-// ===== Данные вузов =====
-const universities = [
+const directions = {
+    it: 'IT и программирование',
+    engineering: 'Инженерия',
+    economics: 'Экономика и финансы',
+    media: 'Медиа и дизайн',
+    humanities: 'Гуманитарные науки',
+    science: 'Естественные науки',
+    international: 'Международные отношения',
+    architecture: 'Строительство и архитектура',
+    law: 'Право и управление'
+};
+
+const institutions = [
     {
         id: 1,
-        name: 'МГУ им. Ломоносова',
-        rating: 9.5,
-        price: 400000,
+        name: 'МГУ имени М. В. Ломоносова',
+        type: 'university',
+        exam: 'ege',
+        direction: 'science',
+        rating: 9.6,
+        price: 430000,
         minScore: 270,
         metro: 'Университет',
         metroLine: 'Сокольническая',
-        direction: 'Естественные науки',
-        description: 'Ведущий классический университет России. Сильнейшие научные школы, огромный кампус и международное признание.',
-        tags: ['наука', 'исследования', 'биология', 'химия', 'математика', 'академическая карьера'],
-        aiFocus: 'подойдёт тем, кто хочет строить академическую или исследовательскую траекторию',
-        pros: ['Мировой рейтинг', 'Сильная наука', 'Большой кампус'],
-        cons: ['Высокий проходной балл', 'Дорогое обучение']
+        description: 'Фундаментальный университет для академической траектории, науки, математики, биологии, химии и исследовательских проектов.',
+        tags: ['наука', 'математика', 'исследования', 'биология', 'химия'],
+        pros: ['сильная научная среда', 'высокий академический статус', 'широкий выбор факультетов'],
+        cons: ['очень высокий проходной балл', 'интенсивная нагрузка'],
+        risks: ['нужен высокий запас по профильным предметам', 'конкурс может сильно отличаться по факультетам'],
+        next: ['сверить факультет и предметы ЕГЭ', 'посмотреть дни открытых дверей', 'подготовить резервный вариант'],
+        aiFocus: 'подходит тем, кто хочет фундаментальное образование и научную карьеру'
     },
     {
         id: 2,
-        name: 'МГТУ им. Баумана',
-        rating: 9.2,
-        price: 320000,
-        minScore: 250,
+        name: 'МГТУ имени Н. Э. Баумана',
+        type: 'university',
+        exam: 'ege',
+        direction: 'engineering',
+        rating: 9.3,
+        price: 360000,
+        minScore: 255,
         metro: 'Бауманская',
         metroLine: 'Арбатско-Покровская',
-        direction: 'Инженерия',
-        description: 'Ведущий технический университет страны. Готовит инженеров мирового уровня для высокотехнологичных отраслей.',
-        tags: ['инженерия', 'робототехника', 'машиностроение', 'космос', 'техника', 'проектирование'],
-        aiFocus: 'хорош для интереса к инженерным проектам, технике и сложным прикладным задачам',
-        pros: ['Лучшая инженерная школа', 'Связи с индустрией', 'Военная кафедра'],
-        cons: ['Очень высокая нагрузка', 'Старые корпуса']
+        description: 'Инженерная школа для робототехники, машиностроения, космоса, промышленной разработки и сложных технических проектов.',
+        tags: ['робототехника', 'проектирование', 'машиностроение', 'космос', 'инженерия'],
+        pros: ['репутация инженерного вуза', 'связь с индустрией', 'прикладные проекты'],
+        cons: ['сложная учебная нагрузка', 'часть корпусов требует привыкания'],
+        risks: ['технические предметы быстро становятся барьером', 'лучше иметь запас по математике и физике'],
+        next: ['проверить профильные кафедры', 'сравнить с МАИ и Московским Политехом', 'оценить дорогу до кампуса'],
+        aiFocus: 'хорош для школьников, которым важны техника, физика и инженерные проекты'
     },
     {
         id: 3,
         name: 'НИУ ВШЭ',
-        rating: 9.0,
-        price: 500000,
-        minScore: 260,
+        type: 'university',
+        exam: 'ege',
+        direction: 'economics',
+        rating: 9.1,
+        price: 520000,
+        minScore: 265,
         metro: 'Китай-город',
         metroLine: 'Калужско-Рижская',
-        direction: 'Экономика',
-        description: 'Ведущий исследовательский университет в области экономики и социальных наук. Современный подход к образованию.',
-        tags: ['аналитика', 'финансы', 'данные', 'бизнес', 'стартапы', 'исследования'],
-        aiFocus: 'сильный выбор для аналитики, экономики, данных и проектной карьеры',
-        pros: ['Современные программы', 'Международные обмены', 'Сильная аналитика'],
-        cons: ['Высокая стоимость', 'Конкурентная среда']
+        description: 'Исследовательский университет с сильными программами по экономике, работе с данными, менеджменту, социологии и продуктовой аналитике.',
+        tags: ['экономика', 'данные', 'аналитика', 'финансы', 'стартапы'],
+        pros: ['современные программы', 'международная среда', 'сильная аналитика'],
+        cons: ['высокая стоимость', 'конкурентная среда'],
+        risks: ['для топовых программ нужен запас по баллам', 'стоимость может быть выше комфортного бюджета'],
+        next: ['сравнить кампусы и программы', 'посмотреть скидки и гранты', 'проверить профильные олимпиады'],
+        aiFocus: 'подходит для аналитики, экономики, данных и проектной карьеры'
     },
     {
         id: 4,
-        name: 'МИФИ',
-        rating: 8.8,
+        name: 'РТУ МИРЭА',
+        type: 'university',
+        exam: 'ege',
+        direction: 'it',
+        rating: 8.5,
         price: 280000,
-        minScore: 240,
-        metro: 'Каширская',
-        metroLine: 'Замоскворецкая',
-        direction: 'Естественные науки',
-        description: 'Национальный исследовательский ядерный университет. Лидер подготовки специалистов в области ядерной физики и IT.',
-        tags: ['физика', 'it', 'кибербезопасность', 'ядерные технологии', 'исследования', 'программирование'],
-        aiFocus: 'подходит для физики, программирования и технологичных исследовательских направлений',
-        pros: ['Уникальные специальности', 'Высокие стипендии', 'Связь с Росатомом'],
-        cons: ['Узкая специализация', 'Строгий режим']
+        minScore: 218,
+        metro: 'Проспект Вернадского',
+        metroLine: 'Сокольническая',
+        description: 'Технологический университет для входа в IT: разработка, информационная безопасность, сети и прикладные цифровые продукты.',
+        tags: ['программирование', 'кибербезопасность', 'сети', 'разработка', 'данные'],
+        pros: ['доступнее по баллам', 'сильный IT-фокус', 'разумная стоимость'],
+        cons: ['репутация зависит от конкретной программы', 'нужно заранее выбрать институт'],
+        risks: ['важно заранее выбрать институт внутри вуза', 'нужна самостоятельность в проектах'],
+        next: ['изучить институт ИТ', 'сравнить с МАИ и Московским Политехом', 'посмотреть карьерные треки'],
+        aiFocus: 'хорошо ложится на интерес к разработке и прикладным IT-навыкам'
     },
     {
         id: 5,
-        name: 'РАНХиГС',
-        rating: 8.5,
-        price: 350000,
-        minScore: 230,
-        metro: 'Юго-Западная',
-        metroLine: 'Сокольническая',
-        direction: 'Гуманитарные науки',
-        description: 'Крупнейший университет государственного управления. Готовит управленцев, юристов и специалистов в сфере госслужбы.',
-        tags: ['управление', 'право', 'социология', 'госслужба', 'коммуникации', 'политика'],
-        aiFocus: 'логичен для интереса к управлению, праву, обществу и публичной сфере',
-        pros: ['Связи с госструктурами', 'Много направлений', 'Практика в министерствах'],
-        cons: ['Большой размер — меньше внимания', 'Разный уровень программ']
+        name: 'Финансовый университет',
+        type: 'university',
+        exam: 'ege',
+        direction: 'economics',
+        rating: 8.6,
+        price: 330000,
+        minScore: 235,
+        metro: 'Аэропорт',
+        metroLine: 'Замоскворецкая',
+        description: 'Практичный вариант для финансов, банков, налогов, учета, бизнес-аналитики и экономической карьеры.',
+        tags: ['финансы', 'банки', 'учет', 'налоги', 'аналитика'],
+        pros: ['прикладная экономика', 'стажировки в финансовой сфере', 'понятные карьерные треки'],
+        cons: ['узкий профиль', 'много студентов на популярных направлениях'],
+        risks: ['важно понять разницу между программами', 'для аналитики понадобится сильная математика'],
+        next: ['сравнить факультеты', 'проверить стажировки партнеров', 'оценить проходные по выбранной программе'],
+        aiFocus: 'подходит для финансовой сферы и прикладной экономики'
     },
     {
         id: 6,
         name: 'МГИМО',
-        rating: 9.3,
-        price: 600000,
-        minScore: 280,
+        type: 'university',
+        exam: 'ege',
+        direction: 'international',
+        rating: 9.4,
+        price: 620000,
+        minScore: 282,
         metro: 'Проспект Вернадского',
         metroLine: 'Сокольническая',
-        direction: 'Международные отношения',
-        description: 'Элитный университет международных отношений. Готовит дипломатов, переводчиков и специалистов по мировой политике.',
-        tags: ['языки', 'дипломатия', 'политика', 'международный бизнес', 'культура', 'право'],
-        aiFocus: 'подойдёт для международной карьеры, языков и дипломатической среды',
-        pros: ['Престиж', 'Языковая подготовка', 'Карьерные связи'],
-        cons: ['Очень дорого', 'Самый высокий проходной']
+        description: 'Сильный бренд для международных отношений, языков, дипломатии, международного бизнеса и политологии.',
+        tags: ['языки', 'дипломатия', 'политология', 'международный бизнес', 'право'],
+        pros: ['престиж', 'языковая подготовка', 'сильные карьерные связи'],
+        cons: ['очень высокая стоимость', 'максимально конкурентный вход'],
+        risks: ['нужен серьезный запас по баллам', 'стоимость стоит сравнить с альтернативами'],
+        next: ['проверить языковые требования', 'сравнить с РАНХиГС и ВШЭ', 'оценить резервные направления'],
+        aiFocus: 'подходит для международной карьеры, языков и публичной сферы'
     },
     {
         id: 7,
-        name: 'Финансовый университет',
-        rating: 8.3,
-        price: 300000,
-        minScore: 220,
-        metro: 'Аэропорт',
-        metroLine: 'Замоскворецкая',
-        direction: 'Экономика',
-        description: 'Ведущий финансово-экономический вуз при Правительстве РФ. Сильные программы по финансам, учёту и налогам.',
-        tags: ['финансы', 'банки', 'налоги', 'учёт', 'аналитика', 'карьера'],
-        aiFocus: 'практичный вариант для финансов, банковской сферы и прикладной экономики',
-        pros: ['Хорошее трудоустройство', 'Стажировки в банках', 'Доступные баллы'],
-        cons: ['Узкий профиль', 'Много студентов']
+        name: 'РАНХиГС Москва',
+        type: 'university',
+        exam: 'ege',
+        direction: 'law',
+        rating: 8.4,
+        price: 380000,
+        minScore: 238,
+        metro: 'Юго-Западная',
+        metroLine: 'Сокольническая',
+        description: 'Вариант для управления, права, государственной службы, коммуникаций и социально-гуманитарных программ.',
+        tags: ['управление', 'право', 'госслужба', 'коммуникации', 'общество'],
+        pros: ['много программ', 'связь с публичным сектором', 'практические кейсы'],
+        cons: ['уровень зависит от программы', 'большой университетский масштаб'],
+        risks: ['важно смотреть не только бренд, но и конкретный институт', 'на популярных программах высокий конкурс'],
+        next: ['сравнить институты внутри академии', 'посмотреть практики', 'проверить проходные по программе'],
+        aiFocus: 'логичен для интереса к управлению, праву и общественным процессам'
     },
     {
         id: 8,
-        name: 'МИРЭА',
-        rating: 8.0,
-        price: 250000,
-        minScore: 200,
-        metro: 'Проспект Вернадского',
-        metroLine: 'Сокольническая',
-        direction: 'IT',
-        description: 'Технологический университет с фокусом на IT и программировании. Доступные баллы и современные программы.',
-        tags: ['программирование', 'кибербезопасность', 'разработка', 'данные', 'сетевые технологии', 'робототехника'],
-        aiFocus: 'хорошо ложится на интерес к разработке, кибербезопасности и прикладным IT-навыкам',
-        pros: ['Доступные баллы', 'Сильное IT-направление', 'Доступная цена'],
-        cons: ['Молодой бренд', 'Менее известен за рубежом']
+        name: 'МАИ',
+        type: 'university',
+        exam: 'ege',
+        direction: 'engineering',
+        rating: 8.3,
+        price: 305000,
+        minScore: 225,
+        metro: 'Сокол',
+        metroLine: 'Замоскворецкая',
+        description: 'Инженерный университет для авиации, беспилотников, двигателей, материалов, IT-систем и промышленной разработки.',
+        tags: ['авиация', 'беспилотники', 'двигатели', 'материалы', 'инженерия'],
+        pros: ['прикладной профиль', 'связь с промышленностью', 'доступнее топовых инженерных вузов'],
+        cons: ['не всем подходит авиационный фокус', 'много технической базы'],
+        risks: ['нужно заранее проверить интерес к отрасли', 'математика и физика остаются критичными'],
+        next: ['сравнить с Бауманкой', 'посмотреть лаборатории', 'уточнить проектные треки'],
+        aiFocus: 'подходит для инженерии с промышленным и авиационным фокусом'
     },
     {
         id: 9,
-        name: 'СПбПУ Петра Великого',
-        rating: 8.6,
-        price: 290000,
-        minScore: 225,
-        metro: 'Политехническая',
-        metroLine: 'Кировско-Выборгская',
-        direction: 'Инженерия',
-        description: 'Крупный политехнический университет с сильными инженерными, энергетическими и IT-программами.',
-        tags: ['инженерия', 'робототехника', 'энергетика', 'it', 'проектирование', 'стартапы'],
-        aiFocus: 'подходит для инженерных проектов, промышленности и технологического предпринимательства',
-        pros: ['Сильная инженерная база', 'Проектное обучение', 'Кампус в Санкт-Петербурге'],
-        cons: ['Высокая нагрузка', 'Часть программ сильно техническая']
+        name: 'Колледж связи №54',
+        type: 'college',
+        exam: 'oge',
+        direction: 'it',
+        rating: 8.2,
+        price: 160000,
+        minScore: 4.2,
+        metro: 'ВДНХ',
+        metroLine: 'Калужско-Рижская',
+        description: 'Колледж для раннего входа в IT после 9 класса: сети, разработка, администрирование, информационная безопасность и практика.',
+        tags: ['сети', 'разработка', 'администрирование', 'кибербезопасность', 'практика'],
+        pros: ['практический старт после 9 класса', 'понятный IT-профиль', 'можно продолжить в вузе'],
+        cons: ['важен средний балл аттестата', 'меньше академической теории'],
+        risks: ['нужно проверить специальность и бюджетные места', 'после колледжа вузовский маршрут стоит планировать заранее'],
+        next: ['сверить специальности СПО', 'посмотреть условия практики', 'спланировать продолжение в вузе'],
+        aiFocus: 'подходит для раннего старта в IT после 9 класса'
     },
     {
         id: 10,
-        name: 'ИТМО',
-        rating: 9.1,
-        price: 340000,
-        minScore: 245,
-        metro: 'Горьковская',
-        metroLine: 'Московско-Петроградская',
-        direction: 'IT',
-        description: 'Один из лидеров IT-образования, олимпиадного программирования, искусственного интеллекта и продуктовых проектов.',
-        tags: ['программирование', 'искусственный интеллект', 'data science', 'стартапы', 'робототехника', 'продукты'],
-        aiFocus: 'сильный выбор для программирования, ИИ, данных и запуска технологичных продуктов',
-        pros: ['Сильное IT-сообщество', 'Проектная среда', 'Международные победы'],
-        cons: ['Высокая конкуренция', 'Нужна самостоятельность']
+        name: 'КАДР №26',
+        type: 'college',
+        exam: 'oge',
+        direction: 'architecture',
+        rating: 8.1,
+        price: 180000,
+        minScore: 4.3,
+        metro: 'Тульская',
+        metroLine: 'Серпуховско-Тимирязевская',
+        description: 'Колледж архитектуры, дизайна и реинжиниринга для строительства, дизайна среды, 3D-моделирования и проектной работы.',
+        tags: ['архитектура', 'дизайн', 'строительство', '3d', 'проектирование'],
+        pros: ['портфолио и практика', 'прикладные навыки', 'подходит визуальным ребятам'],
+        cons: ['нужно собирать портфолио', 'часть направлений требует усидчивости'],
+        risks: ['творческий профиль стоит проверить на пробных заданиях', 'важно заранее оценить материалы и оборудование'],
+        next: ['собрать первые работы', 'посмотреть требования к поступлению', 'сравнить дизайн и строительство'],
+        aiFocus: 'подходит для архитектуры, дизайна и проектного мышления'
     },
     {
         id: 11,
-        name: 'КФУ',
-        rating: 8.1,
-        price: 190000,
-        minScore: 205,
-        metro: 'Площадь Тукая',
-        metroLine: 'Центральная',
-        direction: 'Естественные науки',
-        description: 'Классический федеральный университет с широким выбором естественно-научных и исследовательских программ.',
-        tags: ['биология', 'химия', 'медицина', 'математика', 'исследования', 'экология'],
-        aiFocus: 'подойдёт для естественных наук с более мягким бюджетом и широким выбором программ',
-        pros: ['Доступная стоимость', 'Широкий выбор программ', 'Сильная научная база'],
-        cons: ['Не Москва', 'Разный уровень факультетов']
+        name: 'Московский политехнический колледж',
+        type: 'college',
+        exam: 'oge',
+        direction: 'engineering',
+        rating: 7.9,
+        price: 145000,
+        minScore: 4.0,
+        metro: 'Технопарк',
+        metroLine: 'Замоскворецкая',
+        description: 'Практичный маршрут после 9 класса для техники, производства, эксплуатации оборудования, робототехники и прикладной инженерии.',
+        tags: ['техника', 'робототехника', 'производство', 'оборудование', 'практика'],
+        pros: ['доступный вход', 'практическая база', 'понятные рабочие навыки'],
+        cons: ['меньше теории, чем в вузе', 'важен выбор специальности'],
+        risks: ['не все специальности одинаково востребованы', 'лучше заранее смотреть работодателей-партнеров'],
+        next: ['сравнить специальности', 'узнать про практику', 'проверить возможность продолжения в вузе'],
+        aiFocus: 'подходит для прикладной техники и раннего профессионального старта'
     },
     {
         id: 12,
-        name: 'РГГУ',
-        rating: 8.0,
-        price: 260000,
-        minScore: 210,
-        metro: 'Новослободская',
-        metroLine: 'Кольцевая',
-        direction: 'Гуманитарные науки',
-        description: 'Гуманитарный университет с программами по истории, медиа, культуре, лингвистике и социальным коммуникациям.',
-        tags: ['история', 'медиа', 'культура', 'языки', 'коммуникации', 'журналистика'],
-        aiFocus: 'подходит для гуманитарных интересов, медиа, языков и культурных проектов',
-        pros: ['Сильный гуманитарный профиль', 'Много творческих направлений', 'Доступнее топовых вузов'],
-        cons: ['Меньше технических программ', 'Нужно внимательно выбирать факультет']
-    },
-    {
-        id: 13,
-        name: 'РЭУ им. Плеханова',
-        rating: 8.2,
-        price: 280000,
-        minScore: 215,
-        metro: 'Серпуховская',
-        metroLine: 'Серпуховско-Тимирязевская',
-        direction: 'Экономика',
-        description: 'Экономический университет с программами по бизнесу, маркетингу, менеджменту, финансам и предпринимательству.',
-        tags: ['маркетинг', 'бизнес', 'финансы', 'менеджмент', 'предпринимательство', 'аналитика'],
-        aiFocus: 'подходит для бизнеса, маркетинга, менеджмента и предпринимательских интересов',
-        pros: ['Практичный экономический профиль', 'Много бизнес-программ', 'Доступные баллы'],
-        cons: ['Высокий поток студентов', 'Меньше академической науки']
-    },
-    {
-        id: 14,
-        name: 'СПбГУ',
-        rating: 8.9,
-        price: 360000,
-        minScore: 255,
-        metro: 'Василеостровская',
-        metroLine: 'Невско-Василеостровская',
-        direction: 'Международные отношения',
-        description: 'Классический университет с сильными программами по международным отношениям, политологии, языкам и праву.',
-        tags: ['языки', 'политика', 'международное право', 'дипломатия', 'культура', 'аналитика'],
-        aiFocus: 'хороший вариант для международной повестки, языков и политической аналитики',
-        pros: ['Классический университет', 'Сильные гуманитарные школы', 'Престижный диплом'],
-        cons: ['Высокий проходной балл', 'Конкурс на популярные программы']
+        name: 'Колледж предпринимательства №11',
+        type: 'college',
+        exam: 'oge',
+        direction: 'economics',
+        rating: 7.8,
+        price: 150000,
+        minScore: 4.1,
+        metro: 'Калужская',
+        metroLine: 'Калужско-Рижская',
+        description: 'СПО-маршрут после 9 класса для бизнеса, сервиса, экономики, маркетинга, продаж и первых предпринимательских проектов.',
+        tags: ['бизнес', 'маркетинг', 'экономика', 'продажи', 'сервис'],
+        pros: ['прикладная экономика', 'быстрый старт профессии', 'понятные бизнес-навыки'],
+        cons: ['не заменяет сильный экономический вуз', 'нужно добирать аналитику самостоятельно'],
+        risks: ['важно смотреть качество практики', 'для финансовой карьеры может понадобиться дальнейший вуз'],
+        next: ['уточнить практику', 'сравнить программы бизнеса и маркетинга', 'спланировать вуз после колледжа'],
+        aiFocus: 'подходит для бизнеса и практической экономики после 9 класса'
     }
 ];
 
-// ===== Состояние =====
 let compareList = [];
+let lastFiltered = [...institutions];
+let toastTimer = null;
 
-// ===== Floating Particles =====
-function createParticles() {
-    const container = document.getElementById('particles');
-    if (!container) return;
-    const count = 20;
-    for (let i = 0; i < count; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDuration = (8 + Math.random() * 12) + 's';
-        particle.style.animationDelay = (Math.random() * 10) + 's';
-        particle.style.width = (2 + Math.random() * 4) + 'px';
-        particle.style.height = particle.style.width;
-        const colors = ['var(--primary)', 'var(--accent)', 'rgba(255,255,255,0.3)'];
-        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        container.appendChild(particle);
-    }
-}
+const $ = (selector, root = document) => root.querySelector(selector);
+const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
-// ===== Scroll Animations =====
-function initScrollAnimations() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-    });
-}
-
-// ===== Header Scroll Effect =====
-function initHeaderScroll() {
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('.header');
-        if (window.scrollY > 20) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-        lastScroll = window.scrollY;
-    }, { passive: true });
-}
-
-// ===== Toast Notifications =====
-function showToast(message) {
-    const existing = document.querySelector('.toast');
-    if (existing) existing.remove();
-
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = message;
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 3000);
-}
-
-// ===== Навигация =====
-function scrollToPageTarget(targetId) {
-    const target = document.getElementById(targetId);
-    if (!target) return;
-
-    const header = document.querySelector('.header');
-    const headerOffset = header ? header.offsetHeight + 18 : 0;
-    const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-
-    window.scrollTo({ top: Math.max(targetTop, 0), behavior: 'smooth' });
-}
-
-function navigateTo(sectionId, scrollTargetId = '') {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-
-    const target = document.getElementById(sectionId);
-    if (target) {
-        target.classList.add('active');
-        // Re-trigger animation
-        target.style.animation = 'none';
-        target.offsetHeight;
-        target.style.animation = '';
-    }
-
-    const activeNavSelector = scrollTargetId
-        ? `.nav-link[data-section="${sectionId}"][data-scroll-target="${scrollTargetId}"]`
-        : `.nav-link[data-section="${sectionId}"]:not([data-scroll-target])`;
-    document.querySelectorAll(activeNavSelector).forEach(l => l.classList.add('active'));
-
-    // Close mobile menu
-    document.querySelector('.nav').classList.remove('open');
-    document.querySelector('.mobile-menu-btn').classList.remove('active');
-
-    if (scrollTargetId) {
-        setTimeout(() => scrollToPageTarget(scrollTargetId), 80);
-    } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Re-observe scroll animations in the new section
-    setTimeout(initScrollAnimations, 100);
-}
-
-// Navigation event listeners
-document.querySelectorAll('[data-section]').forEach(el => {
-    el.addEventListener('click', (e) => {
-        e.preventDefault();
-        navigateTo(el.dataset.section, el.dataset.scrollTarget);
-    });
-});
-
-// Blog category filters
-document.querySelectorAll('.blog-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-        const filter = tab.dataset.blogFilter;
-
-        document.querySelectorAll('.blog-tab').forEach(item => item.classList.remove('active'));
-        tab.classList.add('active');
-
-        document.querySelectorAll('.blog-card').forEach(card => {
-            const categories = (card.dataset.blogCategories || '').split(/\s+/);
-            const isVisible = filter === 'all' || categories.includes(filter);
-            card.classList.toggle('hidden', !isVisible);
-        });
-    });
-});
-
-// Mobile menu toggle
-document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
-    document.querySelector('.nav').classList.toggle('open');
-    document.querySelector('.mobile-menu-btn').classList.toggle('active');
-});
-
-// ===== Карточки =====
-function getUniMark(name) {
-    return name
-        .split(/\s+/)
-        .filter(Boolean)
-        .map(part => part[0])
-        .join('')
-        .replace(/[^A-Za-zА-Яа-яЁё]/g, '')
-        .slice(0, 3)
-        .toUpperCase();
-}
-
-function createCard(uni, showCompareBtn = false) {
-    const isInCompare = compareList.some(u => u.id === uni.id);
-    const card = document.createElement('article');
-    card.className = 'card';
-    const tags = (uni.tags || []).slice(0, 3);
-    card.innerHTML = `
-        <div class="card-header">
-            <div class="card-identity">
-                <span class="uni-mark">${getUniMark(uni.name)}</span>
-                <div>
-                    <div class="card-title">${uni.name}</div>
-                    <div class="card-metro">метро ${uni.metro} · ${uni.metroLine}</div>
-                </div>
-            </div>
-            <div class="card-rating">${uni.rating}<span>/10</span></div>
-        </div>
-        <div class="card-tags">
-            <span class="card-direction">${uni.direction}</span>
-            ${tags.map(tag => `<span>${tag}</span>`).join('')}
-        </div>
-        <div class="card-description">${uni.description}</div>
-        <div class="card-details">
-            <div>
-                <span>Стоимость</span>
-                <strong>${uni.price.toLocaleString('ru-RU')} ₽/год</strong>
-            </div>
-            <div>
-                <span>Проходной балл</span>
-                <strong>от ${uni.minScore}</strong>
-            </div>
-        </div>
-        <div class="card-pros-cons">
-            <div class="card-pros">
-                <h4>Сильные стороны</h4>
-                <ul>${uni.pros.slice(0, 2).map(p => `<li>${p}</li>`).join('')}</ul>
-            </div>
-            <div class="card-cons">
-                <h4>Что учесть</h4>
-                <ul>${uni.cons.slice(0, 2).map(c => `<li>${c}</li>`).join('')}</ul>
-            </div>
-        </div>
-        ${showCompareBtn ? `
-            <div class="card-actions">
-                <button class="btn btn-sm ${isInCompare ? 'btn-primary' : 'btn-outline'}" onclick="toggleCompare(${uni.id})">
-                    ${isInCompare ? 'В сравнении' : 'Сравнить'}
-                </button>
-            </div>
-        ` : ''}
-    `;
-    return card;
-}
-
-function renderPopularCards() {
-    const container = document.getElementById('popular-cards');
-    container.innerHTML = '';
-    universities.slice(0, 3).forEach(uni => {
-        container.appendChild(createCard(uni));
-    });
-}
-
-function renderSearchCards(filtered = null) {
-    const container = document.getElementById('search-cards');
-    container.innerHTML = '';
-    const list = filtered || universities;
-
-    if (list.length === 0) {
-        container.innerHTML = '<div class="no-results"><p>Ничего не найдено. Попробуйте изменить фильтры.</p></div>';
-        return;
-    }
-
-    list.forEach(uni => {
-        container.appendChild(createCard(uni, true));
-    });
-}
-
-// ===== Фильтры =====
-function applyFilters() {
-    const direction = document.getElementById('filter-direction').value;
-    const budget = parseInt(document.getElementById('filter-budget').value) || Infinity;
-    const score = parseInt(document.getElementById('filter-score').value) || 0;
-
-    const filtered = universities.filter(uni => {
-        if (direction && uni.direction !== direction) return false;
-        if (uni.price > budget) return false;
-        if (score > 0 && uni.minScore > score) return false;
-        return true;
-    });
-
-    renderSearchCards(filtered);
-    showToast(`Найдено вузов: ${filtered.length}`);
-}
-
-function resetFilters() {
-    document.getElementById('filter-direction').value = '';
-    document.getElementById('filter-budget').value = '';
-    document.getElementById('filter-score').value = '';
-    renderSearchCards();
-    showToast('Фильтры сброшены');
-}
-
-document.getElementById('apply-filters').addEventListener('click', applyFilters);
-document.getElementById('reset-filters').addEventListener('click', resetFilters);
-
-// ===== Сравнение =====
-function toggleCompare(uniId) {
-    const uni = universities.find(u => u.id === uniId);
-    const idx = compareList.findIndex(u => u.id === uniId);
-
-    if (idx >= 0) {
-        compareList.splice(idx, 1);
-        showToast(`${uni.name} убран из сравнения`);
-    } else {
-        if (compareList.length >= 3) {
-            showToast('Максимум 3 вуза для сравнения');
-            return;
-        }
-        compareList.push(uni);
-        showToast(`${uni.name} добавлен к сравнению`);
-    }
-
-    renderSearchCards(getFilteredList());
-    renderCompareTable();
-}
-
-function getFilteredList() {
-    const direction = document.getElementById('filter-direction').value;
-    const budget = parseInt(document.getElementById('filter-budget').value) || Infinity;
-    const score = parseInt(document.getElementById('filter-score').value) || 0;
-
-    if (!direction && budget === Infinity && score === 0) return null;
-
-    return universities.filter(uni => {
-        if (direction && uni.direction !== direction) return false;
-        if (uni.price > budget) return false;
-        if (score > 0 && uni.minScore > score) return false;
-        return true;
-    });
-}
-
-function renderCompareTable() {
-    const hint = document.getElementById('compare-hint');
-    const content = document.getElementById('compare-content');
-    const table = document.getElementById('compare-table');
-
-    if (compareList.length === 0) {
-        hint.classList.remove('hidden');
-        content.classList.add('hidden');
-        return;
-    }
-
-    hint.classList.add('hidden');
-    content.classList.remove('hidden');
-
-    const bestRating = Math.max(...compareList.map(u => u.rating));
-    const bestPrice = Math.min(...compareList.map(u => u.price));
-    const bestScore = Math.min(...compareList.map(u => u.minScore));
-
-    const rows = [
-        {
-            label: 'Рейтинг',
-            values: compareList.map(u => ({ text: `${u.rating}/10`, isBest: u.rating === bestRating }))
-        },
-        {
-            label: 'Направление',
-            values: compareList.map(u => ({ text: u.direction, isBest: false }))
-        },
-        {
-            label: 'Метро',
-            values: compareList.map(u => ({ text: u.metro, isBest: false }))
-        },
-        {
-            label: 'Стоимость',
-            values: compareList.map(u => ({ text: `${u.price.toLocaleString('ru-RU')} ₽`, isBest: u.price === bestPrice }))
-        },
-        {
-            label: 'Мин. баллы ЕГЭ/ОГЭ',
-            values: compareList.map(u => ({ text: `${u.minScore}`, isBest: u.minScore === bestScore }))
-        },
-        {
-            label: 'Плюсы',
-            values: compareList.map(u => ({ text: u.pros.join(', '), isBest: false }))
-        },
-        {
-            label: 'Минусы',
-            values: compareList.map(u => ({ text: u.cons.join(', '), isBest: false }))
-        }
-    ];
-
-    let html = '<thead><tr><th>Параметр</th>';
-    compareList.forEach(u => {
-        html += `<th>${u.name}</th>`;
-    });
-    html += '</tr></thead><tbody>';
-
-    rows.forEach(row => {
-        html += '<tr>';
-        html += `<td>${row.label}</td>`;
-        row.values.forEach(v => {
-            html += `<td class="${v.isBest ? 'best-value' : ''}">${v.text}</td>`;
-        });
-        html += '</tr>';
-    });
-
-    html += '</tbody>';
-    table.innerHTML = html;
-}
-
-document.getElementById('clear-compare').addEventListener('click', () => {
-    compareList = [];
-    renderCompareTable();
-    renderSearchCards(getFilteredList());
-    showToast('Сравнение очищено');
-});
-
-// ===== ИИ-рекомендация =====
 function escapeHtml(value) {
-    return String(value)
+    return String(value ?? '')
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
@@ -587,259 +259,871 @@ function escapeHtml(value) {
 
 function normalizeText(value) {
     return String(value || '')
-        .trim()
         .toLowerCase()
+        .trim()
         .replace(/ё/g, 'е');
 }
 
-function normalizeMetro(value) {
-    return normalizeText(value).replace(/-/g, ' ');
+function parseNumericInput(value) {
+    if (value === '') return null;
+    const normalized = String(value).replace(',', '.');
+    const number = Number(normalized);
+    return Number.isFinite(number) ? number : null;
 }
 
-function formatPrice(value) {
-    return `${value.toLocaleString('ru-RU')} ₽/год`;
+function formatPrice(price) {
+    if (price === 0) return 'Бюджетные места';
+    return `${price.toLocaleString('ru-RU')} ₽/год`;
+}
+
+function formatScore(item) {
+    return item.exam === 'ege'
+        ? `${item.minScore} ЕГЭ`
+        : `${item.minScore.toFixed(1)} ср. балл`;
+}
+
+function examLabel(exam) {
+    return exam === 'ege' ? 'ЕГЭ · 11 класс' : 'ОГЭ/аттестат · 9 класс';
+}
+
+function typeLabel(type) {
+    return type === 'university' ? 'Университет' : 'Колледж';
+}
+
+function showToast(message) {
+    const toast = $('#toast');
+    if (!toast) return;
+
+    toast.textContent = message;
+    toast.classList.remove('hidden');
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+    }, 2600);
+}
+
+function showSection(sectionId, scrollTarget = '') {
+    const targetSection = document.getElementById(sectionId);
+    if (!targetSection) return;
+
+    $$('.section').forEach(section => {
+        section.classList.toggle('active', section.id === sectionId);
+    });
+
+    $$('.nav-link').forEach(link => {
+        const sameSection = link.dataset.section === sectionId;
+        const sameTarget = scrollTarget
+            ? link.dataset.scrollTarget === scrollTarget
+            : !link.dataset.scrollTarget;
+        link.classList.toggle('active', sameSection && sameTarget);
+    });
+
+    const nav = $('#main-nav');
+    const menuButton = $('#mobile-menu-btn');
+    nav?.classList.remove('open');
+    menuButton?.classList.remove('active');
+    menuButton?.setAttribute('aria-expanded', 'false');
+
+    requestAnimationFrame(() => {
+        if (scrollTarget) {
+            const target = document.getElementById(scrollTarget);
+            target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+}
+
+function initNavigation() {
+    document.addEventListener('click', event => {
+        const trigger = event.target.closest('[data-section]');
+        if (!trigger) return;
+
+        event.preventDefault();
+        showSection(trigger.dataset.section, trigger.dataset.scrollTarget || '');
+    });
+
+    const menuButton = $('#mobile-menu-btn');
+    const nav = $('#main-nav');
+
+    menuButton?.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        menuButton.classList.toggle('active', isOpen);
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+}
+
+function initHeaderScroll() {
+    const header = $('#page-header');
+    const update = () => header?.classList.toggle('scrolled', window.scrollY > 8);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+}
+
+function initRevealAnimations() {
+    const elements = $$('.reveal');
+    if (!('IntersectionObserver' in window)) {
+        elements.forEach(element => element.classList.add('visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    elements.forEach(element => observer.observe(element));
+}
+
+function getInstitutionText(item) {
+    return normalizeText([
+        item.name,
+        directions[item.direction],
+        item.description,
+        item.metro,
+        item.metroLine,
+        item.aiFocus,
+        ...item.tags,
+        ...item.pros
+    ].join(' '));
+}
+
+function createInstitutionCard(item) {
+    const isAdded = compareList.some(compareItem => compareItem.id === item.id);
+    const visibleTags = item.tags.slice(0, 4);
+
+    const pros = item.pros.slice(0, 2).map(pro => `<li>${escapeHtml(pro)}</li>`).join('');
+    const cons = item.cons.slice(0, 2).map(con => `<li>${escapeHtml(con)}</li>`).join('');
+    const tags = visibleTags.map(tag => `<span class="card-tag">${escapeHtml(tag)}</span>`).join('');
+
+    return `
+        <article class="card ${isAdded ? 'is-added' : ''}">
+            <div class="card-top">
+                <span class="type-badge">${typeLabel(item.type)}</span>
+                <span class="card-rating">${item.rating.toFixed(1)}</span>
+            </div>
+            <h3 class="card-title">${escapeHtml(item.name)}</h3>
+            <p class="card-meta">${examLabel(item.exam)} · ${escapeHtml(directions[item.direction])} · метро ${escapeHtml(item.metro)}</p>
+            <p class="card-description">${escapeHtml(item.description)}</p>
+            <div class="card-tags">${tags}</div>
+            <div class="card-metrics">
+                <div class="metric">
+                    <span>Стоимость</span>
+                    <strong>${formatPrice(item.price)}</strong>
+                </div>
+                <div class="metric">
+                    <span>Проходной ориентир</span>
+                    <strong>${formatScore(item)}</strong>
+                </div>
+                <div class="metric">
+                    <span>Метро</span>
+                    <strong>${escapeHtml(item.metro)}</strong>
+                </div>
+                <div class="metric">
+                    <span>Оценка профиля</span>
+                    <strong>${item.rating.toFixed(1)} / 10</strong>
+                </div>
+            </div>
+            <div class="card-list-grid">
+                <div class="list-block">
+                    <strong>Плюсы</strong>
+                    <ul>${pros}</ul>
+                </div>
+                <div class="list-block risks">
+                    <strong>Ограничения</strong>
+                    <ul>${cons}</ul>
+                </div>
+            </div>
+            <div class="card-actions">
+                <button class="btn ${isAdded ? 'btn-primary' : 'btn-ghost'} btn-sm" type="button" data-compare-id="${item.id}">
+                    ${isAdded ? 'В сравнении' : 'Сравнить'}
+                </button>
+                <button class="btn btn-secondary btn-sm" type="button" data-pick-id="${item.id}">
+                    Подобрать по нему
+                </button>
+            </div>
+        </article>
+    `;
+}
+
+function renderPopularCards() {
+    const container = $('#popular-cards');
+    if (!container) return;
+
+    const popular = [...institutions]
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, 3);
+
+    container.innerHTML = popular.map(createInstitutionCard).join('');
+}
+
+function getFilters() {
+    return {
+        query: normalizeText($('#filter-query')?.value || ''),
+        exam: $('#filter-exam')?.value || '',
+        direction: $('#filter-direction')?.value || '',
+        budget: parseNumericInput($('#filter-budget')?.value || ''),
+        score: parseNumericInput($('#filter-score')?.value || '')
+    };
+}
+
+function scoreMatchesExam(score, item) {
+    if (score === null || score <= 0) return true;
+    if (item.exam === 'ege' && score <= 10) return false;
+    if (item.exam === 'oge' && score > 10) return false;
+    return item.minScore <= score;
+}
+
+function filterInstitutions() {
+    const filters = getFilters();
+
+    return institutions.filter(item => {
+        if (filters.query && !getInstitutionText(item).includes(filters.query)) return false;
+        if (filters.exam && item.exam !== filters.exam) return false;
+        if (filters.direction && item.direction !== filters.direction) return false;
+        if (filters.budget !== null && item.price > filters.budget) return false;
+        if (!scoreMatchesExam(filters.score, item)) return false;
+        return true;
+    });
+}
+
+function buildFilterSummary(filters, count) {
+    const parts = [];
+    if (filters.exam) parts.push(examLabel(filters.exam));
+    if (filters.direction) parts.push(directions[filters.direction]);
+    if (filters.budget !== null) parts.push(`до ${formatPrice(filters.budget).replace('/год', '')}`);
+    if (filters.score !== null) parts.push(`баллы: ${filters.score}`);
+    if (filters.query) parts.push(`поиск: ${filters.query}`);
+
+    if (!parts.length) return `Показаны все варианты для подбора: ${count}`;
+    return `Активные фильтры: ${parts.join(' · ')}`;
+}
+
+function getEmptyAdvice(filters) {
+    if (filters.score !== null) {
+        return 'Проверьте формат баллов: для ЕГЭ нужна сумма, для ОГЭ — средний балл от 3.0 до 5.0. Если баллов пока не хватает, добавьте резервное направление или расширьте поиск.';
+    }
+    if (filters.budget !== null) {
+        return 'Попробуйте увеличить бюджет, посмотреть колледжи или добавить соседнее направление: так проще найти реалистичный маршрут.';
+    }
+    return 'Расширьте направление или уберите текстовый поиск. Затем добавьте 2-3 подходящих варианта в сравнение.';
+}
+
+function renderSearchCards(list = null) {
+    const container = $('#search-cards');
+    if (!container) return;
+
+    const filters = getFilters();
+    const results = list || filterInstitutions();
+    lastFiltered = results;
+
+    $('#result-count').textContent = `${results.length} ${getPlural(results.length, ['вариант', 'варианта', 'вариантов'])}`;
+    $('#active-filter-text').textContent = buildFilterSummary(filters, results.length);
+
+    if (!results.length) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <span class="empty-icon" aria-hidden="true"></span>
+                <h3>Ничего не найдено</h3>
+                <p>${escapeHtml(getEmptyAdvice(filters))}</p>
+                <button class="btn btn-primary" type="button" data-reset-filters>Сбросить фильтры</button>
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML = results.map(createInstitutionCard).join('');
+}
+
+function getPlural(number, forms) {
+    const mod10 = number % 10;
+    const mod100 = number % 100;
+    if (mod10 === 1 && mod100 !== 11) return forms[0];
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return forms[1];
+    return forms[2];
+}
+
+function applyFilters() {
+    renderSearchCards(filterInstitutions());
+}
+
+function resetFilters() {
+    ['filter-query', 'filter-exam', 'filter-direction', 'filter-budget', 'filter-score'].forEach(id => {
+        const field = document.getElementById(id);
+        if (field) field.value = '';
+    });
+
+    renderSearchCards([...institutions]);
+    showToast('Фильтры сброшены');
+}
+
+function initFilters() {
+    $('#apply-filters')?.addEventListener('click', () => {
+        applyFilters();
+        showToast(`Найдено: ${lastFiltered.length}`);
+    });
+
+    $('#reset-filters')?.addEventListener('click', resetFilters);
+
+    ['filter-query', 'filter-exam', 'filter-direction', 'filter-budget', 'filter-score'].forEach(id => {
+        const field = document.getElementById(id);
+        field?.addEventListener('keydown', event => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                applyFilters();
+            }
+        });
+    });
+
+    $('#filter-query')?.addEventListener('input', () => {
+        window.clearTimeout($('#filter-query').dataset.timer);
+        const timer = window.setTimeout(applyFilters, 180);
+        $('#filter-query').dataset.timer = timer;
+    });
+
+    ['filter-exam', 'filter-direction'].forEach(id => {
+        document.getElementById(id)?.addEventListener('change', applyFilters);
+    });
+}
+
+function toggleCompare(id) {
+    const item = institutions.find(institution => institution.id === id);
+    if (!item) return;
+
+    const existingIndex = compareList.findIndex(compareItem => compareItem.id === id);
+
+    if (existingIndex >= 0) {
+        compareList.splice(existingIndex, 1);
+        showToast(`${item.name} удален из сравнения`);
+    } else {
+        if (compareList.length >= 3) {
+            showToast('В сравнение можно добавить максимум 3 варианта');
+            return;
+        }
+        compareList.push(item);
+        showToast(`${item.name} добавлен в сравнение`);
+    }
+
+    renderPopularCards();
+    renderSearchCards(lastFiltered.length ? filterInstitutions() : []);
+    renderCompare();
+}
+
+function renderCompare() {
+    const empty = $('#compare-empty');
+    const content = $('#compare-content');
+    const table = $('#compare-table');
+    const summary = $('#compare-summary');
+
+    if (!empty || !content || !table || !summary) return;
+
+    if (compareList.length === 0) {
+        empty.classList.remove('hidden');
+        content.classList.add('hidden');
+        return;
+    }
+
+    empty.classList.add('hidden');
+    content.classList.remove('hidden');
+    $('#compare-counter').textContent = `${compareList.length} из 3`;
+
+    summary.innerHTML = compareList.map((item, index) => `
+        <div class="compare-chip">
+            <span>0${index + 1} · ${typeLabel(item.type)}</span>
+            <strong>${escapeHtml(item.name)}</strong>
+            <p>${escapeHtml(directions[item.direction])} · ${formatPrice(item.price)}</p>
+        </div>
+    `).join('');
+
+    const bestRating = Math.max(...compareList.map(item => item.rating));
+    const bestPrice = Math.min(...compareList.map(item => item.price));
+    const bestScore = Math.min(...compareList.map(item => item.minScore));
+
+    const rows = [
+        {
+            label: 'Формат',
+            values: compareList.map(item => ({ text: examLabel(item.exam), best: false }))
+        },
+        {
+            label: 'Направление',
+            values: compareList.map(item => ({ text: directions[item.direction], best: false }))
+        },
+        {
+            label: 'Рейтинг',
+            values: compareList.map(item => ({ text: `${item.rating.toFixed(1)} / 10`, best: item.rating === bestRating }))
+        },
+        {
+            label: 'Стоимость',
+            values: compareList.map(item => ({ text: formatPrice(item.price), best: item.price === bestPrice }))
+        },
+        {
+            label: 'Проходной ориентир',
+            values: compareList.map(item => ({ text: formatScore(item), best: item.minScore === bestScore }))
+        },
+        {
+            label: 'Метро',
+            values: compareList.map(item => ({ text: `${item.metro}, ${item.metroLine}`, best: false }))
+        },
+        {
+            label: 'Сильные стороны',
+            values: compareList.map(item => ({ text: item.pros.join(', '), best: false }))
+        },
+        {
+            label: 'Риски',
+            values: compareList.map(item => ({ text: item.risks.slice(0, 2).join(', '), best: false }))
+        }
+    ];
+
+    const header = `<thead><tr><th>Критерий</th>${compareList.map(item => `<th>${escapeHtml(item.name)}</th>`).join('')}</tr></thead>`;
+    const body = rows.map(row => `
+        <tr>
+            <td>${escapeHtml(row.label)}</td>
+            ${row.values.map(value => `<td class="${value.best ? 'best-value' : ''}">${escapeHtml(value.text)}</td>`).join('')}
+        </tr>
+    `).join('');
+
+    table.innerHTML = `${header}<tbody>${body}</tbody>`;
+}
+
+function clearCompare() {
+    compareList = [];
+    renderPopularCards();
+    renderSearchCards(filterInstitutions());
+    renderCompare();
+    showToast('Сравнение очищено');
 }
 
 function getInterestTerms(value) {
-    const stopWords = new Set(['для', 'это', 'мне', 'хочу', 'люблю', 'интересно', 'или', 'про', 'как', 'что', 'где', 'при']);
+    const stopWords = new Set(['хочу', 'мне', 'нужно', 'интересно', 'очень', 'чтобы', 'после', 'есть', 'для', 'или', 'как', 'про', 'это', 'без']);
+
     return normalizeText(value)
         .split(/[^a-zа-я0-9]+/i)
-        .filter(term => term.length > 1 && !stopWords.has(term));
+        .filter(term => term.length > 2 && !stopWords.has(term));
 }
 
-function getInterestMatches(uni, terms) {
+function getInterestMatches(item, terms) {
     if (!terms.length) return [];
 
-    const searchableText = normalizeText([
-        uni.direction,
-        uni.description,
-        uni.aiFocus,
-        ...uni.tags,
-        ...uni.pros
-    ].join(' '));
-
-    const matchedTags = uni.tags.filter(tag => {
+    const searchable = getInstitutionText(item);
+    const matches = item.tags.filter(tag => {
         const normalizedTag = normalizeText(tag);
         return terms.some(term => normalizedTag.includes(term) || term.includes(normalizedTag));
     });
 
-    const matchedTerms = terms.filter(term =>
-        searchableText.includes(term) &&
-        !matchedTags.some(tag => normalizeText(tag).includes(term) || term.includes(normalizeText(tag)))
-    );
+    terms.forEach(term => {
+        if (searchable.includes(term) && !matches.some(match => normalizeText(match).includes(term))) {
+            matches.push(term);
+        }
+    });
 
-    return [...new Set([...matchedTags, ...matchedTerms])].slice(0, 4);
-}
-
-function getMetroLine(station) {
-    const normalizedStation = normalizeMetro(station);
-    const match = universities.find(uni => normalizeMetro(uni.metro) === normalizedStation);
-    return match ? match.metroLine : '';
-}
-
-function isSameMetro(uniMetro, userMetro) {
-    const normalizedUniMetro = normalizeMetro(uniMetro);
-    const normalizedUserMetro = normalizeMetro(userMetro);
-
-    return Boolean(normalizedUserMetro) && normalizedUniMetro === normalizedUserMetro;
-}
-
-function isSameMetroLine(uni, userMetro) {
-    const selectedLine = getMetroLine(userMetro);
-    return Boolean(selectedLine) && uni.metroLine === selectedLine;
+    return [...new Set(matches)].slice(0, 4);
 }
 
 function getAiProfile() {
-    const metro = document.getElementById('ai-metro').value;
-    const direction = document.getElementById('ai-direction').value;
-    const interests = document.getElementById('ai-interests').value.trim();
-    const budget = parseInt(document.getElementById('ai-budget').value, 10);
-    const score = parseInt(document.getElementById('ai-score').value, 10);
+    const exam = $('#ai-exam').value;
+    const direction = $('#ai-direction').value;
+    const scoreValue = $('#ai-score').value;
+    const budgetValue = $('#ai-budget').value;
+    const interests = $('#ai-interests').value.trim();
 
     return {
-        metro,
+        exam,
         direction,
+        score: parseNumericInput(scoreValue),
+        scoreValue,
+        budget: parseNumericInput(budgetValue),
+        budgetValue,
+        metro: $('#ai-metro').value,
         interests,
-        interestTerms: getInterestTerms(interests),
-        budget,
-        score
+        terms: getInterestTerms(interests)
     };
 }
 
-function showAiMessage(message) {
-    const resultDiv = document.getElementById('ai-result');
-    resultDiv.classList.remove('hidden');
-    resultDiv.innerHTML = `
-        <div class="ai-empty">
-            <strong>Анкета пока неполная.</strong>
-            <p>${escapeHtml(message)}</p>
-        </div>
-    `;
-}
-
 function validateAiProfile(profile) {
-    if (!profile.metro) return 'Выберите ближайшую станцию метро, чтобы я мог точнее расставить приоритеты.';
+    if (!profile.exam) return 'Выберите формат поступления.';
     if (!profile.direction) return 'Выберите направление обучения.';
-    if (!profile.interests) return 'Опишите интересы: технологии, языки, бизнес, медиа, наука или любые другие темы.';
-    if (!Number.isFinite(profile.budget) || profile.budget <= 0) return 'Укажите годовой бюджет на обучение.';
-    if (!Number.isFinite(profile.score) || profile.score <= 0) return 'Укажите сумму баллов ЕГЭ/ОГЭ.';
+    if (profile.scoreValue === '' || profile.score === null) return 'Укажите баллы: сумму ЕГЭ или средний балл ОГЭ.';
+    if (profile.exam === 'ege' && (profile.score <= 0 || profile.score > 310)) return 'Для ЕГЭ укажите сумму баллов от 1 до 310.';
+    if (profile.exam === 'oge' && (profile.score < 3 || profile.score > 5)) return 'Для ОГЭ укажите средний балл от 3.0 до 5.0.';
+    if (profile.budgetValue === '' || profile.budget === null || profile.budget < 0) return 'Укажите максимальный бюджет в год. Если нужен только бюджет, можно поставить 0.';
+    if (!profile.interests) return 'Опишите интересы: предметы, карьеру, формат учебы или ожидания от среды.';
     return '';
 }
 
-function scoreRecommendation(uni, profile) {
-    const metroMatch = isSameMetro(uni.metro, profile.metro);
-    const lineMatch = !metroMatch && isSameMetroLine(uni, profile.metro);
-    const interestMatches = getInterestMatches(uni, profile.interestTerms);
-    const budgetReserve = profile.budget - uni.price;
-    const scoreReserve = profile.score - uni.minScore;
-    const budgetBonus = Math.min(7, Math.max(0, Math.floor(budgetReserve / 35000)));
-    const scoreBonus = Math.min(7, Math.max(0, Math.floor(scoreReserve / 8)));
-    const interestBonus = Math.min(12, interestMatches.length * 4);
-    const metroBonus = metroMatch ? 9 : lineMatch ? 4 : 0;
-    const matchPercent = Math.min(98, Math.round(68 + uni.rating * 2 + budgetBonus + scoreBonus + interestBonus + metroBonus));
+function getMetroScore(item, metro) {
+    if (!metro) return 0;
+    if (normalizeText(item.metro) === normalizeText(metro)) return 8;
+
+    const selected = institutions.find(candidate => normalizeText(candidate.metro) === normalizeText(metro));
+    if (selected && selected.metroLine === item.metroLine) return 3;
+
+    return 0;
+}
+
+function scoreAiItem(item, profile) {
+    const interestMatches = getInterestMatches(item, profile.terms);
+    const scoreGap = profile.score - item.minScore;
+    const budgetGap = profile.budget - item.price;
+
+    let score = 42;
+    score += item.direction === profile.direction ? 18 : -8;
+    score += item.exam === profile.exam ? 12 : -20;
+    score += item.rating * 2.6;
+    score += Math.min(10, interestMatches.length * 3);
+    score += getMetroScore(item, profile.metro);
+
+    if (budgetGap >= 0) {
+        score += Math.min(8, budgetGap / 50000);
+    } else {
+        score -= Math.min(18, Math.abs(budgetGap) / 30000);
+    }
+
+    if (scoreGap >= 0) {
+        score += item.exam === 'ege'
+            ? Math.min(10, scoreGap / 5)
+            : Math.min(10, scoreGap * 16);
+    } else {
+        score -= item.exam === 'ege'
+            ? Math.min(22, Math.abs(scoreGap) * 1.25)
+            : Math.min(22, Math.abs(scoreGap) * 24);
+    }
 
     return {
-        uni,
-        metroMatch,
-        lineMatch,
+        item,
+        percent: Math.max(18, Math.min(98, Math.round(score))),
         interestMatches,
-        matchPercent,
-        rank: matchPercent + (metroMatch ? 12 : lineMatch ? 5 : 0) + interestMatches.length * 3 + uni.rating
+        scoreGap,
+        budgetGap
     };
 }
 
 function getAiRecommendations(profile) {
-    return universities
-        .filter(uni => uni.direction === profile.direction)
-        .filter(uni => uni.price <= profile.budget)
-        .filter(uni => uni.minScore <= profile.score)
-        .map(uni => scoreRecommendation(uni, profile))
-        .sort((a, b) => b.rank - a.rank)
-        .slice(0, 4);
+    const primary = institutions
+        .filter(item => item.exam === profile.exam)
+        .filter(item => item.direction === profile.direction)
+        .map(item => scoreAiItem(item, profile))
+        .sort((a, b) => b.percent - a.percent);
+
+    if (primary.length >= 3) return primary.slice(0, 3);
+
+    const secondary = institutions
+        .filter(item => item.exam === profile.exam)
+        .filter(item => item.direction !== profile.direction)
+        .map(item => scoreAiItem(item, profile))
+        .sort((a, b) => b.percent - a.percent)
+        .slice(0, 3 - primary.length);
+
+    return [...primary, ...secondary].slice(0, 3);
 }
 
-function buildRecommendationReasons(match, profile) {
-    const { uni, metroMatch, lineMatch, interestMatches } = match;
+function buildReasons(match, profile) {
+    const { item, scoreGap, budgetGap, interestMatches } = match;
     const reasons = [
-        `направление «${uni.direction}» совпадает с анкетой`,
-        `${formatPrice(uni.price)} не превышает бюджет ${formatPrice(profile.budget)}`,
-        `проходной балл ${uni.minScore} не выше ваших ${profile.score}`
+        `${examLabel(item.exam)} совпадает с выбранным маршрутом`,
+        `направление «${directions[item.direction]}» связано с вашей целью`
     ];
 
-    if (metroMatch) {
-        reasons.push(`ближайшее метро совпадает: ${uni.metro}`);
-    } else if (lineMatch) {
-        reasons.push(`станция ${uni.metro} на той же линии метро: ${uni.metroLine}`);
+    if (scoreGap >= 0) {
+        reasons.push(item.exam === 'ege'
+            ? `запас по баллам: +${Math.round(scoreGap)}`
+            : `средний балл выше ориентира на ${scoreGap.toFixed(1)}`);
     } else {
-        reasons.push(`кампус удобнее смотреть от метро ${uni.metro}`);
+        reasons.push(item.exam === 'ege'
+            ? `вариант амбициозный: не хватает около ${Math.ceil(Math.abs(scoreGap))} баллов`
+            : `вариант амбициозный: нужен средний балл выше на ${Math.abs(scoreGap).toFixed(1)}`);
     }
 
-    if (interestMatches.length > 0) {
-        reasons.push(`по интересам есть пересечения: ${interestMatches.join(', ')}`);
+    if (budgetGap >= 0) {
+        reasons.push(`стоимость укладывается в бюджет: ${formatPrice(item.price)}`);
     } else {
-        reasons.push(uni.aiFocus);
+        reasons.push(`стоимость выше бюджета на ${Math.abs(budgetGap).toLocaleString('ru-RU')} ₽`);
+    }
+
+    if (profile.metro) {
+        reasons.push(item.metro === profile.metro
+            ? `метро совпадает: ${item.metro}`
+            : `кампус у метро ${item.metro}; дорогу стоит проверить`);
+    }
+
+    if (interestMatches.length) {
+        reasons.push(`есть совпадения по интересам: ${interestMatches.join(', ')}`);
+    } else {
+        reasons.push(item.aiFocus);
     }
 
     return reasons;
 }
 
-function renderAiRecommendations(profile, recommendations) {
-    const resultDiv = document.getElementById('ai-result');
-    const safeMetro = escapeHtml(profile.metro);
-    const safeDirection = escapeHtml(profile.direction);
-    const safeInterests = escapeHtml(profile.interests);
+function buildRisks(match) {
+    const { item, scoreGap, budgetGap } = match;
+    const risks = [...item.risks.slice(0, 2)];
 
-    if (recommendations.length === 0) {
-        const sameDirection = universities.filter(uni => uni.direction === profile.direction);
-        const nearest = sameDirection
-            .slice()
-            .sort((a, b) => {
-                const aGap = Math.max(0, a.price - profile.budget) / 10000 + Math.max(0, a.minScore - profile.score);
-                const bGap = Math.max(0, b.price - profile.budget) / 10000 + Math.max(0, b.minScore - profile.score);
-                return aGap - bGap;
-            })
-            .slice(0, 2);
-
-        resultDiv.innerHTML = `
-            <div class="ai-result-header">
-                <span class="ai-result-kicker">ИИ-помощник NewStage</span>
-                <h3>Пока нет точного совпадения</h3>
-                <p class="ai-summary">Я искал направление «${safeDirection}», стоимость до ${formatPrice(profile.budget)} и проходной балл не выше ${profile.score}. При таких условиях подходящих вузов в базе не нашлось.</p>
-            </div>
-            <div class="ai-empty">
-                <p><strong>Что можно сделать:</strong> немного увеличить бюджет, проверить баллы или выбрать соседнюю станцию метро. Интересы «${safeInterests}» я сохраню как ориентир для следующего подбора.</p>
-                ${nearest.length ? `<p>Ближайшие по направлению варианты: ${nearest.map(uni => `<strong>${uni.name}</strong> (метро ${uni.metro}, ${formatPrice(uni.price)}, от ${uni.minScore} баллов)`).join('; ')}.</p>` : ''}
-            </div>
-        `;
-        return;
+    if (scoreGap < 0) {
+        risks.unshift(item.exam === 'ege'
+            ? `баллы ниже ориентира на ${Math.ceil(Math.abs(scoreGap))}`
+            : `средний балл ниже ориентира на ${Math.abs(scoreGap).toFixed(1)}`);
+    } else if ((item.exam === 'ege' && scoreGap < 12) || (item.exam === 'oge' && scoreGap < 0.25)) {
+        risks.unshift('запас по баллам небольшой, нужен резервный вариант');
     }
 
-    const cards = recommendations.map(match => {
-        const { uni, interestMatches, matchPercent } = match;
-        const isInCompare = compareList.some(item => item.id === uni.id);
-        const badges = [`метро ${uni.metro}`, uni.metroLine, uni.direction, formatPrice(uni.price), `от ${uni.minScore} баллов`];
-        const reasons = buildRecommendationReasons(match, profile);
-        const interestText = interestMatches.length > 0
-            ? `Интересы совпали с темами: ${interestMatches.join(', ')}.`
-            : `По интересам «${safeInterests}» этот вуз стоит рассмотреть: ${uni.aiFocus}.`;
+    if (budgetGap < 0) {
+        risks.unshift('стоимость выше указанного бюджета');
+    }
 
-        return `
-            <article class="ai-recommendation-card">
-                <div class="ai-card-top">
-                    <h4>${uni.name}</h4>
-                    <span class="ai-match-score">${matchPercent}%</span>
-                </div>
-                <div class="ai-match-badges">
-                    ${badges.map(badge => `<span class="ai-badge">${badge}</span>`).join('')}
-                </div>
-                <ul class="ai-fit-list">
-                    ${reasons.map(reason => `<li>${reason}</li>`).join('')}
-                </ul>
-                <p class="ai-next-step">${interestText}</p>
-                <button class="btn btn-sm ${isInCompare ? 'btn-primary' : 'btn-outline'}" onclick="toggleCompare(${uni.id})">
-                    ${isInCompare ? 'В сравнении' : 'Добавить к сравнению'}
-                </button>
-            </article>
-        `;
-    }).join('');
+    return [...new Set(risks)].slice(0, 4);
+}
 
-    resultDiv.innerHTML = `
-        <div class="ai-result-header">
-            <span class="ai-result-kicker">ИИ-помощник NewStage</span>
-            <h3>Персональная подборка для профиля «${safeDirection}»</h3>
-            <p class="ai-summary">Я отобрал ${recommendations.length} ${recommendations.length === 1 ? 'вуз' : 'вуза'} под метро ${safeMetro}, бюджет ${formatPrice(profile.budget)}, баллы ${profile.score} и интересы «${safeInterests}». Метро влияет на приоритет: точная станция и та же линия поднимают вуз выше, но не скрывают сильные варианты по профилю.</p>
-        </div>
-        <div class="ai-recommendation-grid">
-            ${cards}
+function renderAiMessage(message) {
+    const result = $('#ai-result');
+    result.classList.remove('hidden');
+    result.innerHTML = `
+        <div class="ai-empty">
+            <h3>Заполните анкету для точного подбора</h3>
+            <p>${escapeHtml(message)}</p>
         </div>
     `;
 }
 
-document.getElementById('ai-form').addEventListener('submit', (e) => {
-    e.preventDefault();
+function renderAiRecommendations(profile, recommendations) {
+    const result = $('#ai-result');
+    result.classList.remove('hidden');
 
-    const profile = getAiProfile();
-    const validationError = validateAiProfile(profile);
-
-    if (validationError) {
-        showAiMessage(validationError);
+    if (!recommendations.length) {
+        result.innerHTML = `
+            <div class="ai-empty">
+                <h3>Подходящих вариантов пока нет</h3>
+                <p>Попробуйте расширить направление, увеличить бюджет или скорректировать баллы. Также можно выбрать соседний профиль и добавить 2-3 варианта в сравнение.</p>
+            </div>
+        `;
         return;
     }
 
-    const resultDiv = document.getElementById('ai-result');
-    resultDiv.classList.remove('hidden');
-    resultDiv.innerHTML = '<div class="ai-loading"><span></span><span></span><span></span></div>';
+    const exactCount = recommendations.filter(match => match.item.direction === profile.direction).length;
+    const profileBadges = [
+        examLabel(profile.exam),
+        directions[profile.direction],
+        `баллы: ${profile.score}`,
+        `бюджет: ${formatPrice(profile.budget).replace('/год', '')}`,
+        profile.metro ? `метро: ${profile.metro}` : 'метро: не важно'
+    ];
 
-    setTimeout(() => {
-        renderAiRecommendations(profile, getAiRecommendations(profile));
-        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 700);
-});
+    const cards = recommendations.map(match => {
+        const { item, percent } = match;
+        const reasons = buildReasons(match, profile);
+        const risks = buildRisks(match);
+        const isAdded = compareList.some(compareItem => compareItem.id === item.id);
 
-// ===== Инициализация =====
-createParticles();
-initScrollAnimations();
-initHeaderScroll();
-renderPopularCards();
-renderSearchCards();
-renderCompareTable();
+        return `
+            <article class="ai-recommendation-card">
+                <div class="ai-card-head">
+                    <div>
+                        <span class="ai-result-kicker">${typeLabel(item.type)} · ${examLabel(item.exam)}</span>
+                        <h4>${escapeHtml(item.name)}</h4>
+                    </div>
+                    <span class="match-ring" style="--match: ${percent}%">${percent}%</span>
+                </div>
+                <div class="ai-badges">
+                    <span class="ai-badge">${escapeHtml(directions[item.direction])}</span>
+                    <span class="ai-badge">${formatPrice(item.price)}</span>
+                    <span class="ai-badge">${formatScore(item)}</span>
+                    <span class="ai-badge">метро ${escapeHtml(item.metro)}</span>
+                </div>
+                <div class="ai-section">
+                    <strong>Почему подходит</strong>
+                    <ul>${reasons.slice(0, 5).map(reason => `<li>${escapeHtml(reason)}</li>`).join('')}</ul>
+                </div>
+                <div class="ai-section risk">
+                    <strong>Риски</strong>
+                    <ul>${risks.map(risk => `<li>${escapeHtml(risk)}</li>`).join('')}</ul>
+                </div>
+                <div class="ai-section next">
+                    <strong>Следующие шаги</strong>
+                    <ul>${item.next.slice(0, 3).map(step => `<li>${escapeHtml(step)}</li>`).join('')}</ul>
+                </div>
+                <div class="ai-actions">
+                    <button class="btn ${isAdded ? 'btn-primary' : 'btn-ghost'} btn-sm" type="button" data-compare-id="${item.id}">
+                        ${isAdded ? 'В сравнении' : 'Сравнить'}
+                    </button>
+                    <button class="btn btn-secondary btn-sm" type="button" data-section="search">Открыть поиск</button>
+                </div>
+            </article>
+        `;
+    }).join('');
+
+    result.innerHTML = `
+        <div class="ai-result-header">
+            <span class="ai-result-kicker">AI-рекомендация NewStage</span>
+            <h3>${exactCount ? 'Персональная подборка с объяснением выбора' : 'Точных совпадений мало, показываю ближайшие маршруты'}</h3>
+            <p class="ai-summary">Алгоритм сопоставил профиль с базой вариантов: формат, направление, бюджет, проходной ориентир, метро и интересы. Процент показывает не престиж, а практическую пригодность учебного заведения для вашего сценария.</p>
+            <div class="ai-profile-row">
+                ${profileBadges.map(badge => `<span>${escapeHtml(badge)}</span>`).join('')}
+            </div>
+        </div>
+        <div class="ai-recommendation-grid">${cards}</div>
+    `;
+}
+
+function updateAiScoreField() {
+    const exam = $('#ai-exam')?.value;
+    const score = $('#ai-score');
+    const label = $('#ai-score-label');
+    if (!score || !label) return;
+
+    if (exam === 'oge') {
+        label.textContent = 'Средний балл аттестата / ОГЭ';
+        score.placeholder = 'Например, 4.4';
+        score.max = '5';
+        score.min = '3';
+        score.step = '0.1';
+    } else {
+        label.textContent = 'Сумма баллов ЕГЭ';
+        score.placeholder = 'Например, 245';
+        score.max = '310';
+        score.min = '0';
+        score.step = '1';
+    }
+}
+
+function initAiForm() {
+    $('#ai-exam')?.addEventListener('change', updateAiScoreField);
+    updateAiScoreField();
+
+    $('#ai-form')?.addEventListener('submit', event => {
+        event.preventDefault();
+
+        const profile = getAiProfile();
+        const validationError = validateAiProfile(profile);
+
+        if (validationError) {
+            renderAiMessage(validationError);
+            return;
+        }
+
+        const result = $('#ai-result');
+        result.classList.remove('hidden');
+        result.innerHTML = '<div class="ai-loading"><span></span><span></span><span></span></div>';
+
+        window.setTimeout(() => {
+            renderAiRecommendations(profile, getAiRecommendations(profile));
+            result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 620);
+    });
+}
+
+function prefillAiFromInstitution(id) {
+    const item = institutions.find(institution => institution.id === id);
+    if (!item) return;
+
+    showSection('home', 'ai-picker');
+
+    window.setTimeout(() => {
+        $('#ai-exam').value = item.exam;
+        updateAiScoreField();
+        $('#ai-direction').value = item.direction;
+        $('#ai-score').value = item.exam === 'ege'
+            ? Math.min(310, item.minScore + 14)
+            : Math.min(5, item.minScore + 0.2).toFixed(1);
+        $('#ai-budget').value = item.price;
+        $('#ai-metro').value = item.metro;
+        $('#ai-interests').value = item.tags.slice(0, 4).join(', ');
+        $('#ai-interests').focus({ preventScroll: true });
+    }, 260);
+
+    showToast(`Анкета заполнена под ${item.name}`);
+}
+
+function initGlobalActions() {
+    document.addEventListener('click', event => {
+        const compareButton = event.target.closest('[data-compare-id]');
+        if (compareButton) {
+            toggleCompare(Number(compareButton.dataset.compareId));
+            return;
+        }
+
+        const pickButton = event.target.closest('[data-pick-id]');
+        if (pickButton) {
+            prefillAiFromInstitution(Number(pickButton.dataset.pickId));
+            return;
+        }
+
+        if (event.target.closest('[data-reset-filters]')) {
+            resetFilters();
+        }
+    });
+
+    $('#clear-compare')?.addEventListener('click', clearCompare);
+}
+
+function initBlogTabs() {
+    $$('.blog-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            const filter = tab.dataset.blogFilter;
+            $$('.blog-tab').forEach(item => item.classList.toggle('active', item === tab));
+            $$('.blog-card').forEach(card => {
+                const categories = (card.dataset.blogCategories || '').split(' ');
+                card.classList.toggle('hidden', filter !== 'all' && !categories.includes(filter));
+            });
+        });
+    });
+}
+
+function initBackgroundFollow() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    if (prefersReducedMotion.matches) return;
+
+    const root = document.documentElement;
+    let currentX = 70;
+    let currentY = 18;
+    let targetX = currentX;
+    let targetY = currentY;
+    let frameId = null;
+
+    const render = () => {
+        currentX += (targetX - currentX) * 0.11;
+        currentY += (targetY - currentY) * 0.11;
+        root.style.setProperty('--cursor-glow-x', `${currentX.toFixed(2)}%`);
+        root.style.setProperty('--cursor-glow-y', `${currentY.toFixed(2)}%`);
+
+        if (Math.abs(targetX - currentX) > 0.03 || Math.abs(targetY - currentY) > 0.03) {
+            frameId = window.requestAnimationFrame(render);
+        } else {
+            frameId = null;
+        }
+    };
+
+    const updateTarget = event => {
+        const x = event.clientX / window.innerWidth;
+        const y = event.clientY / window.innerHeight;
+        targetX = 58 + x * 26;
+        targetY = 8 + y * 24;
+
+        if (!frameId) {
+            frameId = window.requestAnimationFrame(render);
+        }
+    };
+
+    window.addEventListener('pointermove', updateTarget, { passive: true });
+    window.addEventListener('mousemove', updateTarget, { passive: true });
+}
+
+function init() {
+    initNavigation();
+    initHeaderScroll();
+    initRevealAnimations();
+    initFilters();
+    initAiForm();
+    initGlobalActions();
+    initBlogTabs();
+    initBackgroundFollow();
+    renderPopularCards();
+    renderSearchCards([...institutions]);
+    renderCompare();
+}
+
+document.addEventListener('DOMContentLoaded', init);

@@ -3,23 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NewStage — Помощник по выбору вуза</title>
-    <link rel="stylesheet" href="styles.css?v=20260507-prep">
+    <meta name="description" content="NewStage помогает выбрать вуз или колледж в Москве после 9 или 11 класса: AI-подбор, фильтры по баллам ЕГЭ/ОГЭ, бюджету, направлению и метро.">
+    <title>NewStage — подбор вузов и колледжей в Москве после 9 и 11 класса</title>
+    <link rel="icon" type="image/png" href="assets/newstage-main.png">
+    <link rel="apple-touch-icon" href="assets/newstage-main.png">
+    <meta property="og:image" content="assets/newstage-main.png">
+    <meta name="twitter:image" content="assets/newstage-main.png">
+    <link rel="stylesheet" href="styles.css?v=20260521-newstage-main">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+    <header class="header" id="page-header">
         <div class="container header-inner">
-            <a href="#" class="logo" data-section="home">New<span>Stage</span></a>
-            <nav class="nav">
+            <a href="#" class="logo" data-section="home" aria-label="NewStage на главную">
+                <span class="logo-mark" aria-hidden="true"></span>
+                <span class="logo-text">New<span>Stage</span></span>
+            </a>
+
+            <nav class="nav" id="main-nav" aria-label="Главная навигация">
                 <a href="#" class="nav-link active" data-section="home">Главная</a>
-                <a href="#" class="nav-link" data-section="home" data-scroll-target="ai-recommendations">Рекомендации</a>
+                <a href="#" class="nav-link" data-section="home" data-scroll-target="ai-picker">AI-подбор</a>
                 <a href="#" class="nav-link" data-section="search">Поиск</a>
                 <a href="#" class="nav-link" data-section="compare">Сравнение</a>
                 <a href="#" class="nav-link" data-section="prep">Подготовка</a>
                 <a href="#" class="nav-link" data-section="blog">Блог</a>
             </nav>
-            <button class="mobile-menu-btn" aria-label="Меню">
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Открыть меню" aria-controls="main-nav" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -27,547 +36,488 @@
         </div>
     </header>
 
-    <!-- Главная -->
-    <section id="home" class="section active">
-        <div class="hero" aria-labelledby="home-title">
-            <div class="particles" id="particles"></div>
-            <div class="container hero-inner">
-                <p class="hero-eyebrow">Навигация по поступлению без хаоса</p>
-                <h1 id="home-title">Найди вуз, который реально подходит тебе</h1>
-                <p class="hero-subtitle">NewStage помогает школьникам 9 и 11 классов выбрать вуз или колледж: сравнить варианты, отфильтровать по бюджету и баллам, а затем получить персональную рекомендацию.</p>
-                <div class="hero-actions">
-                    <button class="btn btn-primary" data-section="home" data-scroll-target="ai-recommendations">Получить рекомендацию</button>
-                    <button class="btn btn-ghost" data-section="search">Начать поиск</button>
-                    <button class="btn btn-ghost" data-section="compare">Открыть сравнение</button>
-                </div>
-                <div class="hero-metrics" aria-label="Ключевые возможности">
-                    <div class="hero-metric">
-                        <strong>12+</strong>
-                        <span>вузов в базе</span>
+    <main>
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-gridline" aria-hidden="true"></div>
+                <div class="container hero-inner">
+                    <div class="hero-copy reveal">
+                        <p class="eyebrow">Подбор вузов и колледжей в Москве</p>
+                        <h1>Выбери вуз или колледж в Москве</h1>
+                        <p class="hero-subtitle">NewStage помогает школьникам и родителям собрать короткий список вариантов после <span class="copy-spark">9 или 11 класса</span>: сравнить <span class="copy-spark">ЕГЭ/ОГЭ</span>, стоимость обучения, направление, метро, риски и следующие шаги.</p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" type="button" data-section="home" data-scroll-target="ai-picker">Подобрать вариант</button>
+                            <button class="btn btn-secondary" type="button" data-section="search">Найти вручную</button>
+                            <button class="btn btn-ghost" type="button" data-section="compare">Сравнить список</button>
+                        </div>
+                        <div class="trust-strip" aria-label="Ключевые преимущества">
+                            <div>
+                                <strong>9 и 11 класс</strong>
+                                <span>маршруты после школы</span>
+                            </div>
+                            <div>
+                                <strong>ЕГЭ / ОГЭ</strong>
+                                <span>баллы и проходной ориентир</span>
+                            </div>
+                            <div>
+                                <strong>3 варианта</strong>
+                                <span>для спокойного сравнения</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="hero-metric">
-                        <strong>3</strong>
-                        <span>критерия фильтра</span>
-                    </div>
-                    <div class="hero-metric">
-                        <strong>ИИ</strong>
-                        <span>подборка по анкете</span>
+
+                    <div class="hero-product reveal delay-1" aria-label="Пример интерфейса NewStage">
+                        <div class="product-shell">
+                            <div class="product-topbar">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <strong>AI Match Console</strong>
+                            </div>
+                            <div class="product-status">
+                                <div>
+                                    <span>Профиль</span>
+                                    <strong>11 класс · IT · ЕГЭ</strong>
+                                </div>
+                                <b>92%</b>
+                            </div>
+                            <div class="product-main-card">
+                                <div class="product-institution">
+                                    <span class="institution-chip">Рекомендация</span>
+                                    <h3>МИРЭА</h3>
+                                    <p>Подходит по IT, бюджету и проходному ориентиру. Проверь проектную нагрузку и выбери резервный вариант.</p>
+                                </div>
+                                <div class="signal-list">
+                                    <div class="signal-row">
+                                        <span>Баллы</span>
+                                        <div><i style="width: 86%"></i></div>
+                                        <strong>+34</strong>
+                                    </div>
+                                    <div class="signal-row">
+                                        <span>Бюджет</span>
+                                        <div><i style="width: 72%"></i></div>
+                                        <strong>ок</strong>
+                                    </div>
+                                    <div class="signal-row">
+                                        <span>Дорога</span>
+                                        <div><i style="width: 64%"></i></div>
+                                        <strong>45 мин</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-stack">
+                                <div>
+                                    <span>01</span>
+                                    <strong>Анкета</strong>
+                                    <p>класс, баллы, бюджет</p>
+                                </div>
+                                <div>
+                                    <span>02</span>
+                                    <strong>Подбор</strong>
+                                    <p>совпадения и фильтры</p>
+                                </div>
+                                <div>
+                                    <span>03</span>
+                                    <strong>Решение</strong>
+                                    <p>риски и следующий шаг</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Как это работает</h2>
-            <p class="section-lead animate-on-scroll">Сервис ведет от первого отбора до короткого списка: меньше случайных вкладок, больше понятных аргументов.</p>
-            <div class="steps">
-                <div class="step animate-on-scroll delay-1">
-                    <div class="step-number">1</div>
-                    <h3>Укажи параметры</h3>
-                    <p>Выбери направление, бюджет и свои баллы ЕГЭ/ОГЭ</p>
-                </div>
-                <div class="step animate-on-scroll delay-2">
-                    <div class="step-number">2</div>
-                    <h3>Получи подборку</h3>
-                    <p>Система подберёт подходящие вузы по твоим критериям</p>
-                </div>
-                <div class="step animate-on-scroll delay-3">
-                    <div class="step-number">3</div>
-                    <h3>Сравни и выбери</h3>
-                    <p>Сравни вузы между собой и сделай осознанный выбор</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Популярные вузы</h2>
-            <p class="section-lead animate-on-scroll">Карточки показывают главное: направление, стоимость, проходной балл, сильные стороны и ограничения.</p>
-            <div class="cards" id="popular-cards"></div>
-        </div>
-
-        <!-- ИИ-рекомендация -->
-        <div class="container">
-            <div class="ai-block animate-on-scroll" id="ai-recommendations">
-                <h2 class="section-title">ИИ-рекомендации</h2>
-                <p class="ai-description">Заполни короткую анкету, и ИИ-помощник соберёт персональную подборку вузов</p>
-                <form id="ai-form" class="ai-form" novalidate>
-                    <div class="ai-form-grid">
-                        <div class="form-group ai-field-metro">
-                            <label for="ai-metro">Метро</label>
-                            <select id="ai-metro">
-                                <option value="">Выбери ближайшее метро</option>
-                                <option value="Университет">Университет</option>
-                                <option value="Бауманская">Бауманская</option>
-                                <option value="Китай-город">Китай-город</option>
-                                <option value="Каширская">Каширская</option>
-                                <option value="Юго-Западная">Юго-Западная</option>
-                                <option value="Проспект Вернадского">Проспект Вернадского</option>
-                                <option value="Аэропорт">Аэропорт</option>
-                                <option value="Новослободская">Новослободская</option>
-                                <option value="Серпуховская">Серпуховская</option>
-                                <option value="Политехническая">Политехническая</option>
-                                <option value="Горьковская">Горьковская</option>
-                                <option value="Василеостровская">Василеостровская</option>
-                                <option value="Площадь Тукая">Площадь Тукая</option>
-                            </select>
-                        </div>
-                        <div class="form-group ai-field-direction">
-                            <label for="ai-direction">Направление</label>
-                            <select id="ai-direction">
-                                <option value="">Выбери направление</option>
-                                <option value="Инженерия">Инженерия</option>
-                                <option value="IT">IT и программирование</option>
-                                <option value="Экономика">Экономика и финансы</option>
-                                <option value="Гуманитарные науки">Гуманитарные науки</option>
-                                <option value="Естественные науки">Естественные науки</option>
-                                <option value="Международные отношения">Международные отношения</option>
-                            </select>
-                        </div>
-                        <div class="form-group ai-field-interests">
-                            <label for="ai-interests">Интересы</label>
-                            <textarea id="ai-interests" rows="3" placeholder="Например: программирование, стартапы, аналитика, языки"></textarea>
-                        </div>
-                        <div class="form-group ai-field-budget">
-                            <label for="ai-budget">Бюджет за год (₽)</label>
-                            <input type="number" id="ai-budget" min="0" step="10000" placeholder="Например, 300000">
-                        </div>
-                        <div class="form-group ai-field-score">
-                            <label for="ai-score">Баллы ЕГЭ/ОГЭ (сумма)</label>
-                            <input type="number" id="ai-score" min="0" max="310" placeholder="Например, 250">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Получить персональную рекомендацию</button>
-                </form>
-                <div id="ai-result" class="ai-result hidden" aria-live="polite"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Поиск -->
-    <section id="search" class="section">
-        <div class="container">
-            <h2 class="section-title">Поиск вузов</h2>
-            <p class="section-lead">Настрой параметры и сразу смотри, какие варианты остаются реалистичными.</p>
-            <div class="search-layout">
-                <aside class="filters">
-                    <h3>Фильтры</h3>
-                    <div class="form-group">
-                        <label for="filter-direction">Направление</label>
-                        <select id="filter-direction">
-                            <option value="">Все направления</option>
-                            <option value="Инженерия">Инженерия</option>
-                            <option value="IT">IT и программирование</option>
-                            <option value="Экономика">Экономика и финансы</option>
-                            <option value="Гуманитарные науки">Гуманитарные науки</option>
-                            <option value="Естественные науки">Естественные науки</option>
-                            <option value="Международные отношения">Международные отношения</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="filter-budget">Макс. стоимость (₽/год)</label>
-                        <input type="number" id="filter-budget" placeholder="Например, 400000">
-                    </div>
-                    <div class="form-group">
-                        <label for="filter-score">Мои баллы ЕГЭ/ОГЭ (сумма)</label>
-                        <input type="number" id="filter-score" placeholder="Например, 250">
-                    </div>
-                    <button class="btn btn-primary btn-block" id="apply-filters">Применить</button>
-                    <button class="btn btn-outline btn-block" id="reset-filters">Сбросить</button>
-                </aside>
-                <div class="cards" id="search-cards"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Сравнение -->
-    <section id="compare" class="section">
-        <div class="container">
-            <h2 class="section-title">Сравнение вузов</h2>
-            <p class="section-lead">Собери до трех вариантов и сравни их по рейтингу, стоимости, баллам и сильным сторонам.</p>
-            <p class="compare-hint" id="compare-hint">Добавьте вузы к сравнению, нажав кнопку «Сравнить» на карточке вуза в разделе Поиск.</p>
-            <div id="compare-content" class="hidden">
-                <div class="compare-table-wrapper">
-                    <table class="compare-table" id="compare-table"></table>
-                </div>
-                <button class="btn btn-outline" id="clear-compare">Очистить сравнение</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Подготовка -->
-    <section id="prep" class="section">
-        <div class="container">
-            <div class="prep-hero">
-                <div>
-                    <p class="prep-eyebrow">Подготовка к экзаменам</p>
-                    <h2>Курсы ЕГЭ и ОГЭ под цель поступления</h2>
-                    <p class="prep-hero-text">Выбирай предметы, уровень и формат занятий, чтобы подтянуть баллы без хаотичных материалов и случайных пробников.</p>
-                    <div class="prep-actions">
-                        <button class="btn btn-primary" type="button" data-section="home" data-scroll-target="ai-recommendations">Подобрать вуз по баллам</button>
-                        <button class="btn btn-ghost" type="button" data-section="search">Смотреть вузы</button>
-                    </div>
-                </div>
-                <div class="prep-score-panel" aria-label="Цели подготовки">
+            <div class="container">
+                <section class="problem-solution reveal" aria-labelledby="problem-title">
                     <div>
+                        <p class="section-kicker">Проблема</p>
+                        <h2 id="problem-title">Сложно понять, какой вуз или колледж действительно подходит</h2>
+                        <p>Родители смотрят рейтинги, школьник читает отзывы, проходные баллы лежат отдельно от стоимости, дороги и требований. Данных много, а ясного решения все равно нет.</p>
+                    </div>
+                    <div>
+                        <p class="section-kicker accent">Решение</p>
+                        <h2>NewStage превращает данные в понятный <span class="headline-accent">короткий список</span></h2>
+                        <p>Сервис не просто показывает учебные заведения, а объясняет соответствие: почему вариант подходит, где есть риск и что проверить до подачи документов.</p>
+                    </div>
+                </section>
+
+                <section class="flow-section" aria-labelledby="flow-title">
+                    <div class="section-heading reveal">
+                        <p class="section-kicker">Как это работает</p>
+                        <h2 id="flow-title">От анкеты до осознанного выбора учебного заведения</h2>
+                        <p>Вы задаете профиль поступления, смотрите подходящие варианты, сравниваете сильные стороны и собираете маршрут без лишних таблиц.</p>
+                    </div>
+
+                    <div class="journey">
+                        <article class="journey-step reveal delay-1">
+                            <span>01</span>
+                            <h3>Анкета</h3>
+                            <p>Класс, формат экзамена, направление, бюджет, баллы, метро и интересы школьника.</p>
+                        </article>
+                        <article class="journey-step reveal delay-2">
+                            <span>02</span>
+                            <h3>AI-подбор</h3>
+                            <p>Алгоритм оценивает совпадение по ключевым критериям и объясняет выбор.</p>
+                        </article>
+                        <article class="journey-step reveal delay-3">
+                            <span>03</span>
+                            <h3>Поиск</h3>
+                            <p>Фильтры помогают найти вузы и колледжи по баллам, стоимости, направлению и метро.</p>
+                        </article>
+                        <article class="journey-step reveal delay-4">
+                            <span>04</span>
+                            <h3>Сравнение</h3>
+                            <p>До трех вариантов рядом: стоимость, проходной ориентир, метро, плюсы и риски.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="ai-panel reveal" id="ai-picker" aria-labelledby="ai-title">
+                    <div class="ai-panel-copy">
+                        <p class="section-kicker">AI-подбор</p>
+                        <h2 id="ai-title">Заполни <span class="headline-accent">анкету</span> для подбора вуза или колледжа</h2>
+                        <p>Результат покажет процент соответствия, причины выбора, риски и следующие действия. Логика учитывает формат поступления, баллы, бюджет, направление, метро и интересы.</p>
+                    </div>
+
+                    <form id="ai-form" class="ai-form" novalidate>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="ai-exam">Формат поступления</label>
+                                <select id="ai-exam" required>
+                                    <option value="ege">11 класс · ЕГЭ · университет</option>
+                                    <option value="oge">9 класс · ОГЭ/аттестат · колледж</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ai-direction">Направление</label>
+                                <select id="ai-direction" required>
+                                    <option value="">Выберите направление</option>
+                                    <option value="it">IT и программирование</option>
+                                    <option value="engineering">Инженерия</option>
+                                    <option value="economics">Экономика и финансы</option>
+                                    <option value="media">Медиа и дизайн</option>
+                                    <option value="humanities">Гуманитарные науки</option>
+                                    <option value="science">Естественные науки</option>
+                                    <option value="international">Международные отношения</option>
+                                    <option value="architecture">Строительство и архитектура</option>
+                                    <option value="law">Право и управление</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ai-score" id="ai-score-label">Сумма баллов ЕГЭ</label>
+                                <input type="number" id="ai-score" min="0" max="310" step="1" placeholder="Например, 245" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ai-budget">Бюджет на обучение в год</label>
+                                <input type="number" id="ai-budget" min="0" step="10000" placeholder="Например, 350000" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ai-metro">Метро рядом с кампусом</label>
+                                <select id="ai-metro">
+                                    <option value="">Не важно</option>
+                                    <option value="Университет">Университет</option>
+                                    <option value="Бауманская">Бауманская</option>
+                                    <option value="Китай-город">Китай-город</option>
+                                    <option value="Проспект Вернадского">Проспект Вернадского</option>
+                                    <option value="Аэропорт">Аэропорт</option>
+                                    <option value="Юго-Западная">Юго-Западная</option>
+                                    <option value="ВДНХ">ВДНХ</option>
+                                    <option value="Технопарк">Технопарк</option>
+                                    <option value="Сокол">Сокол</option>
+                                    <option value="Савеловская">Савеловская</option>
+                                    <option value="Тульская">Тульская</option>
+                                    <option value="Калужская">Калужская</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-wide">
+                                <label for="ai-interests">Интересы, предметы и ожидания</label>
+                                <textarea id="ai-interests" rows="4" placeholder="Например: хочу программирование, проекты, стажировки, сильную математику и дорогу до часа" required></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-wide">Получить рекомендацию</button>
+                    </form>
+
+                    <div id="ai-result" class="ai-result hidden" aria-live="polite"></div>
+                </section>
+
+                <section class="popular-section" aria-labelledby="popular-title">
+                    <div class="section-heading reveal">
+                        <p class="section-kicker">Популярные варианты</p>
+                        <h2 id="popular-title">Вузы и колледжи с понятными критериями выбора</h2>
+                        <p>В карточках собраны направление, стоимость, проходной ориентир, метро, сильные стороны и риски, чтобы быстро отсеять неподходящие варианты.</p>
+                    </div>
+                    <div class="cards" id="popular-cards"></div>
+                </section>
+
+                <section class="demo-compare reveal" aria-label="Переход к сравнению">
+                    <div>
+                        <p class="section-kicker">Сравнение</p>
+                        <h2>Собери короткий список и сравни варианты рядом</h2>
+                        <p>Добавь до трех учебных заведений из поиска или рекомендации. NewStage подсветит сильные значения и покажет риски без лишнего текста.</p>
+                    </div>
+                    <button class="btn btn-secondary" type="button" data-section="search">Найти варианты</button>
+                </section>
+
+                <section class="faq-section reveal" aria-labelledby="faq-title">
+                    <div class="section-heading">
+                        <p class="section-kicker">FAQ</p>
+                        <h2 id="faq-title">Частые <span class="headline-accent">вопросы</span> о выборе вуза или колледжа</h2>
+                        <p>Ответы помогают быстро понять, как использовать подбор и какие критерии проверить перед финальным решением.</p>
+                    </div>
+
+                    <div class="faq-grid">
+                        <article class="faq-item">
+                            <h3>Можно ли подобрать колледж после 9 класса?</h3>
+                            <p>Да. Выберите формат ОГЭ/аттестат, укажите средний балл, направление, бюджет и интересы. NewStage покажет колледжи, которые подходят под старт после 9 класса.</p>
+                        </article>
+                        <article class="faq-item">
+                            <h3>Что важнее: проходной балл или стоимость обучения?</h3>
+                            <p>Оба критерия важны. Сервис показывает не только проходной ориентир, но и стоимость, запас по баллам, риски и резервные маршруты.</p>
+                        </article>
+                        <article class="faq-item">
+                            <h3>Как выбрать вуз после 11 класса?</h3>
+                            <p>Начните с суммы баллов ЕГЭ, направления и комфортного бюджета. Затем сравните 2-3 учебных заведения по программам, дороге, рискам и следующим шагам.</p>
+                        </article>
+                        <article class="faq-item">
+                            <h3>Можно ли сравнить университет и колледж?</h3>
+                            <p>Да, но лучше сравнивать варианты одного формата поступления. Для разных маршрутов NewStage помогает отдельно оценить плюсы, ограничения и долгосрочную траекторию.</p>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section id="search" class="section">
+            <div class="container page-section">
+                <div class="section-heading section-heading-left">
+                    <p class="section-kicker">Поиск по базе</p>
+                    <h2>Найди подходящие вузы и колледжи Москвы</h2>
+                    <p>Фильтры учитывают формат ЕГЭ/ОГЭ, направление, стоимость обучения и текущие баллы. Если совпадений нет, сервис подскажет, что изменить в запросе.</p>
+                </div>
+
+                <div class="search-layout">
+                    <aside class="filters" aria-label="Фильтры поиска">
+                        <div class="filters-head">
+                            <h3>Фильтры</h3>
+                            <span id="result-count">0 вариантов</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="filter-query">Название, направление или тег</label>
+                            <input type="search" id="filter-query" placeholder="Например, data science">
+                        </div>
+                        <div class="form-group">
+                            <label for="filter-exam">Формат</label>
+                            <select id="filter-exam">
+                                <option value="">Все форматы</option>
+                                <option value="ege">ЕГЭ · университеты</option>
+                                <option value="oge">ОГЭ/аттестат · колледжи</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="filter-direction">Направление</label>
+                            <select id="filter-direction">
+                                <option value="">Все направления</option>
+                                <option value="it">IT и программирование</option>
+                                <option value="engineering">Инженерия</option>
+                                <option value="economics">Экономика и финансы</option>
+                                <option value="media">Медиа и дизайн</option>
+                                <option value="humanities">Гуманитарные науки</option>
+                                <option value="science">Естественные науки</option>
+                                <option value="international">Международные отношения</option>
+                                <option value="architecture">Строительство и архитектура</option>
+                                <option value="law">Право и управление</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="filter-budget">Стоимость обучения до</label>
+                            <input type="number" id="filter-budget" min="0" step="10000" placeholder="Например, 350000">
+                        </div>
+                        <div class="form-group">
+                            <label for="filter-score">Баллы ЕГЭ / средний балл</label>
+                            <input type="number" id="filter-score" min="0" step="1" placeholder="ЕГЭ или средний балл ОГЭ">
+                        </div>
+                        <div class="filter-actions">
+                            <button class="btn btn-primary btn-block" id="apply-filters" type="button">Применить</button>
+                            <button class="btn btn-ghost btn-block" id="reset-filters" type="button">Сбросить</button>
+                        </div>
+                    </aside>
+
+                    <div>
+                        <div class="search-toolbar">
+                            <div>
+                                <strong>Результаты подбора</strong>
+                                <span id="active-filter-text">Показаны все варианты для подбора</span>
+                            </div>
+                            <button class="btn btn-secondary btn-sm" type="button" data-section="home" data-scroll-target="ai-picker">Получить рекомендацию</button>
+                        </div>
+                        <div class="cards" id="search-cards"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="compare" class="section">
+            <div class="container page-section">
+                <div class="section-heading">
+                    <p class="section-kicker">Сравнение</p>
+                    <h2>Сравни до трех учебных заведений по ключевым критериям</h2>
+                    <p>Добавляй карточки из поиска или AI-рекомендации. Таблица покажет различия по формату, направлению, стоимости, проходному ориентиру, метро и рискам.</p>
+                </div>
+
+                <div id="compare-empty" class="empty-state">
+                    <span class="empty-icon" aria-hidden="true"></span>
+                    <h3>Список сравнения пуст</h3>
+                    <p>Открой поиск, добавь 2-3 учебных заведения и вернись сюда, чтобы быстро увидеть различия перед решением.</p>
+                    <button class="btn btn-primary" type="button" data-section="search">Перейти к поиску</button>
+                </div>
+
+                <div id="compare-content" class="compare-content hidden">
+                    <div class="compare-head">
+                        <div>
+                            <strong>Выбранные варианты</strong>
+                            <span id="compare-counter">0 из 3</span>
+                        </div>
+                        <button class="btn btn-ghost btn-sm" id="clear-compare" type="button">Очистить</button>
+                    </div>
+                    <div id="compare-summary" class="compare-summary"></div>
+                    <div class="compare-table-wrapper">
+                        <table class="compare-table" id="compare-table"></table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="prep" class="section">
+            <div class="container page-section">
+                <div class="prep-hero">
+                    <div>
+                        <p class="section-kicker">Стратегия поступления</p>
+                        <h2>Планируй баллы ЕГЭ/ОГЭ от цели поступления</h2>
+                        <p>NewStage связывает подготовку с конкретным маршрутом: текущий балл, разрыв до проходного ориентира, комфортный бюджет и резервные варианты.</p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" type="button" data-section="home" data-scroll-target="ai-picker">Подобрать цель</button>
+                            <button class="btn btn-secondary" type="button" data-section="search">Посмотреть варианты</button>
+                        </div>
+                    </div>
+                    <div class="prep-score-panel" aria-label="Пример целей подготовки">
+                        <div>
+                            <span>ЕГЭ</span>
+                            <strong>+28</strong>
+                            <p>баллов до проходного ориентира</p>
+                        </div>
+                        <div>
+                            <span>ОГЭ</span>
+                            <strong>4.5</strong>
+                            <p>целевой средний балл аттестата</p>
+                        </div>
+                        <div>
+                            <span>План</span>
+                            <strong>12</strong>
+                            <p>недель до первой сверки</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prep-grid">
+                    <article class="prep-card">
                         <span>ЕГЭ</span>
-                        <strong>80+</strong>
-                        <small>цель по профильным предметам</small>
-                    </div>
-                    <div>
+                        <h3>ЕГЭ под выбранный вуз</h3>
+                        <p>Сначала определяется проходной ориентир, затем считается запас по профильным предметам.</p>
+                    </article>
+                    <article class="prep-card">
                         <span>ОГЭ</span>
-                        <strong>4-5</strong>
-                        <small>уверенная база для 10 класса или колледжа</small>
-                    </div>
+                        <h3>Колледж после 9 класса</h3>
+                        <p>Фокус на среднем балле аттестата, профильных предметах и понятном продолжении траектории.</p>
+                    </article>
+                    <article class="prep-card">
+                        <span>Портфель</span>
+                        <h3>Резервные маршруты</h3>
+                        <p>Для каждого направления стоит заранее держать основной, реалистичный и запасной сценарий.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="section">
+            <div class="container page-section">
+                <div class="section-heading">
+                    <p class="section-kicker">Блог</p>
+                    <h2>Гайды по выбору вуза, колледжа и профессии</h2>
+                    <p>Короткие материалы помогают разобраться в поступлении, сравнить маршруты после 9 и 11 класса и подготовиться к разговору в семье.</p>
+                </div>
+
+                <div class="blog-tabs" aria-label="Категории статей">
+                    <button class="blog-tab active" type="button" data-blog-filter="all">Все</button>
+                    <button class="blog-tab" type="button" data-blog-filter="parents">Родителям</button>
+                    <button class="blog-tab" type="button" data-blog-filter="school">Школьникам</button>
+                    <button class="blog-tab" type="button" data-blog-filter="ege">ЕГЭ/ОГЭ</button>
+                    <button class="blog-tab" type="button" data-blog-filter="career">Профессии</button>
+                </div>
+
+                <div class="blog-grid">
+                    <article class="blog-card" data-blog-categories="parents school">
+                        <div class="blog-card-top">
+                            <span>Родителям</span>
+                            <small>7 мин</small>
+                        </div>
+                        <h3>Как выбрать вуз в Москве без давления на подростка</h3>
+                        <p>Какие вопросы задавать школьнику, чтобы поддержать выбор и не заменить его цель родительской тревогой.</p>
+                        <button class="btn btn-ghost btn-sm" type="button">Читать</button>
+                    </article>
+                    <article class="blog-card" data-blog-categories="ege school">
+                        <div class="blog-card-top">
+                            <span>ЕГЭ/ОГЭ</span>
+                            <small>5 мин</small>
+                        </div>
+                        <h3>Проходные баллы, бюджет и резервные варианты</h3>
+                        <p>Как сопоставить проходной ориентир, стоимость обучения и запасные маршруты до подачи документов.</p>
+                        <button class="btn btn-ghost btn-sm" type="button">Читать</button>
+                    </article>
+                    <article class="blog-card" data-blog-categories="career school">
+                        <div class="blog-card-top">
+                            <span>Профессии</span>
+                            <small>6 мин</small>
+                        </div>
+                        <h3>Колледж или 10 класс после 9 класса: как выбрать маршрут</h3>
+                        <p>Когда ранняя профессиональная траектория помогает, а когда лучше продолжить школу и готовиться к ЕГЭ.</p>
+                        <button class="btn btn-ghost btn-sm" type="button">Читать</button>
+                    </article>
+                </div>
+
+                <div class="blog-cta">
                     <div>
-                        <span>План</span>
-                        <strong>12</strong>
-                        <small>недель до первого заметного прогресса</small>
+                        <h3>Начните с персонального подбора</h3>
+                        <p>Заполните анкету и получите первый короткий список учебных заведений, которые стоит проверить в первую очередь.</p>
                     </div>
+                    <button class="btn btn-primary" type="button" data-section="home" data-scroll-target="ai-picker">Начать подбор</button>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <div class="prep-grid" aria-label="Курсы подготовки">
-                <article class="prep-course-card">
-                    <div class="prep-course-top">
-                        <span class="prep-badge">ЕГЭ</span>
-                        <span class="prep-meta">11 класс</span>
-                    </div>
-                    <h3>Математика профиль</h3>
-                    <p>Разбор заданий второй части, стратегия времени и еженедельные пробники с проверкой решений.</p>
-                    <ul>
-                        <li>2 занятия в неделю</li>
-                        <li>Домашка с разбором ошибок</li>
-                        <li>План на 3 месяца</li>
-                    </ul>
-                    <button class="btn btn-outline btn-sm" type="button">Подробнее</button>
-                </article>
-
-                <article class="prep-course-card">
-                    <div class="prep-course-top">
-                        <span class="prep-badge">ЕГЭ</span>
-                        <span class="prep-meta">10-11 класс</span>
-                    </div>
-                    <h3>Русский язык</h3>
-                    <p>Сочинение, тестовая часть, аргументация и шаблоны проверки, которые помогают стабильно держать высокий балл.</p>
-                    <ul>
-                        <li>Практика сочинений</li>
-                        <li>Словарь типовых ошибок</li>
-                        <li>Пробник каждые 2 недели</li>
-                    </ul>
-                    <button class="btn btn-outline btn-sm" type="button">Подробнее</button>
-                </article>
-
-                <article class="prep-course-card">
-                    <div class="prep-course-top">
-                        <span class="prep-badge">ЕГЭ</span>
-                        <span class="prep-meta">IT и экономика</span>
-                    </div>
-                    <h3>Информатика</h3>
-                    <p>Алгоритмы, Python, таблицы, базы данных и задания с кодом для поступления на IT-направления.</p>
-                    <ul>
-                        <li>Тренажер задач</li>
-                        <li>Разбор кода с наставником</li>
-                        <li>Контроль скорости решения</li>
-                    </ul>
-                    <button class="btn btn-outline btn-sm" type="button">Подробнее</button>
-                </article>
-
-                <article class="prep-course-card">
-                    <div class="prep-course-top">
-                        <span class="prep-badge prep-badge-alt">ОГЭ</span>
-                        <span class="prep-meta">9 класс</span>
-                    </div>
-                    <h3>Математика ОГЭ</h3>
-                    <p>База, геометрия, практические задачи и понятный маршрут для тех, кто выбирает 10 класс или колледж.</p>
-                    <ul>
-                        <li>Диагностика уровня</li>
-                        <li>Короткие модули по темам</li>
-                        <li>Пробники в формате ОГЭ</li>
-                    </ul>
-                    <button class="btn btn-outline btn-sm" type="button">Подробнее</button>
-                </article>
-
-                <article class="prep-course-card">
-                    <div class="prep-course-top">
-                        <span class="prep-badge prep-badge-alt">ОГЭ</span>
-                        <span class="prep-meta">9 класс</span>
-                    </div>
-                    <h3>Обществознание</h3>
-                    <p>Термины, аргументы, задания с развернутым ответом и регулярная практика по разделам кодификатора.</p>
-                    <ul>
-                        <li>Карточки понятий</li>
-                        <li>Тематические тесты</li>
-                        <li>Проверка письменных ответов</li>
-                    </ul>
-                    <button class="btn btn-outline btn-sm" type="button">Подробнее</button>
-                </article>
-
-                <article class="prep-course-card prep-course-card-accent">
-                    <div class="prep-course-top">
-                        <span class="prep-badge">Маршрут</span>
-                        <span class="prep-meta">Подбор</span>
-                    </div>
-                    <h3>Индивидуальный план</h3>
-                    <p>Связываем предметы, текущие баллы, дедлайны и список вузов, чтобы подготовка работала на конкретную цель.</p>
-                    <ul>
-                        <li>Диагностика по предметам</li>
-                        <li>Целевые баллы под вузы</li>
-                        <li>Контроль прогресса</li>
-                    </ul>
-                    <button class="btn btn-primary btn-sm" type="button" data-section="home" data-scroll-target="ai-recommendations">Начать с подбора</button>
-                </article>
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div>
+                <a href="#" class="logo footer-logo" data-section="home">
+                    <span class="logo-mark" aria-hidden="true"></span>
+                    <span class="logo-text">New<span>Stage</span></span>
+                </a>
+                <p>Сервис подбора вузов и колледжей Москвы для школьников 9 и 11 классов и родителей, которым нужен понятный маршрут поступления.</p>
             </div>
-
-            <div class="prep-roadmap">
-                <div>
-                    <span>01</span>
-                    <strong>Диагностика</strong>
-                    <p>Определяем текущий уровень и предметы, которые реально влияют на поступление.</p>
-                </div>
-                <div>
-                    <span>02</span>
-                    <strong>План занятий</strong>
-                    <p>Собираем недельный ритм: теория, практика, домашка и регулярные пробники.</p>
-                </div>
-                <div>
-                    <span>03</span>
-                    <strong>Коррекция цели</strong>
-                    <p>Сравниваем прогресс с требованиями вузов и вовремя меняем стратегию.</p>
-                </div>
+            <div class="footer-links">
+                <a href="#" data-section="search">Поиск</a>
+                <a href="#" data-section="compare">Сравнение</a>
+                <a href="#" data-section="home" data-scroll-target="ai-picker">AI-подбор</a>
+                <a href="#" data-section="prep">Подготовка</a>
             </div>
-        </div>
-    </section>
-
-    <!-- Блог -->
-    <section id="blog" class="section">
-        <div class="container">
-            <div class="blog-hero">
-                <div>
-                    <p class="blog-eyebrow">Полезные материалы</p>
-                    <h2>Блог для родителей, школьников и студентов</h2>
-                    <p class="blog-hero-text">Советы, статьи и чек-листы, которые помогают спокойно выбрать вуз, подготовиться к поступлению и принять осознанное решение</p>
-                </div>
-                <div class="blog-audience-grid" aria-label="Аудитории блога">
-                    <div class="blog-audience-card">
-                        <span>01</span>
-                        <strong>Для родителей</strong>
-                    </div>
-                    <div class="blog-audience-card">
-                        <span>02</span>
-                        <strong>Для школьников</strong>
-                    </div>
-                    <div class="blog-audience-card">
-                        <span>03</span>
-                        <strong>Для студентов</strong>
-                    </div>
-                </div>
-            </div>
-
-            <div class="blog-tabs" aria-label="Категории статей">
-                <button class="blog-tab active" type="button" data-blog-filter="all">Все статьи</button>
-                <button class="blog-tab" type="button" data-blog-filter="parents">Родителям</button>
-                <button class="blog-tab" type="button" data-blog-filter="school">Школьникам</button>
-                <button class="blog-tab" type="button" data-blog-filter="students">Студентам</button>
-                <button class="blog-tab" type="button" data-blog-filter="admission">Поступление</button>
-                <button class="blog-tab" type="button" data-blog-filter="ege">ЕГЭ/ОГЭ</button>
-                <button class="blog-tab" type="button" data-blog-filter="career">Выбор профессии</button>
-            </div>
-
-            <div class="blog-grid">
-                <article class="blog-card" data-blog-categories="parents admission">
-                    <div class="blog-card-top">
-                        <span class="blog-category">Родителям</span>
-                        <span class="blog-meta">7 мин · 12 мая</span>
-                    </div>
-                    <h3>Как родителям помочь ребёнку выбрать вуз без давления</h3>
-                    <p>Как поддержать подростка, задавать правильные вопросы и не превращать поступление в семейный конфликт.</p>
-                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
-                </article>
-
-                <article class="blog-card" data-blog-categories="school career">
-                    <div class="blog-card-top">
-                        <span class="blog-category">Школьникам</span>
-                        <span class="blog-meta">6 мин · 10 мая</span>
-                    </div>
-                    <h3>Что делать, если школьник не знает, кем хочет стать</h3>
-                    <p>Практичный маршрут от интересов и предметов к профессиям, направлениям и первым коротким спискам вузов.</p>
-                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
-                </article>
-
-                <article class="blog-card" data-blog-categories="admission school parents">
-                    <div class="blog-card-top">
-                        <span class="blog-category">Поступление</span>
-                        <span class="blog-meta">8 мин · 8 мая</span>
-                    </div>
-                    <h3>Как сравнивать вузы: 7 важных критериев</h3>
-                    <p>Разбираем, какие параметры смотреть кроме рейтинга: программа, практика, стоимость, дорога, среда и карьерные треки.</p>
-                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
-                </article>
-
-                <article class="blog-card" data-blog-categories="ege admission">
-                    <div class="blog-card-top">
-                        <span class="blog-category">ЕГЭ/ОГЭ</span>
-                        <span class="blog-meta">5 мин · 6 мая</span>
-                    </div>
-                    <h3>ЕГЭ/ОГЭ, бюджет и реальность: как оценить шансы поступления</h3>
-                    <p>Как сопоставить баллы, проходные прошлых лет и запасные варианты без ложной уверенности и паники.</p>
-                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
-                </article>
-
-                <article class="blog-card" data-blog-categories="school admission career">
-                    <div class="blog-card-top">
-                        <span class="blog-category">Школьникам</span>
-                        <span class="blog-meta">6 мин · 3 мая</span>
-                    </div>
-                    <h3>Колледж или вуз после 9 класса: что выбрать</h3>
-                    <p>Плюсы, риски и сценарии для тех, кто выбирает между ранней профессией и продолжением школьного маршрута.</p>
-                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
-                </article>
-
-                <article class="blog-card" data-blog-categories="career school students">
-                    <div class="blog-card-top">
-                        <span class="blog-category">Выбор профессии</span>
-                        <span class="blog-meta">7 мин · 30 апреля</span>
-                    </div>
-                    <h3>Как не ошибиться с направлением обучения</h3>
-                    <p>Какие сигналы говорят, что направление подходит, и как проверить выбор до подачи документов.</p>
-                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
-                </article>
-
-                <article class="blog-card" data-blog-categories="admission parents school">
-                    <div class="blog-card-top">
-                        <span class="blog-category">Поступление</span>
-                        <span class="blog-meta">5 мин · 26 апреля</span>
-                    </div>
-                    <h3>Поступление в Москве: на что обратить внимание</h3>
-                    <p>Стоимость жизни, дорога, кампус, практика и другие детали, которые влияют на учебу сильнее, чем кажется.</p>
-                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
-                </article>
-
-                <article class="blog-card" data-blog-categories="students career">
-                    <div class="blog-card-top">
-                        <span class="blog-category">Студентам</span>
-                        <span class="blog-meta">4 мин · 22 апреля</span>
-                    </div>
-                    <h3>Как студенту понять, что вуз ему подходит</h3>
-                    <p>Чекпоинты первого курса: учебная нагрузка, окружение, преподаватели, возможности и ощущение движения вперед.</p>
-                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
-                </article>
-
-                <article class="blog-card" data-blog-categories="admission ege parents school">
-                    <div class="blog-card-top">
-                        <span class="blog-category">Чек-лист</span>
-                        <span class="blog-meta">3 мин · 18 апреля</span>
-                    </div>
-                    <h3>Чек-лист перед подачей документов</h3>
-                    <p>Что перепроверить перед отправкой заявления: сроки, приоритеты, документы, согласия и резервные варианты.</p>
-                    <button class="btn btn-outline btn-sm" type="button">Читать</button>
-                </article>
-            </div>
-
-            <div class="blog-cta">
-                <div>
-                    <h3>Не знаешь, с чего начать?</h3>
-                    <p>Заполни параметры в NewStage и получи персональную подборку вузов</p>
-                </div>
-                <button class="btn btn-primary" type="button" data-section="search">Перейти к поиску</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" aria-label="Подвал сайта">
-        <div class="container footer-shell">
-            <div class="footer-top">
-                <div class="footer-contacts" aria-label="Контакты NewStage">
-                    <a href="tel:+74951234567" class="footer-contact">
-                        <span class="footer-contact-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" role="img">
-                                <path d="M6.6 10.8c1.6 3.2 3.4 5 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.5 22 2 13.5 2 3.4 2 2.7 2.5 2 3.2 2h3.6C7.5 2 8 2.5 8 3.2c0 1.4.2 2.7.6 4 .1.4 0 .9-.3 1.2l-1.7 2.4Z"/>
-                            </svg>
-                        </span>
-                        <span>
-                            <small>Телефон</small>
-                            +7 495 123-45-67
-                        </span>
-                    </a>
-                    <a href="mailto:hello@newstage.ru" class="footer-contact">
-                        <span class="footer-contact-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" role="img">
-                                <path d="M3.8 5h16.4c1 0 1.8.8 1.8 1.8v10.4c0 1-.8 1.8-1.8 1.8H3.8c-1 0-1.8-.8-1.8-1.8V6.8C2 5.8 2.8 5 3.8 5Zm8.2 7.7 7-5.1H5l7 5.1Zm0 2.3L4 9.2v8h16v-8l-8 5.8Z"/>
-                            </svg>
-                        </span>
-                        <span>
-                            <small>Email</small>
-                            hello@newstage.ru
-                        </span>
-                    </a>
-                </div>
-
-                <div class="footer-socials" aria-label="Социальные сети">
-                    <a href="#" class="social-pill" aria-label="NewStage в Telegram">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M21.7 4.2 18.5 19c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L5.9 12.5 1 11c-1.1-.3-1.1-1.1.2-1.6L20.3 2c.9-.3 1.7.2 1.4 2.2Z"/>
-                        </svg>
-                        Telegram
-                    </a>
-                    <a href="#" class="social-pill" aria-label="NewStage во ВКонтакте">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M13.1 18.8c-7.4 0-11.6-5.1-11.8-13.6h3.7c.1 6.2 2.8 8.8 5 9.3V5.2h3.5v5.3c2.2-.2 4.4-2.7 5.2-5.3h3.5c-.6 3.2-3 5.7-4.7 6.8 1.7.9 4.5 3.1 5.5 6.8h-3.9c-.8-2.5-2.9-4.4-5.6-4.7v4.7h-.4Z"/>
-                        </svg>
-                        VK
-                    </a>
-                    <a href="#" class="social-pill" aria-label="NewStage на YouTube">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M22 8.1s-.2-1.6-.9-2.3c-.8-.9-1.8-.9-2.2-1C15.8 4.6 12 4.6 12 4.6s-3.8 0-6.9.2c-.4 0-1.4.1-2.2 1C2.2 6.5 2 8.1 2 8.1S1.8 10 1.8 12v1.8c0 2 .2 3.9.2 3.9s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.8.2 6.7.2 6.7.2s3.8 0 6.9-.3c.4 0 1.4-.1 2.2-1 .7-.7.9-2.3.9-2.3s.2-2 .2-3.9V12c0-2-.2-3.9-.2-3.9Zm-12.1 7V8.4l6.3 3.4-6.3 3.3Z"/>
-                        </svg>
-                        YouTube
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-links-grid">
-                <div class="footer-link-card">
-                    <h3>Платформа</h3>
-                    <a href="#" data-section="search">Поиск вузов</a>
-                    <a href="#" data-section="compare">Сравнение</a>
-                    <a href="#" data-section="home" data-scroll-target="ai-recommendations">ИИ-рекомендации</a>
-                    <a href="#">Личный кабинет</a>
-                </div>
-                <div class="footer-link-card">
-                    <h3>Обучение</h3>
-                    <a href="#" data-section="prep">Подготовка к ЕГЭ/ОГЭ</a>
-                    <a href="#">Профориентация</a>
-                    <a href="#">Наставники</a>
-                    <a href="#">Траектории поступления</a>
-                </div>
-                <div class="footer-link-card">
-                    <h3>Бесплатно</h3>
-                    <a href="#">Тест выбора вуза</a>
-                    <a href="#">Калькулятор баллов</a>
-                    <a href="#">Гайд абитуриента</a>
-                    <a href="#">Демо-подборка</a>
-                </div>
-                <div class="footer-link-card">
-                    <h3>Мероприятия</h3>
-                    <a href="#">Вебинары</a>
-                    <a href="#">Дни открытых дверей</a>
-                    <a href="#">Разборы направлений</a>
-                    <a href="#">Календарь поступления</a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 NewStage. Сервис помощи школьникам с выбором вуза.</p>
-                <div class="footer-legal">
-                    <a href="#">Лицензия</a>
-                    <a href="#">Политика конфиденциальности</a>
-                    <a href="#">Пользовательское соглашение</a>
-                </div>
+            <div class="footer-note">
+                <span>Демо-версия · 2026</span>
+                <span>Показатели в карточках помогают первично сравнить варианты; перед подачей документов сверяйте официальные правила приема.</span>
             </div>
         </div>
     </footer>
 
-    <script src="script.js?v=20260507-prep"></script>
+    <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js?v=20260521-scoped"></script>
 </body>
 </html>
