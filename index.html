@@ -418,22 +418,54 @@
                     </div>
                 </div>
 
-                <div class="prep-grid">
-                    <article class="prep-card">
-                        <span>ЕГЭ</span>
-                        <h3>ЕГЭ под выбранный вуз</h3>
-                        <p>Сначала определяется проходной ориентир, затем считается запас по профильным предметам.</p>
-                    </article>
-                    <article class="prep-card">
-                        <span>ОГЭ</span>
-                        <h3>Колледж после 9 класса</h3>
-                        <p>Фокус на среднем балле аттестата, профильных предметах и понятном продолжении траектории.</p>
-                    </article>
-                    <article class="prep-card">
-                        <span>Портфель</span>
-                        <h3>Резервные маршруты</h3>
-                        <p>Для каждого направления стоит заранее держать основной, реалистичный и запасной сценарий.</p>
-                    </article>
+                <div class="prep-courses" aria-label="Курсы подготовки к ОГЭ и ЕГЭ">
+                    <div class="prep-courses-head">
+                        <p class="section-kicker accent">Курсы</p>
+                        <h3>Подготовка к ОГЭ и ЕГЭ с привязкой к цели</h3>
+                        <p>Курсы помогают не просто решать варианты, а понимать, какие баллы нужны для выбранного вуза, колледжа и резервного маршрута.</p>
+                    </div>
+
+                    <div class="course-grid">
+                        <article class="course-card course-card-ege">
+                            <span class="course-eyebrow">11 класс · ЕГЭ</span>
+                            <h3>Курс ЕГЭ для поступления в вуз</h3>
+                            <p>Персональный план по профильным предметам: русский язык, математика и предмет на выбор под направление.</p>
+                            <div class="course-meta" aria-label="Параметры курса ЕГЭ">
+                                <span>12 недель</span>
+                                <span>2-3 занятия в неделю</span>
+                                <span>пробник каждые 3 недели</span>
+                            </div>
+                            <ul class="course-points">
+                                <li>диагностика текущих баллов и разрыва до цели;</li>
+                                <li>разбор заданий, которые сильнее всего влияют на итог;</li>
+                                <li>контроль прогресса по вузам из короткого списка.</li>
+                            </ul>
+                            <div class="course-actions">
+                                <button class="btn btn-primary btn-sm" type="button" data-section="home" data-scroll-target="ai-picker">Подобрать цель</button>
+                                <button class="btn btn-ghost btn-sm" type="button" data-section="search">Смотреть вузы</button>
+                            </div>
+                        </article>
+
+                        <article class="course-card course-card-oge">
+                            <span class="course-eyebrow">9 класс · ОГЭ</span>
+                            <h3>Курс ОГЭ для поступления в колледж</h3>
+                            <p>Подготовка к ОГЭ и аттестату с фокусом на средний балл, профильные предметы и выбор колледжа.</p>
+                            <div class="course-meta" aria-label="Параметры курса ОГЭ">
+                                <span>10 недель</span>
+                                <span>русский и математика</span>
+                                <span>трек под колледж</span>
+                            </div>
+                            <ul class="course-points">
+                                <li>понятная цель по среднему баллу аттестата;</li>
+                                <li>тренировка ОГЭ без перегруза лишними темами;</li>
+                                <li>сверка колледжей, бюджета и продолжения после СПО.</li>
+                            </ul>
+                            <div class="course-actions">
+                                <button class="btn btn-primary btn-sm" type="button" data-section="home" data-scroll-target="ai-picker">Подобрать колледж</button>
+                                <button class="btn btn-ghost btn-sm" type="button" data-section="search">Смотреть колледжи</button>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -446,53 +478,137 @@
                     <p>Короткие материалы помогают разобраться в поступлении, сравнить маршруты после 9 и 11 класса и подготовиться к разговору в семье.</p>
                 </div>
 
-                <div class="blog-tabs" aria-label="Категории статей">
-                    <button class="blog-tab active" type="button" data-blog-filter="all">Все</button>
-                    <button class="blog-tab" type="button" data-blog-filter="parents">Родителям</button>
-                    <button class="blog-tab" type="button" data-blog-filter="school">Школьникам</button>
-                    <button class="blog-tab" type="button" data-blog-filter="ege">ЕГЭ/ОГЭ</button>
-                    <button class="blog-tab" type="button" data-blog-filter="career">Профессии</button>
-                </div>
-
-                <div class="blog-grid">
-                    <article class="blog-card" data-blog-categories="parents school">
-                        <div class="blog-card-top">
-                            <span>Родителям</span>
-                            <small>7 мин</small>
-                        </div>
-                        <h3>Как выбрать вуз в Москве без давления на подростка</h3>
-                        <p>Какие вопросы задавать школьнику, чтобы поддержать выбор и не заменить его цель родительской тревогой.</p>
-                        <button class="btn btn-ghost btn-sm" type="button">Читать</button>
-                    </article>
-                    <article class="blog-card" data-blog-categories="ege school">
-                        <div class="blog-card-top">
-                            <span>ЕГЭ/ОГЭ</span>
-                            <small>5 мин</small>
-                        </div>
-                        <h3>Проходные баллы, бюджет и резервные варианты</h3>
-                        <p>Как сопоставить проходной ориентир, стоимость обучения и запасные маршруты до подачи документов.</p>
-                        <button class="btn btn-ghost btn-sm" type="button">Читать</button>
-                    </article>
-                    <article class="blog-card" data-blog-categories="career school">
-                        <div class="blog-card-top">
-                            <span>Профессии</span>
-                            <small>6 мин</small>
-                        </div>
-                        <h3>Колледж или 10 класс после 9 класса: как выбрать маршрут</h3>
-                        <p>Когда ранняя профессиональная траектория помогает, а когда лучше продолжить школу и готовиться к ЕГЭ.</p>
-                        <button class="btn btn-ghost btn-sm" type="button">Читать</button>
-                    </article>
-                </div>
-
-                <div class="blog-cta">
-                    <div>
-                        <h3>Начните с персонального подбора</h3>
-                        <p>Заполните анкету и получите первый короткий список учебных заведений, которые стоит проверить в первую очередь.</p>
+                <div class="blog-list-view" id="blog-list-view">
+                    <div class="blog-tabs" aria-label="Категории статей">
+                        <button class="blog-tab active" type="button" data-blog-filter="all">Все</button>
+                        <button class="blog-tab" type="button" data-blog-filter="parents">Родителям</button>
+                        <button class="blog-tab" type="button" data-blog-filter="school">Школьникам</button>
+                        <button class="blog-tab" type="button" data-blog-filter="ege">ЕГЭ/ОГЭ</button>
+                        <button class="blog-tab" type="button" data-blog-filter="career">Профессии</button>
                     </div>
-                    <button class="btn btn-primary" type="button" data-section="home" data-scroll-target="ai-picker">Начать подбор</button>
+
+                    <div class="blog-grid">
+                        <article class="blog-card" data-blog-categories="parents school" data-article-card="choice-without-pressure">
+                            <div class="blog-card-top">
+                                <span>Родителям</span>
+                                <small>7 мин</small>
+                            </div>
+                            <h3>Как выбрать вуз в Москве без давления на подростка</h3>
+                            <p>Какие вопросы задавать школьнику, чтобы поддержать выбор и не заменить его цель родительской тревогой.</p>
+                            <a class="btn btn-ghost btn-sm" href="#article-choice-without-pressure" data-article-id="choice-without-pressure">Читать</a>
+                        </article>
+                        <article class="blog-card" data-blog-categories="ege school" data-article-card="scores-budget-reserve">
+                            <div class="blog-card-top">
+                                <span>ЕГЭ/ОГЭ</span>
+                                <small>5 мин</small>
+                            </div>
+                            <h3>Проходные баллы, бюджет и резервные варианты</h3>
+                            <p>Как сопоставить проходной ориентир, стоимость обучения и запасные маршруты до подачи документов.</p>
+                            <a class="btn btn-ghost btn-sm" href="#article-scores-budget-reserve" data-article-id="scores-budget-reserve">Читать</a>
+                        </article>
+                        <article class="blog-card" data-blog-categories="career school" data-article-card="college-or-grade-ten">
+                            <div class="blog-card-top">
+                                <span>Профессии</span>
+                                <small>6 мин</small>
+                            </div>
+                            <h3>Колледж или 10 класс после 9 класса: как выбрать маршрут</h3>
+                            <p>Когда ранняя профессиональная траектория помогает, а когда лучше продолжить школу и готовиться к ЕГЭ.</p>
+                            <a class="btn btn-ghost btn-sm" href="#article-college-or-grade-ten" data-article-id="college-or-grade-ten">Читать</a>
+                        </article>
+                    </div>
+
+                    <div class="blog-cta">
+                        <div>
+                            <h3>Начните с персонального подбора</h3>
+                            <p>Заполните анкету и получите первый короткий список учебных заведений, которые стоит проверить в первую очередь.</p>
+                        </div>
+                        <button class="btn btn-primary" type="button" data-section="home" data-scroll-target="ai-picker">Начать подбор</button>
+                    </div>
+                </div>
+
+                <div class="blog-article-view hidden" id="blog-article-view" aria-live="polite">
+                    <div class="blog-article-nav">
+                        <a class="btn btn-ghost btn-sm" href="#blog" data-blog-back>К списку статей</a>
+                    </div>
+
+                    <article class="blog-article" id="article-choice-without-pressure" data-article-panel="choice-without-pressure" hidden>
+                        <div class="article-meta">
+                            <span>Родителям</span>
+                            <small>7 мин чтения</small>
+                        </div>
+                        <h2 tabindex="-1">Как выбрать вуз в Москве без давления на подростка</h2>
+                        <div class="blog-article-content">
+                            <div class="article-copy">
+                                <p>Выбор вуза легче обсуждать не с вопроса «куда ты точно поступаешь?», а с карты вариантов. Подростку важно увидеть несколько маршрутов: сильный, реалистичный и запасной.</p>
+                                <p>Начните с интересов и условий жизни: какие предметы даются легче, сколько времени занимает дорога, какой бюджет комфортен семье и какие профессии действительно вызывают интерес.</p>
+                                <p>После этого сравните программы, проходные ориентиры и дни открытых дверей. Родительская роль здесь не в том, чтобы выбрать вместо школьника, а в том, чтобы убрать хаос из данных.</p>
+                                <ul class="article-checklist">
+                                    <li>Спросите, какие направления хочется изучать, а не только где «престижно».</li>
+                                    <li>Сравните 3-5 вузов по предметам ЕГЭ, стоимости, дороге и запасным сценариям.</li>
+                                    <li>Договоритесь о следующем шаге: пробник, консультация, день открытых дверей или разговор с выпускником.</li>
+                                </ul>
+                            </div>
+                            <aside class="article-aside">
+                                <strong>Практический шаг</strong>
+                                <p>Соберите короткий список и отметьте, где нужно подтянуть баллы, а где уже есть реалистичный запас.</p>
+                                <button class="btn btn-primary btn-sm" type="button" data-section="home" data-scroll-target="ai-picker">Собрать список</button>
+                            </aside>
+                        </div>
+                    </article>
+
+                    <article class="blog-article" id="article-scores-budget-reserve" data-article-panel="scores-budget-reserve" hidden>
+                        <div class="article-meta">
+                            <span>ЕГЭ/ОГЭ</span>
+                            <small>5 мин чтения</small>
+                        </div>
+                        <h2 tabindex="-1">Проходные баллы, бюджет и резервные варианты</h2>
+                        <div class="blog-article-content">
+                            <div class="article-copy">
+                                <p>Проходной балл лучше воспринимать как ориентир, а не обещание. Он меняется каждый год, поэтому план подготовки должен учитывать запас и альтернативные маршруты.</p>
+                                <p>Для ЕГЭ сравнивайте сумму баллов по нужным предметам и минимальные требования конкретной программы. Для ОГЭ и колледжа смотрите средний балл аттестата, конкурс и профильные предметы.</p>
+                                <p>Бюджет тоже влияет на стратегию: иногда платное место в сильной программе разумнее, чем рискованный единственный вариант на бюджет.</p>
+                                <ul class="article-checklist">
+                                    <li>Поставьте целевой балл выше прошлогоднего ориентира, чтобы оставить запас.</li>
+                                    <li>Разделите варианты на основной, реалистичный и резервный список.</li>
+                                    <li>Проверьте стоимость обучения, рассрочку и сроки подачи документов заранее.</li>
+                                </ul>
+                            </div>
+                            <aside class="article-aside">
+                                <strong>Как считать запас</strong>
+                                <p>Для ЕГЭ держите резерв 15-30 баллов, для колледжа смотрите разницу по среднему баллу и конкурс за прошлый прием.</p>
+                                <button class="btn btn-primary btn-sm" type="button" data-section="prep">Открыть курсы</button>
+                            </aside>
+                        </div>
+                    </article>
+
+                    <article class="blog-article" id="article-college-or-grade-ten" data-article-panel="college-or-grade-ten" hidden>
+                        <div class="article-meta">
+                            <span>Профессии</span>
+                            <small>6 мин чтения</small>
+                        </div>
+                        <h2 tabindex="-1">Колледж или 10 класс после 9 класса: как выбрать маршрут</h2>
+                        <div class="blog-article-content">
+                            <div class="article-copy">
+                                <p>После 9 класса нет универсального правильного решения. Колледж подходит, если школьнику важна ранняя профессия, практика и понятный выход на работу или продолжение в вузе.</p>
+                                <p>10 класс сильнее подходит тем, кто готовится к вузу, хочет больше времени на выбор и способен выдержать нагрузку ЕГЭ. Главное - сравнивать не эмоции, а конкретные условия.</p>
+                                <p>Смотрите программу колледжа, партнеров, практику, транспорт, стоимость и возможность продолжить обучение по близкому направлению.</p>
+                                <ul class="article-checklist">
+                                    <li>Определите, нужен ли быстрый профессиональный старт или время на академический выбор.</li>
+                                    <li>Сравните колледжи по практике, оборудованию, отзывам и продолжению в вузе.</li>
+                                    <li>Если выбираете 10 класс, сразу составьте план ЕГЭ и резервные направления.</li>
+                                </ul>
+                            </div>
+                            <aside class="article-aside">
+                                <strong>Точка решения</strong>
+                                <p>Выберите маршрут, который дает понятный следующий шаг, а не только снимает тревогу текущего учебного года.</p>
+                                <button class="btn btn-primary btn-sm" type="button" data-section="search">Сравнить варианты</button>
+                            </aside>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer class="footer">
@@ -503,16 +619,25 @@
                     <span class="logo-text">New<span>Stage</span></span>
                 </a>
                 <p>Сервис подбора вузов и колледжей Москвы для школьников 9 и 11 классов и родителей, которым нужен понятный маршрут поступления.</p>
+                <div class="footer-contacts" aria-label="Контакты NewStage">
+                    <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+                    <a href="mailto:hello@newstage.ru">hello@newstage.ru</a>
+                    <div class="footer-socials" aria-label="Социальные сети">
+                        <a href="https://t.me/newstage" target="_blank" rel="noopener">Telegram</a>
+                        <a href="https://vk.com/newstage" target="_blank" rel="noopener">ВК</a>
+                        <a href="https://instagram.com/newstage" target="_blank" rel="noopener">Instagram</a>
+                    </div>
+                </div>
             </div>
             <div class="footer-links">
                 <a href="#" data-section="search">Поиск</a>
                 <a href="#" data-section="compare">Сравнение</a>
                 <a href="#" data-section="home" data-scroll-target="ai-picker">AI-подбор</a>
                 <a href="#" data-section="prep">Подготовка</a>
+                <a href="#" data-section="blog">Блог</a>
             </div>
             <div class="footer-note">
                 <span>Демо-версия · 2026</span>
-                <span>Показатели в карточках помогают первично сравнить варианты; перед подачей документов сверяйте официальные правила приема.</span>
             </div>
         </div>
     </footer>
