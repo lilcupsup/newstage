@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="NewStage помогает выбрать вуз или колледж в Москве после 9 или 11 класса: AI-подбор, фильтры по баллам ЕГЭ/ОГЭ, бюджету, направлению и метро.">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#141d2e">
     <title>NewStage — подбор вузов и колледжей в Москве после 9 и 11 класса</title>
     <link rel="icon" type="image/png" href="assets/newstage-main.png">
     <link rel="apple-touch-icon" href="assets/newstage-main.png">
     <meta property="og:image" content="assets/newstage-main.png">
     <meta name="twitter:image" content="assets/newstage-main.png">
-    <link rel="stylesheet" href="styles.css?v=20260521-footer-contacts">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles.css?v=20260607-ticker2">
+    <link rel="stylesheet" href="styles-ui.css?v=20260607-ticker2">
+    <link rel="stylesheet" href="enhance.css?v=20260607-ticker2">
 </head>
 <body>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
     <header class="header" id="page-header">
         <div class="container header-inner">
             <a href="#" class="logo" data-section="home" aria-label="NewStage на главную">
-                <span class="logo-mark" aria-hidden="true"></span>
                 <span class="logo-text">New<span>Stage</span></span>
             </a>
 
@@ -23,7 +29,7 @@
                 <a href="#" class="nav-link active" data-section="home">Главная</a>
                 <a href="#" class="nav-link" data-section="home" data-scroll-target="ai-picker">AI-подбор</a>
                 <a href="#" class="nav-link" data-section="search">Поиск</a>
-                <a href="#" class="nav-link" data-section="compare">Сравнение</a>
+                <a href="#" class="nav-link" data-section="compare">Сравнение<span class="nav-badge" id="compare-badge" hidden>0</span></a>
                 <a href="#" class="nav-link" data-section="prep">Подготовка</a>
                 <a href="#" class="nav-link" data-section="blog">Блог</a>
             </nav>
@@ -42,27 +48,12 @@
                 <div class="hero-gridline" aria-hidden="true"></div>
                 <div class="container hero-inner">
                     <div class="hero-copy reveal">
-                        <p class="eyebrow">Подбор вузов и колледжей в Москве</p>
-                        <h1>Выбери вуз или колледж в Москве</h1>
-                        <p class="hero-subtitle">NewStage помогает школьникам и родителям собрать короткий список вариантов после <span class="copy-spark">9 или 11 класса</span>: сравнить <span class="copy-spark">ЕГЭ/ОГЭ</span>, стоимость обучения, направление, метро, риски и следующие шаги.</p>
+                        <p class="eyebrow">Поступление после 9 и 11 класса · Москва</p>
+                        <h1>Подбери вуз или&nbsp;колледж, который <span class="headline-accent">реально подходит</span></h1>
+                        <p class="hero-subtitle">NewStage за пару минут собирает короткий список вузов и колледжей Москвы под твои баллы, бюджет, направление и дорогу — и понятно объясняет, почему каждый вариант в списке.</p>
                         <div class="hero-actions">
-                            <button class="btn btn-primary" type="button" data-section="home" data-scroll-target="ai-picker">Подобрать вариант</button>
-                            <button class="btn btn-secondary" type="button" data-section="search">Найти вручную</button>
-                            <button class="btn btn-ghost" type="button" data-section="compare">Сравнить список</button>
-                        </div>
-                        <div class="trust-strip" aria-label="Ключевые преимущества">
-                            <div>
-                                <strong>9 и 11 класс</strong>
-                                <span>маршруты после школы</span>
-                            </div>
-                            <div>
-                                <strong>ЕГЭ / ОГЭ</strong>
-                                <span>баллы и проходной ориентир</span>
-                            </div>
-                            <div>
-                                <strong>3 варианта</strong>
-                                <span>для спокойного сравнения</span>
-                            </div>
+                            <button class="btn btn-primary" type="button" data-section="home" data-scroll-target="ai-picker">Подобрать через AI<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                            <button class="btn btn-ghost" type="button" data-section="search">Открыть поиск</button>
                         </div>
                     </div>
 
@@ -72,20 +63,20 @@
                                 <span></span>
                                 <span></span>
                                 <span></span>
-                                <strong>AI Match Console</strong>
+                                <strong>NewStage · подбор</strong>
                             </div>
                             <div class="product-status">
                                 <div>
                                     <span>Профиль</span>
                                     <strong>11 класс · IT · ЕГЭ</strong>
                                 </div>
-                                <b>92%</b>
+                                <b style="--match: 92%">92%</b>
                             </div>
                             <div class="product-main-card">
                                 <div class="product-institution">
                                     <span class="institution-chip">Рекомендация</span>
                                     <h3>МИРЭА</h3>
-                                    <p>Подходит по IT, бюджету и проходному ориентиру. Проверь проектную нагрузку и выбери резервный вариант.</p>
+                                    <p>Совпадает по IT, бюджету и проходному ориентиру. Проверь проектную нагрузку и выбери резервный вариант.</p>
                                 </div>
                                 <div class="signal-list">
                                     <div class="signal-row">
@@ -131,58 +122,73 @@
                 <section class="problem-solution reveal" aria-labelledby="problem-title">
                     <div>
                         <p class="section-kicker">Проблема</p>
-                        <h2 id="problem-title">Сложно понять, какой вуз или колледж действительно подходит</h2>
+                        <h2 id="problem-title">Сложно сравнить вуз, колледж, баллы и бюджет</h2>
                         <p>Родители смотрят рейтинги, школьник читает отзывы, проходные баллы лежат отдельно от стоимости, дороги и требований. Данных много, а ясного решения все равно нет.</p>
                     </div>
                     <div>
                         <p class="section-kicker accent">Решение</p>
-                        <h2>NewStage превращает данные в понятный <span class="headline-accent">короткий список</span></h2>
-                        <p>Сервис не просто показывает учебные заведения, а объясняет соответствие: почему вариант подходит, где есть риск и что проверить до подачи документов.</p>
+                        <h2>NewStage превращает данные в <span class="headline-accent">ясный маршрут выбора</span></h2>
+                        <p>Сервис не просто показывает учебные заведения, а объясняет плюсы, ограничения, риски и то, что стоит проверить до подачи документов.</p>
                     </div>
                 </section>
 
-                <section class="flow-section" aria-labelledby="flow-title">
-                    <div class="section-heading reveal">
-                        <p class="section-kicker">Как это работает</p>
-                        <h2 id="flow-title">От анкеты до осознанного выбора учебного заведения</h2>
-                        <p>Вы задаете профиль поступления, смотрите подходящие варианты, сравниваете сильные стороны и собираете маршрут без лишних таблиц.</p>
-                    </div>
-
-                    <div class="journey">
-                        <article class="journey-step reveal delay-1">
-                            <span>01</span>
-                            <h3>Анкета</h3>
-                            <p>Класс, формат экзамена, направление, бюджет, баллы, метро и интересы школьника.</p>
-                        </article>
-                        <article class="journey-step reveal delay-2">
-                            <span>02</span>
-                            <h3>AI-подбор</h3>
-                            <p>Алгоритм оценивает совпадение по ключевым критериям и объясняет выбор.</p>
-                        </article>
-                        <article class="journey-step reveal delay-3">
-                            <span>03</span>
-                            <h3>Поиск</h3>
-                            <p>Фильтры помогают найти вузы и колледжи по баллам, стоимости, направлению и метро.</p>
-                        </article>
-                        <article class="journey-step reveal delay-4">
-                            <span>04</span>
-                            <h3>Сравнение</h3>
-                            <p>До трех вариантов рядом: стоимость, проходной ориентир, метро, плюсы и риски.</p>
-                        </article>
+                <section class="flow-section education-showcase" aria-label="Учебные заведения в базе NewStage">
+                    <div class="school-marquee reveal" aria-label="Учебные заведения в базе NewStage">
+                        <p class="showcase-caption">Вузы и колледжи Москвы в базе NewStage</p>
+                        <div class="marquee-row">
+                            <div class="marquee-track">
+                                <span>МИРЭА</span>
+                                <span>Московский Политех</span>
+                                <span>РЭУ им. Плеханова</span>
+                                <span>МГПУ</span>
+                                <span>РАНХиГС</span>
+                                <span>Финансовый университет</span>
+                                <span>Колледж связи №54</span>
+                                <span>РГУ им. Косыгина</span>
+                                <span>МТУСИ</span>
+                                <span>Колледж программирования</span>
+                                <span>Московский технологический колледж</span>
+                                <span>Колледж архитектуры и дизайна</span>
+                                <span>МИРЭА</span>
+                                <span>Московский Политех</span>
+                                <span>РЭУ им. Плеханова</span>
+                                <span>МГПУ</span>
+                                <span>РАНХиГС</span>
+                                <span>Финансовый университет</span>
+                                <span>Колледж связи №54</span>
+                                <span>РГУ им. Косыгина</span>
+                                <span>МТУСИ</span>
+                                <span>Колледж программирования</span>
+                                <span>Московский технологический колледж</span>
+                                <span>Колледж архитектуры и дизайна</span>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
                 <section class="ai-panel reveal" id="ai-picker" aria-labelledby="ai-title">
-                    <div class="ai-panel-copy">
+                    <div class="ai-panel-head">
                         <p class="section-kicker">AI-подбор</p>
-                        <h2 id="ai-title">Заполни <span class="headline-accent">анкету</span> для подбора вуза или колледжа</h2>
-                        <p>Результат покажет процент соответствия, причины выбора, риски и следующие действия. Логика учитывает формат поступления, баллы, бюджет, направление, метро и интересы.</p>
+                        <h2 id="ai-title">Анкета на 2 минуты — и рекомендации с объяснением</h2>
+                        <p>Ответь на несколько вопросов о классе, баллах, бюджете и интересах. NewStage покажет совпадение в процентах, причины выбора, риски и следующий шаг.</p>
                     </div>
 
-                    <form id="ai-form" class="ai-form" novalidate>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="ai-exam">Формат поступления</label>
+                    <form id="ai-form" class="ai-wizard" novalidate>
+                        <div class="wizard-head">
+                            <div class="wizard-dots" aria-hidden="true">
+                                <span class="wdot is-active" data-dot="1">Профиль</span>
+                                <span class="wdot" data-dot="2">Возможности</span>
+                                <span class="wdot" data-dot="3">Интересы</span>
+                            </div>
+                            <div class="wizard-track"><span id="wizard-bar"></span></div>
+                            <p class="wizard-count">Шаг <b id="wizard-current">1</b> из 3</p>
+                        </div>
+
+                        <div class="wizard-step is-active" data-step="1">
+                            <h3 class="wizard-q">С чего начнём?</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="ai-exam">Формат поступления</label>
                                 <select id="ai-exam" required>
                                     <option value="ege">11 класс · ЕГЭ · университет</option>
                                     <option value="oge">9 класс · ОГЭ/аттестат · колледж</option>
@@ -203,38 +209,57 @@
                                     <option value="law">Право и управление</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="ai-score" id="ai-score-label">Сумма баллов ЕГЭ</label>
-                                <input type="number" id="ai-score" min="0" max="310" step="1" placeholder="Например, 245" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="ai-budget">Бюджет на обучение в год</label>
-                                <input type="number" id="ai-budget" min="0" step="10000" placeholder="Например, 350000" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="ai-metro">Метро рядом с кампусом</label>
-                                <select id="ai-metro">
-                                    <option value="">Не важно</option>
-                                    <option value="Университет">Университет</option>
-                                    <option value="Бауманская">Бауманская</option>
-                                    <option value="Китай-город">Китай-город</option>
-                                    <option value="Проспект Вернадского">Проспект Вернадского</option>
-                                    <option value="Аэропорт">Аэропорт</option>
-                                    <option value="Юго-Западная">Юго-Западная</option>
-                                    <option value="ВДНХ">ВДНХ</option>
-                                    <option value="Технопарк">Технопарк</option>
-                                    <option value="Сокол">Сокол</option>
-                                    <option value="Савеловская">Савеловская</option>
-                                    <option value="Тульская">Тульская</option>
-                                    <option value="Калужская">Калужская</option>
-                                </select>
-                            </div>
-                            <div class="form-group form-group-wide">
-                                <label for="ai-interests">Интересы, предметы и ожидания</label>
-                                <textarea id="ai-interests" rows="4" placeholder="Например: хочу программирование, проекты, стажировки, сильную математику и дорогу до часа" required></textarea>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-wide">Получить рекомендацию</button>
+
+                        <div class="wizard-step" data-step="2">
+                            <h3 class="wizard-q">Баллы и бюджет</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="ai-score" id="ai-score-label">Сумма баллов ЕГЭ</label>
+                                    <input type="number" id="ai-score" min="0" max="310" step="1" placeholder="Например, 245" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ai-budget">Бюджет на обучение в год, ₽</label>
+                                    <input type="number" id="ai-budget" min="0" step="10000" placeholder="Например, 350000" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="wizard-step" data-step="3">
+                            <h3 class="wizard-q">Детали и интересы</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="ai-metro">Метро рядом с кампусом</label>
+                                    <select id="ai-metro">
+                                        <option value="">Не важно</option>
+                                        <option value="Университет">Университет</option>
+                                        <option value="Бауманская">Бауманская</option>
+                                        <option value="Китай-город">Китай-город</option>
+                                        <option value="Проспект Вернадского">Проспект Вернадского</option>
+                                        <option value="Аэропорт">Аэропорт</option>
+                                        <option value="Юго-Западная">Юго-Западная</option>
+                                        <option value="ВДНХ">ВДНХ</option>
+                                        <option value="Технопарк">Технопарк</option>
+                                        <option value="Сокол">Сокол</option>
+                                        <option value="Савеловская">Савеловская</option>
+                                        <option value="Тульская">Тульская</option>
+                                        <option value="Калужская">Калужская</option>
+                                    </select>
+                                </div>
+                                <div class="form-group form-group-wide">
+                                    <label for="ai-interests">Интересы, предметы и ожидания</label>
+                                    <textarea id="ai-interests" rows="3" placeholder="Например: программирование, проекты, стажировки, сильная математика, дорога до часа" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="wizard-actions">
+                            <button type="button" class="btn btn-ghost" data-wizard-prev hidden>Назад</button>
+                            <span class="wizard-spacer"></span>
+                            <button type="button" class="btn btn-primary" data-wizard-next>Далее<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                            <button type="submit" class="btn btn-primary" data-wizard-submit hidden>Получить рекомендацию<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                        </div>
                     </form>
 
                     <div id="ai-result" class="ai-result hidden" aria-live="polite"></div>
@@ -244,7 +269,7 @@
                     <div class="section-heading reveal">
                         <p class="section-kicker">Популярные варианты</p>
                         <h2 id="popular-title">Вузы и колледжи с понятными критериями выбора</h2>
-                        <p>В карточках собраны направление, стоимость, проходной ориентир, метро, сильные стороны и риски, чтобы быстро отсеять неподходящие варианты.</p>
+                        <p>В карточках собраны направление, стоимость, проходной ориентир, метро, сильные стороны и риски, чтобы быстро убрать лишние варианты.</p>
                     </div>
                     <div class="cards" id="popular-cards"></div>
                 </section>
@@ -252,7 +277,7 @@
                 <section class="demo-compare reveal" aria-label="Переход к сравнению">
                     <div>
                         <p class="section-kicker">Сравнение</p>
-                        <h2>Собери короткий список и сравни варианты рядом</h2>
+                        <h2>Сравни выбранные варианты рядом</h2>
                         <p>Добавь до трех учебных заведений из поиска или рекомендации. NewStage подсветит сильные значения и покажет риски без лишнего текста.</p>
                     </div>
                     <button class="btn btn-secondary" type="button" data-section="search">Найти варианты</button>
@@ -268,7 +293,7 @@
                     <div class="faq-grid">
                         <article class="faq-item">
                             <h3>Можно ли подобрать колледж после 9 класса?</h3>
-                            <p>Да. Выберите формат ОГЭ/аттестат, укажите средний балл, направление, бюджет и интересы. NewStage покажет колледжи, которые подходят под старт после 9 класса.</p>
+                            <p>Да. Выберите формат ОГЭ/аттестат, укажите средний балл, направление, бюджет и интересы. NewStage покажет колледжи для старта после 9 класса.</p>
                         </article>
                         <article class="faq-item">
                             <h3>Что важнее: проходной балл или стоимость обучения?</h3>
@@ -291,7 +316,7 @@
             <div class="container page-section">
                 <div class="section-heading section-heading-left">
                     <p class="section-kicker">Поиск по базе</p>
-                    <h2>Найди подходящие вузы и колледжи Москвы</h2>
+                    <h2>Найди вузы и колледжи Москвы по своим условиям</h2>
                     <p>Фильтры учитывают формат ЕГЭ/ОГЭ, направление, стоимость обучения и текущие баллы. Если совпадений нет, сервис подскажет, что изменить в запросе.</p>
                 </div>
 
@@ -343,12 +368,36 @@
                     </aside>
 
                     <div>
+                        <div class="dir-filter" role="group" aria-label="Быстрый фильтр по направлению">
+                            <button class="dir-chip is-active" type="button" data-dir="">Все</button>
+                            <button class="dir-chip dir-it" type="button" data-dir="it">IT</button>
+                            <button class="dir-chip dir-engineering" type="button" data-dir="engineering">Инженерия</button>
+                            <button class="dir-chip dir-economics" type="button" data-dir="economics">Экономика</button>
+                            <button class="dir-chip dir-media" type="button" data-dir="media">Медиа</button>
+                            <button class="dir-chip dir-humanities" type="button" data-dir="humanities">Гуманитарные</button>
+                            <button class="dir-chip dir-science" type="button" data-dir="science">Естественные</button>
+                            <button class="dir-chip dir-international" type="button" data-dir="international">Международные</button>
+                            <button class="dir-chip dir-architecture" type="button" data-dir="architecture">Строительство</button>
+                            <button class="dir-chip dir-law" type="button" data-dir="law">Право</button>
+                        </div>
                         <div class="search-toolbar">
                             <div>
                                 <strong>Результаты подбора</strong>
                                 <span id="active-filter-text">Показаны все варианты для подбора</span>
                             </div>
-                            <button class="btn btn-secondary btn-sm" type="button" data-section="home" data-scroll-target="ai-picker">Получить рекомендацию</button>
+                            <div class="toolbar-actions">
+                                <div class="sort-control">
+                                    <label for="sort-by">Сортировка</label>
+                                    <select id="sort-by">
+                                        <option value="rating">По рейтингу</option>
+                                        <option value="price-asc">Сначала дешевле</option>
+                                        <option value="price-desc">Сначала дороже</option>
+                                        <option value="score-asc">Ниже проходной балл</option>
+                                        <option value="name">По названию</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-secondary btn-sm" type="button" data-section="home" data-scroll-target="ai-picker">Получить рекомендацию</button>
+                            </div>
                         </div>
                         <div class="cards" id="search-cards"></div>
                     </div>
@@ -520,7 +569,7 @@
                     <div class="blog-cta">
                         <div>
                             <h3>Начните с персонального подбора</h3>
-                            <p>Заполните анкету и получите первый короткий список учебных заведений, которые стоит проверить в первую очередь.</p>
+                            <p>Заполните анкету и получите первый набор учебных заведений, которые стоит проверить в первую очередь.</p>
                         </div>
                         <button class="btn btn-primary" type="button" data-section="home" data-scroll-target="ai-picker">Начать подбор</button>
                     </div>
@@ -550,7 +599,7 @@
                             </div>
                             <aside class="article-aside">
                                 <strong>Практический шаг</strong>
-                                <p>Соберите короткий список и отметьте, где нужно подтянуть баллы, а где уже есть реалистичный запас.</p>
+                                <p>Соберите несколько вариантов и отметьте, где нужно подтянуть баллы, а где уже есть реалистичный запас.</p>
                                 <button class="btn btn-primary btn-sm" type="button" data-section="home" data-scroll-target="ai-picker">Собрать список</button>
                             </aside>
                         </div>
@@ -614,8 +663,7 @@
     <footer class="footer">
         <div class="container footer-inner">
             <div>
-                <a href="#" class="logo footer-logo" data-section="home">
-                    <span class="logo-mark" aria-hidden="true"></span>
+                <a href="#" class="logo footer-logo" data-section="home" aria-label="NewStage на главную">
                     <span class="logo-text">New<span>Stage</span></span>
                 </a>
                 <p>Сервис подбора вузов и колледжей Москвы для школьников 9 и 11 классов и родителей, которым нужен понятный маршрут поступления.</p>
@@ -643,6 +691,7 @@
     </footer>
 
     <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
-    <script src="script.js?v=20260521-blog-footer"></script>
+    <script src="script.js?v=20260531recon3"></script>
+    <script src="enhance.js?v=20260531recon3"></script>
 </body>
 </html>

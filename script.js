@@ -245,6 +245,60 @@ let compareList = [];
 let lastFiltered = [...institutions];
 let toastTimer = null;
 
+const COMPARE_KEY = 'newstage_compare_v1';
+
+function saveCompare() {
+    try {
+        localStorage.setItem(COMPARE_KEY, JSON.stringify(compareList.map(item => item.id)));
+    } catch (error) { /* storage unavailable */ }
+}
+
+function loadCompare() {
+    try {
+        const ids = JSON.parse(localStorage.getItem(COMPARE_KEY) || '[]');
+        if (Array.isArray(ids)) {
+            compareList = ids
+                .map(id => institutions.find(item => item.id === id))
+                .filter(Boolean)
+                .slice(0, 3);
+        }
+    } catch (error) {
+        compareList = [];
+    }
+}
+
+function updateCompareBadge() {
+    const badge = document.getElementById('compare-badge');
+    if (!badge) return;
+    badge.textContent = String(compareList.length);
+    badge.hidden = compareList.length === 0;
+}
+
+function sortInstitutions(list) {
+    const by = document.getElementById('sort-by')?.value || 'rating';
+    const sorted = [...list];
+    switch (by) {
+        case 'price-asc':
+            sorted.sort((a, b) => a.price - b.price);
+            break;
+        case 'price-desc':
+            sorted.sort((a, b) => b.price - a.price);
+            break;
+        case 'score-asc':
+            sorted.sort((a, b) => {
+                if (a.exam !== b.exam) return a.exam === 'oge' ? -1 : 1;
+                return a.minScore - b.minScore;
+            });
+            break;
+        case 'name':
+            sorted.sort((a, b) => a.name.localeCompare(b.name, 'ru'));
+            break;
+        default:
+            sorted.sort((a, b) => b.rating - a.rating);
+    }
+    return sorted;
+}
+
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
@@ -395,56 +449,34 @@ function getInstitutionText(item) {
 
 function createInstitutionCard(item) {
     const isAdded = compareList.some(compareItem => compareItem.id === item.id);
-    const visibleTags = item.tags.slice(0, 4);
-
-    const pros = item.pros.slice(0, 2).map(pro => `<li>${escapeHtml(pro)}</li>`).join('');
-    const cons = item.cons.slice(0, 2).map(con => `<li>${escapeHtml(con)}</li>`).join('');
-    const tags = visibleTags.map(tag => `<span class="card-tag">${escapeHtml(tag)}</span>`).join('');
+    const tags = item.tags.slice(0, 3).map(tag => `<span class="card-tag">${escapeHtml(tag)}</span>`).join('');
 
     return `
-        <article class="card ${isAdded ? 'is-added' : ''}">
+        <article class="card dir-${item.direction} ${isAdded ? 'is-added' : ''}" data-dir="${item.direction}">
             <div class="card-top">
-                <span class="type-badge">${typeLabel(item.type)}</span>
-                <span class="card-rating">${item.rating.toFixed(1)}</span>
+                <span class="card-cat">${escapeHtml(directions[item.direction])}</span>
+                <span class="card-rating" title="Оценка профиля">${item.rating.toFixed(1)}</span>
             </div>
             <h3 class="card-title">${escapeHtml(item.name)}</h3>
-            <p class="card-meta">${examLabel(item.exam)} · ${escapeHtml(directions[item.direction])} · метро ${escapeHtml(item.metro)}</p>
+            <p class="card-meta">${typeLabel(item.type)} · метро ${escapeHtml(item.metro)}</p>
             <p class="card-description">${escapeHtml(item.description)}</p>
             <div class="card-tags">${tags}</div>
-            <div class="card-metrics">
+            <dl class="card-metrics">
                 <div class="metric">
-                    <span>Стоимость</span>
-                    <strong>${formatPrice(item.price)}</strong>
-                </div>
-                <div class="metric">
-                    <span>Проходной ориентир</span>
+                    <span>${item.exam === 'oge' ? 'Средний балл' : 'Проходной ЕГЭ'}</span>
                     <strong>${formatScore(item)}</strong>
                 </div>
                 <div class="metric">
-                    <span>Метро</span>
-                    <strong>${escapeHtml(item.metro)}</strong>
+                    <span>Стоимость в год</span>
+                    <strong>${formatPrice(item.price)}</strong>
                 </div>
-                <div class="metric">
-                    <span>Оценка профиля</span>
-                    <strong>${item.rating.toFixed(1)} / 10</strong>
-                </div>
-            </div>
-            <div class="card-list-grid">
-                <div class="list-block">
-                    <strong>Плюсы</strong>
-                    <ul>${pros}</ul>
-                </div>
-                <div class="list-block risks">
-                    <strong>Ограничения</strong>
-                    <ul>${cons}</ul>
-                </div>
-            </div>
+            </dl>
             <div class="card-actions">
-                <button class="btn ${isAdded ? 'btn-primary' : 'btn-ghost'} btn-sm" type="button" data-compare-id="${item.id}">
-                    ${isAdded ? 'В сравнении' : 'Сравнить'}
-                </button>
-                <button class="btn btn-secondary btn-sm" type="button" data-pick-id="${item.id}">
+                <button class="btn btn-primary btn-sm" type="button" data-pick-id="${item.id}">
                     Подобрать по нему
+                </button>
+                <button class="btn ${isAdded ? 'btn-secondary' : 'btn-ghost'} btn-sm card-compare-btn" type="button" data-compare-id="${item.id}" aria-pressed="${isAdded ? 'true' : 'false'}">
+                    ${isAdded ? '✓ В сравнении' : '+ Сравнить'}
                 </button>
             </div>
         </article>
@@ -521,6 +553,7 @@ function renderSearchCards(list = null) {
     const filters = getFilters();
     const results = list || filterInstitutions();
     lastFiltered = results;
+    const display = sortInstitutions(results);
 
     $('#result-count').textContent = `${results.length} ${getPlural(results.length, ['вариант', 'варианта', 'вариантов'])}`;
     $('#active-filter-text').textContent = buildFilterSummary(filters, results.length);
@@ -537,7 +570,7 @@ function renderSearchCards(list = null) {
         return;
     }
 
-    container.innerHTML = results.map(createInstitutionCard).join('');
+    container.innerHTML = display.map(createInstitutionCard).join('');
 }
 
 function getPlural(number, forms) {
@@ -589,6 +622,10 @@ function initFilters() {
     ['filter-exam', 'filter-direction'].forEach(id => {
         document.getElementById(id)?.addEventListener('change', applyFilters);
     });
+
+    document.getElementById('sort-by')?.addEventListener('change', () => {
+        renderSearchCards(filterInstitutions());
+    });
 }
 
 function toggleCompare(id) {
@@ -612,6 +649,8 @@ function toggleCompare(id) {
     renderPopularCards();
     renderSearchCards(lastFiltered.length ? filterInstitutions() : []);
     renderCompare();
+    saveCompare();
+    updateCompareBadge();
 }
 
 function renderCompare() {
@@ -625,6 +664,7 @@ function renderCompare() {
     if (compareList.length === 0) {
         empty.classList.remove('hidden');
         content.classList.add('hidden');
+        if (window.onCompareRendered) window.onCompareRendered();
         return;
     }
 
@@ -633,10 +673,10 @@ function renderCompare() {
     $('#compare-counter').textContent = `${compareList.length} из 3`;
 
     summary.innerHTML = compareList.map((item, index) => `
-        <div class="compare-chip">
-            <span>0${index + 1} · ${typeLabel(item.type)}</span>
+        <div class="compare-chip dir-${item.direction}" data-dir="${item.direction}">
+            <span>0${index + 1} · ${escapeHtml(directions[item.direction])}</span>
             <strong>${escapeHtml(item.name)}</strong>
-            <p>${escapeHtml(directions[item.direction])} · ${formatPrice(item.price)}</p>
+            <p>${typeLabel(item.type)} · ${formatPrice(item.price)}</p>
         </div>
     `).join('');
 
@@ -679,7 +719,7 @@ function renderCompare() {
         }
     ];
 
-    const header = `<thead><tr><th>Критерий</th>${compareList.map(item => `<th>${escapeHtml(item.name)}</th>`).join('')}</tr></thead>`;
+    const header = `<thead><tr><th>Критерий</th>${compareList.map(item => `<th class="dir-${item.direction}" data-dir="${item.direction}">${escapeHtml(item.name)}</th>`).join('')}</tr></thead>`;
     const body = rows.map(row => `
         <tr>
             <td>${escapeHtml(row.label)}</td>
@@ -688,6 +728,8 @@ function renderCompare() {
     `).join('');
 
     table.innerHTML = `${header}<tbody>${body}</tbody>`;
+
+    if (window.onCompareRendered) window.onCompareRendered();
 }
 
 function clearCompare() {
@@ -695,6 +737,8 @@ function clearCompare() {
     renderPopularCards();
     renderSearchCards(filterInstitutions());
     renderCompare();
+    saveCompare();
+    updateCompareBadge();
     showToast('Сравнение очищено');
 }
 
@@ -919,16 +963,16 @@ function renderAiRecommendations(profile, recommendations) {
         const isAdded = compareList.some(compareItem => compareItem.id === item.id);
 
         return `
-            <article class="ai-recommendation-card">
+            <article class="ai-recommendation-card dir-${item.direction}" data-dir="${item.direction}">
                 <div class="ai-card-head">
                     <div>
-                        <span class="ai-result-kicker">${typeLabel(item.type)} · ${examLabel(item.exam)}</span>
+                        <span class="card-cat">${escapeHtml(directions[item.direction])}</span>
                         <h4>${escapeHtml(item.name)}</h4>
                     </div>
                     <span class="match-ring" style="--match: ${percent}%">${percent}%</span>
                 </div>
                 <div class="ai-badges">
-                    <span class="ai-badge">${escapeHtml(directions[item.direction])}</span>
+                    <span class="ai-badge">${typeLabel(item.type)} · ${examLabel(item.exam)}</span>
                     <span class="ai-badge">${formatPrice(item.price)}</span>
                     <span class="ai-badge">${formatScore(item)}</span>
                     <span class="ai-badge">метро ${escapeHtml(item.metro)}</span>
@@ -966,6 +1010,8 @@ function renderAiRecommendations(profile, recommendations) {
         </div>
         <div class="ai-recommendation-grid">${cards}</div>
     `;
+
+    if (window.onAiRendered) window.onAiRendered();
 }
 
 function updateAiScoreField() {
@@ -1031,6 +1077,7 @@ function prefillAiFromInstitution(id) {
         $('#ai-budget').value = item.price;
         $('#ai-metro').value = item.metro;
         $('#ai-interests').value = item.tags.slice(0, 4).join(', ');
+        if (window.NewStageWizard) window.NewStageWizard.last();
         $('#ai-interests').focus({ preventScroll: true });
     }, 260);
 
@@ -1219,6 +1266,7 @@ function initBackgroundFollow() {
 }
 
 function init() {
+    loadCompare();
     initNavigation();
     initHeaderScroll();
     initRevealAnimations();
@@ -1230,6 +1278,7 @@ function init() {
     renderPopularCards();
     renderSearchCards([...institutions]);
     renderCompare();
+    updateCompareBadge();
 }
 
 document.addEventListener('DOMContentLoaded', init);

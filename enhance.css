@@ -1,0 +1,129 @@
+/* ============================================================
+   NewStage — enhancements
+   stats band, nav badge, scroll progress, sort control + motion
+   ============================================================ */
+
+/* Scroll progress bar — thin, single accent, no glow */
+.scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 60;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+    will-change: transform;
+    pointer-events: none;
+}
+
+/* Nav compare badge */
+.nav-badge {
+    display: inline-grid;
+    place-items: center;
+    min-width: 18px;
+    height: 18px;
+    margin-left: 7px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-family: var(--head);
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1;
+    animation: badgePop 240ms cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+.nav-badge[hidden] { display: none; }
+
+@keyframes badgePop {
+    from { transform: scale(0.2); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+/* Search toolbar — sort control */
+.toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sort-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.sort-control label {
+    color: var(--soft);
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.sort-control select {
+    min-height: 42px;
+    padding: 0 15px;
+    border: 1px solid var(--border-2);
+    border-radius: var(--radius-sm);
+    outline: 0;
+    color: var(--text);
+    background: var(--surface);
+    font-size: 0.86rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color var(--transition);
+}
+
+.sort-control select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.sort-control option { background: var(--surface); }
+
+/* Compare "best pick" highlight line */
+.compare-verdict {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-bottom: 18px;
+    padding: 17px 19px;
+    border: 1px solid var(--accent-line);
+    border-radius: var(--radius);
+    background: var(--accent-soft);
+}
+
+.compare-verdict .verdict-mark {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 34px; height: 34px;
+    border-radius: var(--radius-sm);
+    background: var(--accent);
+    color: var(--on-accent);
+}
+
+.compare-verdict .verdict-mark svg { width: 18px; height: 18px; }
+.compare-verdict p { color: var(--text); font-size: 0.92rem; line-height: 1.5; }
+.compare-verdict p b { color: var(--accent-2); font-weight: 700; }
+
+/* Motion helpers — count-up & fills animate via JS; ensure smooth ramp */
+.hero-product .signal-row i { transition: width 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+/* Very gentle pointer tilt on the hero console */
+.hero-product { perspective: 1300px; }
+.hero-product .product-shell {
+    transition: transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow var(--transition);
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+@media (max-width: 768px) {
+    .toolbar-actions { width: 100%; display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .sort-control { justify-content: space-between; }
+    .sort-control select { flex: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-progress { display: none; }
+    .hero-product .product-shell { transform: none !important; }
+    .hero-product .signal-row i { transition: none; }
+}
